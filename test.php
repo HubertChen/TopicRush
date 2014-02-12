@@ -1,3 +1,3 @@
-<php> $Test = "This is a test";
+<?php $Test = "This is a test";
 echo $Test;
-<?php>
+?>
