@@ -1,0 +1,104 @@
+drop table member;
+drop table review;
+drop table product;
+drop table productdetail;
+drop table category;
+drop table topic;
+drop table content;
+drop table community;
+drop table joins;
+drop table follows;
+
+
+create table member(
+memberid int not null AUTO_INCREMENT,
+username varchar(30) not null,
+password varchar(30) not null,
+city varchar(30) not null,
+state varchar(2) not null,
+zip varchar(5) not null,
+role char not null,
+status int not null,
+email varchar(50) not null,
+joindate timestamp not null,
+lastlogin timestamp not null,
+primary key(memberid));
+
+create table review(
+reviewid int not null,
+memberid int not null,
+productid int not null,
+reviewdetails varchar(300) not null,
+rating int not null,
+reviewdata timestamp not null,
+primary key(reviewid,memberid,productid));
+
+create table product(
+productid int not null AUTO_INCREMENT,
+ownerid int not null,
+name varchar(40) not null,
+description varchar(300) not null,
+rating decimal(2,1) not null,
+retailprice decimal(7,2) not null,
+listedprice decimal(7,2) not null,
+category int not null,
+numreviews int not null,
+primary key(productid));
+
+create table productdetail(
+detailid int not null AUTO_INCREMENT,
+productid int not null,
+type int not null,
+path varchar(100),
+description varchar(300) not null,
+primary key(detailid));
+
+create table category(
+categoryid int not null AUTO_INCREMENT,
+name varchar(20) not null,
+primary key(categoryid));
+
+create table topic(
+topicid int not null,
+followid int not null,
+productid int,
+created timestamp,
+primary key(topicid));
+
+create table content(
+contentid int not null,
+topicid int not null,
+title varchar(30),
+type int not null,
+path varchar(100),
+description varchar(300) not null,
+primary key(contentid));
+
+create table community(
+communityid int not null AUTO_INCREMENT,
+ownerid int not null,
+name varchar(30) not null,
+created timestamp not null,
+nummembers int,
+numtopics int,
+primary key(communityid));
+
+create table joins(
+memberid int not null,
+communityid int not null,
+primary key(memberid,communityid));
+
+create table follows(
+memberid int not null,
+topicid int not null,
+primary key(memberid,topicid));
+
+
+
+insert into member(memberid,username,password,city,state,zip,role,status,email,joindate,lastlogin) values (1000,"greg","greg","Hometown","NJ","07743","A",0,"greg@nowhere.com","2014-06-02 08:30:30","2014-06-02 08:30:30");
+
+insert into category(name) values("Coffee");
+
+insert into product(ownerid,name,description,rating,retailprice,listedprice,category,numreviews) values(1000,"Coffee Mug","Ceramic Mug",0.0,2.99,2.99,1,0);
+
+insert into productdetail(productid,type,path,description) values (1,1,"\products\2000\3000.jpg","Picture of Mug");

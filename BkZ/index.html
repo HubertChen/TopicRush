@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Circle</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  
+  
+  
+<!-- NAVBAR
+Known bugs: 	
+	-in Collapse it displays a line through the buttons
+	-Readjusting back to full view the buttons don't display properly
+    -LOOK AT DEFAULT NAVBAR IN BOOTSTRAP/COMPONENTS/DEFAULT NAVBAR
+
+================================================== -->
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">   
+      <div class="container">
+        <div class="navbar-header">
+          <!--Button for when the screen size is too small -->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Circle</a>
+        </div>
+		<!--Navbar that goes inside collapssed navbar-->
+        <div class="navbar-collapse collapse" align="center">  
+          <form class="navbar-form navbar-form-length"  role="search" >
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Seach for communities, topics, and products" size="70">
+            </div>
+            <a href="signin.html"<button type="button" class="btn btn-default navbar-btn-right">Sign In</button></a>
+            <a href="signup.html"><button type="button" class="btn btn-default navbar-btn-right">Sign Up</button></a>
+          </form>  
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Carousel
+    Need to:
+    		-Change slides with common color and theme (adds bubbles as necessary)
+            -add links where neccessary
+            -Add liknks to the actually slides if wanted
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol> 
+      <div class="carousel-inner">
+      
+      	<!--SLIDE 1 - CIRCLE-->
+        <div class="item active">
+          <img data-src="holder.js/900x500/auto/#777:#7a7a7a/text:Testing Slide 1" alt="Circle">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Circle</h1>
+              <p>Circle allows the user to to get a whole new perpect of products they own bring together people all around the world with common interests to share and explore ideas</p>
+              <p><a class="btn btn-lg btn-primary" href="signup.html" role="button">Sign up</a></p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- SLIDE 2 - COMMUNITY -->
+        <div class="item">
+        <img src="images/test.png" alt="Circle" alt="circle">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Community</h1>
+              <p>Join a community to share experiences and common interests</p>
+              <p><a class="btn btn-lg btn-primary" href="objective.html" role="button">Learn more</a></p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- SLIDE 3 - TOPIC -->
+        <div class="item">
+          <img data-src="holder.js/900x500/auto/#666:#6a6a6a/text:Testing Slide 3" alt="Topic">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Topic</h1>
+              <p>Get involved.  Post topics to your community to get help or help others about ideas</p>
+              <p><a class="btn btn-lg btn-primary" href="objective.html" role="button">Learn more</a></p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- SLIDE 4 - PRODUCTS-->
+        <div class="item">
+          <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:Testing Slide 4" alt="Product">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Products</h1>
+              <p>Using a great product.  Post a review.  Products allows the user to post a review to help people out on circles</p>
+              <p><a class="btn btn-lg btn-primary" href="objective.html" role="button">Learn More</a></p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!--Left and Right links to rotates  between carousels -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div><!-- /.carousel -->
+
+
+
+
+
+
+    <!-- Promotions Pages: Community, Topic, Product
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        
+        <!--Community Head -->
+        <div class="col-lg-4">
+          <a href="community.html"><img class="img-circle"  data-src="holder.js/140x140" alt="Generic placeholder image"></a>
+          <h2>Community</h2>
+          <p>Be apart of a community that share your interests about ideas and products</p>
+          <p><a class="btn btn-default" href="#" role="button">Join &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        
+        <!--Topic Head -->
+        <div class="col-lg-4">
+          <a href="#"><img class="img-circle" data-src="holder.js/140x140" alt="Generic placeholder image"></a>
+          <h2>Topic</h2>
+          <p>Find something interestings, or an idea you want the world to know, post it.</p>
+          <p><a class="btn btn-default" href="#" role="button">Follow &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        
+        <!--Product Head -->
+        <div class="col-lg-4">
+          <a href="product.html"><img class="img-circle" data-src="holder.js/140x140" alt="Generic placeholder image"></a>
+          <h2>Product</h2>
+          <p>Have a product that is amazing or regret buying.  Write a review to let people know your experience</p>
+          <p><a class="btn btn-default" href="reviewproduct.html" role="button">Review &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+    <!-- Top Section
+    Need to do:
+    		-Add the necessary links
+            -Fix for CSS
+            -Someone needs to figure the functionality of how the stars show up (I rather to full stars now instead of halfs
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+      <hr class="featurette-divider">
+      <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        
+        <!--Community Head -->
+        <div class="col-lg-4">
+          <h3>Top Community</h3>
+          <table class="table-top" align="center">
+            <tr>
+              <td>1.</td>
+              <td class="text-left">[Community 1 Name]</td>
+            </tr>
+            <tr>
+              <td>2.</td>
+              <td class="text-left">[Community 2 Name]</td>
+            </tr>
+            <tr>
+              <td>3.</td>
+              <td class="text-left">[Community 3 Name]</td>
+            </tr>
+            <tr>
+              <td>4.</td>
+              <td class="text-left">[Community 4 Name]</td>
+            </tr>
+            <tr>
+              <td>5.</td>
+              <td class="text-left">[Community 5 Name]</td>
+            </tr>
+          </table>                
+          <p><a class="btn btn-default" href="#" role="button">more &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        
+        <!--Topic Head -->
+        <div class="col-lg-4">
+          <h3>Top Topic</h3>         
+          <table class="table-top" align="center">
+            <tr>
+              <td>1.</td>
+              <td class="text-left">[Topic Name 1]</td>
+            </tr>
+            <tr>
+              <td>2.</td>
+              <td class="text-left">[Topic Name 2]</td>
+            </tr>
+            <tr>
+              <td>3.</td>
+              <td class="text-left">[Topic Name 3]</td>
+            </tr>
+            <tr>
+              <td>4.</td>
+              <td class="text-left">[Topic Name 4]</td>
+            </tr>
+            <tr>
+              <td>5.</td>
+              <td class="text-left">[Topic Name 5]</td>
+            </tr>
+          </table>      
+          <p><a class="btn btn-default" href="#" role="button">more &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        
+        <!--Product Head -->
+        <div class="col-lg-4">
+          <h3>Top Product</h3>
+              <table align="center">
+                  <tr>
+                    <td class="table-top-product-padding" rowspan="2">1.</td>
+                    <td class="text-left table-top-product-padding" rowspan="2">
+                    	<a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/90x90" alt="Generic placeholder image"></a>
+                    </td>
+                    <td class="table-top-product-name" height="65" align="left" valign="bottom" >[Product Name] </td>  
+                  </tr>
+                  <tr>
+                    <td >
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table-top-product-padding" rowspan="2">2.</td>
+                    <td class="text-left table-top-product-padding" rowspan="2">
+                    	<a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/90x90" alt="Generic placeholder image"></a>
+                    </td>
+                    <td class="table-top-product-name" height="65" align="left" valign="bottom" >[Product Name] </td>  
+                  </tr>
+                  <tr>
+                    <td class="table-top-product-stars" align="left" valign="top">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table-top-product-padding" rowspan="2">3.</td>
+                    <td class="text-left table-top-product-padding" rowspan="2">
+                    	<a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/90x90" alt="Generic placeholder image"></a>
+                    </td>
+                    <td class="table-top-product-name" height="65" align="left" valign="bottom" >[Product Name] </td>  
+                  </tr>
+                  <tr>
+                    <td class="table-top-product-stars" align="left" valign="top">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </td>
+                  </tr>
+                </table>
+          <p><a class="btn btn-default" href="product.html#topProduct" role="button">more &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+      <hr class="featurette-divider">
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- Footer
+          Need to do:
+    		-Add color to the bottom
+            -May want to add bread crumb for navigation purposes
+    ================================================== -->
+      <!--<ol class="breadcrumb">
+      	<li><a href="index.html">Home</a></li>
+      </ol>-->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2014 Circle, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">About</a></p>
+      </footer>
+    </div><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+  </body>
+</html>
