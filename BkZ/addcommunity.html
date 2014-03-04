@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/favicon.ico">
 
-    <title>Circle | User Profile</title>
+    <title>Circle  | Add Community</title>
     
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -52,10 +52,10 @@ Known bugs:
             	
                 <!--USER IS LOGGED IN-->
                 <!--<div class="navbar-right">
-                	<a href="profile.html">
+                	<a href="#profile.html">
                   		<img src="images/003_user.png" alt="Generic placeholder image" width="35" height="35" class="img-circle">
                   	</a>
-				  	<a href="profile.html">[User Name]</a>
+				  	<a href="#profile.html">[User Name]</a>
                 </div>-->
                     
                 <!--USER IS NOT LOGGED IN-->    
@@ -65,88 +65,69 @@ Known bugs:
         </div>
       </div>
     </div>
+
     
     
     
     <!-- Look at grid layouts on Bootstrap: http://getbootstrap.com/css/#grid -->
     <div class="container">
-    	 <p>&nbsp;</p>
+    	<p>&nbsp;</p>
       	<p>&nbsp;</p>
       
 		<div class="row">
           <div class="col-md-12">
-          	&nbsp;
+          	<h5 align="center"><a href="community.html">Community</a> |  <a href="topic.html">Topic</a> | <a href="product.html">Product</a>
           </div>
         </div>
       <div class="row">
-        <div class="col-md-3">
-        	<table align="center">
-            	<tr>
-                	<td align="center"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></td>
-               	</tr>
-                <tr>
-                	<td align="left">
-                    	<br> </br>
-						<h5>Birthday:</h5>
-                        <h5>Aim:</h5>
-                        <h5>Placeholder:</h5>
-                        <h5>Placeholder:</h5>
-                        <h5>Placeholder:</h5>
-                        <h5>Placeholder:</h5>
-                	</td>
-               	</tr>
-                <tr>
-			</table>
+        <div class="col-md-12">
+          	<h1>Add Community</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+        <p>&nbsp;</p>
+          	<form action="addnew_community.php" method="post" role="form">
 
+              <div class="form-group">
+                <label for="communityname">Name</label>
+                <input type="text" class="form-control" name="communityname" id="communityname" placeholder="Enter name">
+              </div>
+              
+              <div class="form-group">
+                <label for="file">Picture</label>
+                <input type="file" name="file" id="file">
+                <p class="help-block">Please Enter Picture size of [picSize]</p>
+              </div>
+              
+              <button type="submit" class="btn btn-default">Add</button>
+            </form>
         </div>
-        <div class="col-md-9">
-        	<table>
-            	<tr>
-                	<td align="right">
-                    </td>
-                </tr>
-                <tr>            
+        <div class="col-md-6">
+
+          	<table align="center">
             	<tr>
                 	<td>
-                    	<h1>[User Name]</h1>
-                                            <a href="editprofile.html"> <button type="button" class="btn btn-primary btn-xs">Edit Profile</button></a>
-                    </td>
-                </tr>
-                <tr>
-                	<td>
-                    	<br> </br>
-                    	<h4>First Name:</h4>
-                    </td>
-                </tr>
-                <tr>
-                	<td>
-                    	<h4>Last Name:</h4>
-                    </td>
-                </tr>
-                <tr>
-                	<td>
-                    	<h4>Email:</h4>
-                    </td>
-                </tr>
-                <tr>
-                	<td>
-                    	<h4>City:</h4>
-                    </td>
-              </tr>
-                <tr>
-                	<td>
-                    	<h4>State:</h4>
-                    </td>
-                </tr>  
-                <tr>
-                	<td>
-                    	<h4>User Role:</h4>
-                    </td>
-                </tr>                            
-             </table>
+           			  <img class="img-circle"  data-src="holder.js/300x300" alt="Generic placeholder image">
+            		</td>
+              </tr>    
+          </table>
         </div>
-        </div>         
-      <hr class="featurette-divider">
+      </div>
+       
+        
+        
+        
+      
+		<p>&nbsp;</p>
+      	<p>&nbsp;</p>
+      	<p>&nbsp;</p>
+    	<p>&nbsp;</p>
+     	<p>&nbsp;</p>
+      
+      
+      
+      
       <!-- /END THE FEATURETTES -->
 
 
@@ -158,6 +139,7 @@ Known bugs:
       <!--<ol class="breadcrumb">
       	<li><a href="index.html">Home</a></li>
       </ol>-->
+      <hr class="featurette-divider">
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>&copy; 2014 Circle, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">About</a></p>

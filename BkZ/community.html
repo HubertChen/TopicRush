@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+    <link rel="shortcut icon" href="images/favicon.ico">
 
     <title>Circle | Community</title>
     
@@ -30,6 +30,7 @@ Known bugs:
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">   
       <div class="container">
         <div class="navbar-header">
+        
           <!--Button for when the screen size is too small -->
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -37,20 +38,34 @@ Known bugs:
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Circle</a>
+          <a class="navbar-brand" href="index.html">
+          	<img src="images/logo03.png" alt="Circle" width="47" height="47" vspace="2">&nbsp;
+         	 <img src="images/logotext.png" alt="Circle" width="94" height="28">
+          </a>
         </div>
 		<!--Navbar that goes inside collapssed navbar-->
         <div class="navbar-collapse collapse" align="center">  
           <form class="navbar-form navbar-form-length"  role="search" >
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Seach for communities, topics, and products" size="70">
+              <input type="text" class="form-control" placeholder="Seach for communities, topics, and products" size="70" maxlength="70">
             </div>
-            <a href="signin.html"<button type="button" class="btn btn-default navbar-btn-right">Sign In</button></a>
-            <a href="signup.html"><button type="button" class="btn btn-default navbar-btn-right">Sign Up</button></a>
+            	
+                <!--USER IS LOGGED IN-->
+                <!--<div class="navbar-right">
+                	<a href="profile.html">
+                  		<img src="images/003_user.png" alt="Generic placeholder image" width="35" height="35" class="img-circle">
+                  	</a>
+				  	<a href="profile.html">[User Name]</a>
+                </div>-->
+                    
+                <!--USER IS NOT LOGGED IN-->    
+            	<a href="signin.html"><button type="button" class="btn btn-signin navbar-btn-right">Sign In</button></a>
+            	<a href="signup.html"><button type="button" class="btn btn-primary navbar-btn-right" >Sign Up</button></a>
           </form>  
         </div>
       </div>
     </div>
+
     
     
     
@@ -84,7 +99,6 @@ Known bugs:
           	<h1>Community</h1>
         </div>
         <div class="col-md-6" align="right">
-        	<a href="reviewproduct.html"><button type="button" class="btn btn-primary btn-lg">Review Product</button></a>
           </div>
         </div>
         <div class="row">
@@ -94,86 +108,69 @@ Known bugs:
             <div class="col-md-3">
        		  <table align="center">
                 	<tr>
-                    	<td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-                	</tr>
-                    <tr>
-                    	<td align="center">[Product Name]</td>
+                    	<td align="center">
+                        
+                        <a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a>
+
+                        </td>
                 	</tr>
                     <tr>
                     	<td align="center">
-                        	<span class="glyphicon glyphicon-star"></span>
-                        	<span class="glyphicon glyphicon-star"></span>
-                        	<span class="glyphicon glyphicon-star"></span>
-                        	<span class="glyphicon glyphicon-star"></span>
-                        	<span class="glyphicon glyphicon-star"></span>
-                        
+                        	[Community Name] 
+                            <a href="php/join.php"><button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></button></a>
                         </td>
-               	  </tr>  
+                	</tr>
                 </table>
             </div>
             <div class="col-md-3">
-                <table align="center">
-                        <tr>
-                            <td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-                        </tr>
-                        <tr>
-                            <td align="center">[Product Name]</td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                            
-                            </td>
-                      </tr>  
-                    </table>
+       		  <table align="center">
+                	<tr>
+                    	<td align="center">
+                        
+                        <a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a>
+
+                        </td>
+                	</tr>
+                    <tr>
+                    	<td align="center">
+                        	[Community Name] 
+                            <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
+                        </td>
+                	</tr>
+                </table>
             </div>
             <div class="col-md-3">
-                <table align="center">
-                        <tr>
-                            <td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-                        </tr>
-                        <tr>
-                            <td align="center">[Product Name]</td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                            
-                            </td>
-                      </tr>  
-                    </table>
-            
-            
-            
-            
-            
+       		  <table align="center">
+                	<tr>
+                    	<td align="center">
+                        
+                        <a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a>
+
+                        </td>
+                	</tr>
+                    <tr>
+                    	<td align="center">
+                        	[Community Name] 
+                            <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
+                        </td>
+                	</tr>
+                </table>
             </div>
             <div class="col-md-3">
-                <table align="center">
-                        <tr>
-                            <td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-                        </tr>
-                        <tr>
-                            <td align="center">[Product Name]</td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                            
-                            </td>
-                      </tr>  
+       		  <table align="center">
+                	<tr>
+                    	<td align="center">
+                        
+                        <a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a>
+
+                        </td>
+                	</tr>
+                    <tr>
+                    	<td align="center">
+                        	[Community Name] 
+                            <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
+                        </td>
+                	</tr>
                 </table>
             </div>
             
@@ -182,94 +179,79 @@ Known bugs:
             <div class="col-md-3">
        		  <table align="center">
                 	<tr>
-                    	<td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-                	</tr>
-                    <tr>
-                    	<td align="center">[Product Name]</td>
+                    	<td align="center">
+                        
+                        <a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a>
+
+                        </td>
                 	</tr>
                     <tr>
                     	<td align="center">
-                        	<span class="glyphicon glyphicon-star"></span>
-                        	<span class="glyphicon glyphicon-star"></span>
-                        	<span class="glyphicon glyphicon-star"></span>
-                        	<span class="glyphicon glyphicon-star"></span>
-                        	<span class="glyphicon glyphicon-star"></span>
-                        
+                        	[Community Name] 
+                            <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
                         </td>
-               	  </tr>  
+                	</tr>
                 </table>
             </div>
             <div class="col-md-3">
-                <table align="center">
-                        <tr>
-                            <td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-                        </tr>
-                        <tr>
-                            <td align="center">[Product Name]</td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                            
-                            </td>
-                      </tr>  
-                    </table>
+       		  <table align="center">
+                	<tr>
+                    	<td align="center">
+                        
+                        <a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a>
+
+                        </td>
+                	</tr>
+                    <tr>
+                    	<td align="center">
+                        	[Community Name] 
+                            <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
+                        </td>
+                	</tr>
+                </table>
             </div>
             <div class="col-md-3">
-                <table align="center">
-                        <tr>
-                            <td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-                        </tr>
-                        <tr>
-                            <td align="center">[Product Name]</td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                            
-                            </td>
-                      </tr>  
-                    </table>
-            
-            
-            
-            
-            
+       		  <table align="center">
+                	<tr>
+                    	<td align="center">
+                        
+                        <a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a>
+
+                        </td>
+                	</tr>
+                    <tr>
+                    	<td align="center">
+                        	[Community Name] 
+                            <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
+                        </td>
+                	</tr>
+                </table>
             </div>
             <div class="col-md-3">
-                <table align="center">
-                        <tr>
-                            <td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-                        </tr>
-                        <tr>
-                            <td align="center">[Product Name]</td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                            
-                            </td>
-                      </tr>  
-                </table>          
+       		  <table align="center">
+                	<tr>
+                    	<td align="center">
+                        
+                        <a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a>
+
+                        </td>
+                	</tr>
+                    <tr>
+                    	<td align="center">
+                        	[Community Name] 
+                            <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
+                        </td>
+                	</tr>
+                </table>
             </div>
             
         </div>
+        
+        
         <p>&nbsp;</p>
         <div class="row">
           <div class="col-md-12">
-          <hr class="featurette-divider" id="topProduct">
+          <hr class="featurette-divider" id="topCommunity">
       	  <p>&nbsp;</p>
           <h3 >Top</h3>
           </div>
@@ -277,173 +259,142 @@ Known bugs:
         
         <div class="row">
           <div class="col-md-3">
-          <table align="center">
+          	<table align="center">
               <tr>
                 <td rowspan="3" valign="top"><h4>1.</h4></td>
-                <td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-              </tr>
-              <tr>
-                <td align="center">[Product Name]</td>
+                <td align="center"><a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
               </tr>
               <tr>
                 <td align="center">
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
+                	[Community Name]
+                    <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
                 </td>
               </tr>
+              <tr>
+                <td align="center">[Member Count]</td>
+              </tr>
             </table>
-          
           </div>
-            <div class="col-md-3">
-             <table align="center">
+          <div class="col-md-3">
+          	<table align="center">
               <tr>
                 <td rowspan="3" valign="top"><h4>2.</h4></td>
-                <td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-              </tr>
-              <tr>
-                <td align="center">[Product Name]</td>
+                <td align="center"><a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
               </tr>
               <tr>
                 <td align="center">
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
+                	[Community Name]
+                    <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
                 </td>
               </tr>
+              <tr>
+                <td align="center">[Member Count]</td>
+              </tr>
             </table>
-          
-            </div>
-            <div class="col-md-3">
-             <table align="center">
+          </div>
+          <div class="col-md-3">
+          	<table align="center">
               <tr>
                 <td rowspan="3" valign="top"><h4>3.</h4></td>
-                <td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-              </tr>
-              <tr>
-                <td align="center">[Product Name]</td>
+                <td align="center"><a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
               </tr>
               <tr>
                 <td align="center">
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
+                	[Community Name]
+                    <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
                 </td>
               </tr>
+              <tr>
+                <td align="center">[Member Count]</td>
+              </tr>
             </table>
- 
-            </div>
-            <div class="col-md-3">
-             <table align="center">
+          </div>
+          <div class="col-md-3">
+          	<table align="center">
               <tr>
                 <td rowspan="3" valign="top"><h4>4.</h4></td>
-                <td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-              </tr>
-              <tr>
-                <td align="center">[Product Name]</td>
+                <td align="center"><a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
               </tr>
               <tr>
                 <td align="center">
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
+                	[Community Name]
+                    <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
                 </td>
               </tr>
-            </table>   
-            </div>
-            
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-             <table align="center">
+              <tr>
+                <td align="center">[Member Count]</td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-3">
+          	<table align="center">
               <tr>
                 <td rowspan="3" valign="top"><h4>5.</h4></td>
-                <td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-              </tr>
-              <tr>
-                <td align="center">[Product Name]</td>
+                <td align="center"><a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
               </tr>
               <tr>
                 <td align="center">
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
+                	[Community Name]
+                    <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
                 </td>
               </tr>
+              <tr>
+                <td align="center">[Member Count]</td>
+              </tr>
             </table>
-   
-            </div>
-            <div class="col-md-3">
-                <table align="center">
+          </div>
+          <div class="col-md-3">
+          	<table align="center">
               <tr>
                 <td rowspan="3" valign="top"><h4>6.</h4></td>
-                <td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-              </tr>
-              <tr>
-                <td align="center">[Product Name]</td>
+                <td align="center"><a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
               </tr>
               <tr>
                 <td align="center">
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
+                	[Community Name]
+                    <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
                 </td>
               </tr>
+              <tr>
+                <td align="center">[Member Count]</td>
+              </tr>
             </table>
-            </div>
-            <div class="col-md-3">
-                 <table align="center">
+          </div>
+          <div class="col-md-3">
+          	<table align="center">
               <tr>
                 <td rowspan="3" valign="top"><h4>7.</h4></td>
-                <td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-              </tr>
-              <tr>
-                <td align="center">[Product Name]</td>
+                <td align="center"><a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
               </tr>
               <tr>
                 <td align="center">
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
+                	[Community Name]
+                    <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
                 </td>
               </tr>
+              <tr>
+                <td align="center">[Member Count]</td>
+              </tr>
             </table>
-            
-            </div>
-            <div class="col-md-3">
-                 <table  align="center">
+          </div>
+          <div class="col-md-3">
+          	<table align="center">
               <tr>
                 <td rowspan="3" valign="top"><h4>8.</h4></td>
-                <td align="center"><a href="viewproduct.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
-              </tr>
-              <tr>
-                <td align="center">[Product Name]</td>
+                <td align="center"><a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/150x150" alt="Generic placeholder image"></a></td>
               </tr>
               <tr>
                 <td align="center">
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
+                	[Community Name]
+                    <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
                 </td>
               </tr>
+              <tr>
+                <td align="center">[Member Count]</td>
+              </tr>
             </table>
-            </div>
+          </div>
+  
         </div>
       
 		<p>&nbsp;</p>

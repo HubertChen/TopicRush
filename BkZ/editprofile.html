@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="file://///CMI/Shared/assets/ico/favicon.ico">
+    <link rel="shortcut icon" href="images/favicon.ico">
 
     <title>Circle  | Edit Profile</title>
     
@@ -30,6 +30,7 @@ Known bugs:
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">   
       <div class="container">
         <div class="navbar-header">
+        
           <!--Button for when the screen size is too small -->
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -37,16 +38,29 @@ Known bugs:
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Circle</a>
+          <a class="navbar-brand" href="index.html">
+          	<img src="images/logo03.png" alt="Circle" width="47" height="47" vspace="2">&nbsp;
+         	 <img src="images/logotext.png" alt="Circle" width="94" height="28">
+          </a>
         </div>
 		<!--Navbar that goes inside collapssed navbar-->
         <div class="navbar-collapse collapse" align="center">  
           <form class="navbar-form navbar-form-length"  role="search" >
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Seach for communities, topics, and products" size="70">
+              <input type="text" class="form-control" placeholder="Seach for communities, topics, and products" size="70" maxlength="70">
             </div>
-            <a href="signin.html"<button type="button" class="btn btn-default navbar-btn-right">Sign In</button></a>
-            <a href="signup.html"><button type="button" class="btn btn-default navbar-btn-right">Sign Up</button></a>
+            	
+                <!--USER IS LOGGED IN-->
+                <!--<div class="navbar-right">
+                	<a href="profile.html">
+                  		<img src="images/003_user.png" alt="Generic placeholder image" width="35" height="35" class="img-circle">
+                  	</a>
+				  	<a href="profile.html">[User Name]</a>
+                </div>-->
+                    
+                <!--USER IS NOT LOGGED IN-->    
+            	<a href="signin.html"><button type="button" class="btn btn-signin navbar-btn-right">Sign In</button></a>
+            	<a href="signup.html"><button type="button" class="btn btn-primary navbar-btn-right" >Sign Up</button></a>
           </form>  
         </div>
       </div>

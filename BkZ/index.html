@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+    <link rel="shortcut icon" href="images/favicon.ico">
 
     <title>Circle</title>
     
@@ -19,17 +19,13 @@
   
   
   
-<!-- NAVBAR
-Known bugs: 	
-	-in Collapse it displays a line through the buttons
-	-Readjusting back to full view the buttons don't display properly
-    -LOOK AT DEFAULT NAVBAR IN BOOTSTRAP/COMPONENTS/DEFAULT NAVBAR
-
+<!-- NAVBAR	
 ================================================== -->
   <body>
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">   
       <div class="container">
         <div class="navbar-header">
+        
           <!--Button for when the screen size is too small -->
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -37,16 +33,31 @@ Known bugs:
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Circle</a>
+          <a class="navbar-brand" href="index.html">
+          	<img src="images/logo03.png" alt="Circle" width="47" height="47" vspace="2">&nbsp;
+         	 <img src="images/logotext.png" alt="Circle" width="94" height="28">
+          </a>
         </div>
 		<!--Navbar that goes inside collapssed navbar-->
         <div class="navbar-collapse collapse" align="center">  
           <form class="navbar-form navbar-form-length"  role="search" >
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Seach for communities, topics, and products" size="70">
+              <input type="text" class="form-control" placeholder="Seach for communities, topics, and products" size="70" maxlength="70">
             </div>
-            <a href="signin.html"<button type="button" class="btn btn-default navbar-btn-right">Sign In</button></a>
-            <a href="signup.html"><button type="button" class="btn btn-default navbar-btn-right">Sign Up</button></a>
+            	
+                <!--USER IS LOGGED IN-->
+                <div class="navbar-right">
+                	<a href="profile.html">
+                    	
+                        <!--If the user doesn't have a picture it will show this generic photo-->
+                  		<img src="images/003_user.png" alt="Generic placeholder image" width="35" height="35" class="img-circle">
+                  	</a>
+				  	<a href="profile.html">[User Name]</a>
+                </div>
+                    
+                <!--USER IS NOT LOGGED IN-->    
+            	<!--<a href="signin.html"><button type="button" class="btn btn-signin navbar-btn-right">Sign In</button></a>
+            	<a href="signup.html"><button type="button" class="btn btn-primary navbar-btn-right" >Sign Up</button></a>-->
           </form>  
         </div>
       </div>
@@ -57,7 +68,6 @@ Known bugs:
     Need to:
     		-Change slides with common color and theme (adds bubbles as necessary)
             -add links where neccessary
-            -Add liknks to the actually slides if wanted
     ================================================== -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       
@@ -72,48 +82,98 @@ Known bugs:
       
       	<!--SLIDE 1 - CIRCLE-->
         <div class="item active">
-          <img data-src="holder.js/900x500/auto/#777:#7a7a7a/text:Testing Slide 1" alt="Circle">
+          <img data-src="holder.js/900x500/auto/#7aadd9:#7a7a7a/text: " alt="Circle">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Circle</h1>
-              <p>Circle allows the user to to get a whole new perpect of products they own bring together people all around the world with common interests to share and explore ideas</p>
-              <p><a class="btn btn-lg btn-primary" href="signup.html" role="button">Sign up</a></p>
+              <a href="objective.html"><img src="images/logoWhite.png" alt="Circle" width="165" height="165" vspace="5"></a><br/>
+              <a href="objective.html"><img src="images/logotextWhite.png" alt="Circle" width="117" height="37" vspace="20"></a><br/>
+              <img src="images/circleInfo.png" alt="Circle" width="417" height="23" vspace="30">
             </div>
           </div>
         </div>
         
         <!-- SLIDE 2 - COMMUNITY -->
         <div class="item">
-        <img src="images/test.png" alt="Circle" alt="circle">
+        <img data-src="holder.js/900x500/auto/#67a2d4:#6a6a6a/text: " alt="Topic">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Community</h1>
-              <p>Join a community to share experiences and common interests</p>
-              <p><a class="btn btn-lg btn-primary" href="objective.html" role="button">Learn more</a></p>
+            	<div class="row" align="left">
+                	<div class="col-md-12">
+                    	<a href="objective.html#obj-community"><img src="images/whitecircle.png" alt="circle" width="165" height="165"></a>&nbsp;&nbsp;
+                    	<a href="objective.html#obj-community"><img src="images/communitytxtWhite.png" alt="community" height="37"></a>
+                    </div>
+                </div> 
+                <br/>
+                <div class="row" align="right">
+                	<div class="col-md-12">
+                    	<img src="images/communityInfo.png">
+                    </div>
+                </div>
+				<br/>
+                <div class="row" align="right">
+                	<div class="col-md-12">
+                    	<a class="btn btn-lg btn-signin" href="objective.html#obj-community" role="button">Learn more</a>
+                    </div>
+                </div>
+       			<br/>
             </div>
           </div>
         </div>
         
         <!-- SLIDE 3 - TOPIC -->
         <div class="item">
-          <img data-src="holder.js/900x500/auto/#666:#6a6a6a/text:Testing Slide 3" alt="Topic">
+          <img data-src="holder.js/900x500/auto/#5496cf:#6a6a6a/text: " alt="Topic">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Topic</h1>
-              <p>Get involved.  Post topics to your community to get help or help others about ideas</p>
-              <p><a class="btn btn-lg btn-primary" href="objective.html" role="button">Learn more</a></p>
+              <div class="row" align="right">
+                	<div class="col-md-12">
+                    	<a href="objective.html#obj-topic"><img src="images/topictxtWhite.png" alt="community" height="37"></a>&nbsp;&nbsp;
+                    	<a href="objective.html#obj-topic"><img src="images/whitecircle.png" alt="circle" width="130" height="130"></a>
+                    </div>
+                </div> 
+                <br/>
+                <br/>
+                <div class="row" align="left">
+                	<div class="col-md-12">
+                    	<img src="images/topicInfo.png">
+                    </div>
+                </div>
+				<br/>
+                <div class="row" align="left">
+                	<div class="col-md-12">
+                    	<a class="btn btn-lg btn-signin" href="objective.html#obj-topic" role="button">Learn more</a>
+                    </div>
+                </div>
+       			<br/>
             </div>
           </div>
         </div>
         
         <!-- SLIDE 4 - PRODUCTS-->
         <div class="item">
-          <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:Testing Slide 4" alt="Product">
+          <img data-src="holder.js/900x500/auto/#428bca:#5a5a5a/text: " alt="Product">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Products</h1>
-              <p>Using a great product.  Post a review.  Products allows the user to post a review to help people out on circles</p>
-              <p><a class="btn btn-lg btn-primary" href="objective.html" role="button">Learn More</a></p>
+              <div class="row" align="left">
+                	<div class="col-md-12">
+                    	<a href="objective.html#obj-product"><img src="images/whitecircle.png" alt="circle" width="95" height="95"></a>&nbsp;&nbsp;
+                    	<a href="objective.html#obj-product"><img src="images/producttxtWhite.png" alt="community" height="37"></a>
+                    </div>
+                </div> 
+                <br/>
+                <br/>
+                <div class="row" align="right">
+                	<div class="col-md-12">
+                    	<img src="images/productInfo.png">
+                    </div>
+                </div>
+				<br/>
+                <div class="row" align="right">
+                	<div class="col-md-12">
+                    	<a class="btn btn-lg btn-signin" href="objective.html#obj-product" role="button">Learn more</a>
+                    </div>
+                </div>
+                <br/>
             </div>
           </div>
         </div>
@@ -141,15 +201,15 @@ Known bugs:
         
         <!--Community Head -->
         <div class="col-lg-4">
-          <a href="community.html"><img class="img-circle"  data-src="holder.js/140x140" alt="Generic placeholder image"></a>
+          <a href="community.html"> <img class="img-circle" src="images/communityLogo.png" alt="Community" height="140" width="140"></a>
           <h2>Community</h2>
           <p>Be apart of a community that share your interests about ideas and products</p>
-          <p><a class="btn btn-default" href="#" role="button">Join &raquo;</a></p>
+          <p><a class="btn btn-default" href="community.html" role="button">Join &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         
         <!--Topic Head -->
         <div class="col-lg-4">
-          <a href="#"><img class="img-circle" data-src="holder.js/140x140" alt="Generic placeholder image"></a>
+          <a href="topic.html"> <img class="img-circle" src="images/topicLogo.png" alt="Topic" height="140" width="140"></a>
           <h2>Topic</h2>
           <p>Find something interestings, or an idea you want the world to know, post it.</p>
           <p><a class="btn btn-default" href="#" role="button">Follow &raquo;</a></p>
@@ -157,7 +217,7 @@ Known bugs:
         
         <!--Product Head -->
         <div class="col-lg-4">
-          <a href="product.html"><img class="img-circle" data-src="holder.js/140x140" alt="Generic placeholder image"></a>
+          <a href="product.html"><img class="img-circle" src="images/productLogo.png" alt="Product" height="140" width="140"></a>
           <h2>Product</h2>
           <p>Have a product that is amazing or regret buying.  Write a review to let people know your experience</p>
           <p><a class="btn btn-default" href="reviewproduct.html" role="button">Review &raquo;</a></p>
@@ -181,29 +241,54 @@ Known bugs:
         <!--Community Head -->
         <div class="col-lg-4">
           <h3>Top Community</h3>
-          <table class="table-top" align="center">
-            <tr>
-              <td>1.</td>
-              <td class="text-left">[Community 1 Name]</td>
-            </tr>
-            <tr>
-              <td>2.</td>
-              <td class="text-left">[Community 2 Name]</td>
-            </tr>
-            <tr>
-              <td>3.</td>
-              <td class="text-left">[Community 3 Name]</td>
-            </tr>
-            <tr>
-              <td>4.</td>
-              <td class="text-left">[Community 4 Name]</td>
-            </tr>
-            <tr>
-              <td>5.</td>
-              <td class="text-left">[Community 5 Name]</td>
-            </tr>
-          </table>                
-          <p><a class="btn btn-default" href="#" role="button">more &raquo;</a></p>
+          <table align="center">
+                  <tr>
+                    <td class="table-top-product-padding" rowspan="2">1.</td>
+                    <td class="text-left table-top-product-padding" rowspan="2">
+                    	<a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/90x90" alt="Generic placeholder image"></a>
+                    </td>
+                    <td class="table-top-product-name" height="65" align="left" valign="bottom" >
+                    	[Community Name]
+                        <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
+                    </td>  
+                  </tr>
+                  <tr>
+                    <td class="table-top-product-stars" align="left" valign="top">
+                        [Number of Members]
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table-top-product-padding" rowspan="2">2.</td>
+                    <td class="text-left table-top-product-padding" rowspan="2">
+                    	<a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/90x90" alt="Generic placeholder image"></a>
+                    </td>
+                    <td class="table-top-product-name" height="65" align="left" valign="bottom" >
+                    	[Community Name]
+                        <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
+                    </td>  
+                  </tr>
+                  <tr>
+                    <td class="table-top-product-stars" align="left" valign="top">
+                        [Number of Members]
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table-top-product-padding" rowspan="2">3.</td>
+                    <td class="text-left table-top-product-padding" rowspan="2">
+                    	<a href="viewcommunity.html"><img class="img-circle"  data-src="holder.js/90x90" alt="Generic placeholder image"></a>
+                    </td>
+                    <td class="table-top-product-name" height="65" align="left" valign="bottom" >
+                    	[Community Name]
+                        <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
+                    </td>  
+                  </tr>
+                  <tr>
+                    <td class="table-top-product-stars" align="left" valign="top">
+                        [Number of Members]
+                    </td>
+                  </tr>
+                </table>               
+          <p><a class="btn btn-default" href="community.html#topCommunity" role="button">more &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         
         <!--Topic Head -->
@@ -231,7 +316,7 @@ Known bugs:
               <td class="text-left">[Topic Name 5]</td>
             </tr>
           </table>      
-          <p><a class="btn btn-default" href="#" role="button">more &raquo;</a></p>
+          <p><a class="btn btn-default" href="topic.html#topTopic" role="button">more &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         
         <!--Product Head -->
@@ -246,7 +331,7 @@ Known bugs:
                     <td class="table-top-product-name" height="65" align="left" valign="bottom" >[Product Name] </td>  
                   </tr>
                   <tr>
-                    <td >
+                    <td class="table-top-product-stars" align="left" valign="top">
                         <span class="glyphicon glyphicon-star"></span>
                         <span class="glyphicon glyphicon-star"></span>
                         <span class="glyphicon glyphicon-star"></span>
