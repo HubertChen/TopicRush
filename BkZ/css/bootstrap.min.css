@@ -433,7 +433,8 @@ p {
     margin-bottom: 20px;
     font-size: 16px;
     font-weight: 200;
-    line-height: 1.4
+    line-height: 1.4;
+	color:white;
 }
 
 @media (min-width:768px){.lead {
@@ -466,7 +467,7 @@ cite {
 }
 
 .text-muted {
-    color: #999
+    color: #c1c1c1;
 }
 
 .text-primary {
@@ -4414,7 +4415,7 @@ select[multiple].input-group-sm>.input-group-addon, select[multiple].input-group
 .navbar-default {
     background-color: #f8f8f8;
     border-color: #e7e7e7;
-	opacity:0.97;
+	opacity:0.80;
 }
 
 .navbar-default .navbar-brand {

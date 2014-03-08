@@ -53,7 +53,7 @@ Known bugs:
                 <!--USER IS LOGGED IN-->
                 <!--<div class="navbar-right">
                 	<a href="profile.html">
-                  		<img src="images/003_user.png" alt="Generic placeholder image" width="35" height="35" class="img-circle">
+                  		<img src="images/userDefault.png" alt="Generic placeholder image" width="35" height="35" class="img-circle">
                   	</a>
 				  	<a href="profile.html">[User Name]</a>
                 </div>-->
@@ -117,7 +117,7 @@ Known bugs:
                     <tr>
                     	<td align="center">
                         	[Community Name] 
-                            <a href="php/join.php"><button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></button></a>
+                            <button type="button" class="btn btn-primary btn-xs" id="whenClicked"><span class="glyphicon glyphicon-plus" id="picClicked"></span></button>
                         </td>
                 	</tr>
                 </table>
@@ -430,5 +430,15 @@ Known bugs:
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/docs.min.js"></script>
+    
+    <!-- Switches between follow buttons -->
+    <script type='text/javascript'>
+		$(document).ready(function(){
+     		$('#whenClicked').click(function() {
+		  		$('#whenClicked').toggleClass('btn-primary btn-success');
+		  		$('#picClicked').toggleClass('glyphicon-plus glyphicon-ok');
+    		});
+		});
+</script>
   </body>
 </html>
