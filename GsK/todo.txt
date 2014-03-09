@@ -1,6 +1,21 @@
-JOIN community page
-follow topic page
-file work for content
-	add memberid to content
-user home page
-new category add
+JOIN community page - DONE
+follow topic page - DONE
+file work for content - DONE 
+	add memberid to content - DONE
+user home page - IN PROGRESS
+new category add - DONE
+
+02/26/14
+Check if username already exists for registration. DONE
+Change content to include a product reference. 
+add numcontent to community table. DONE
+Product owner can not review their own product.
+Need pictures for story (products, community, content).
+Add avatar concept to member profile. DONE
+
+03/05/14
+Changed registration to only be email/password and check for if already registered uses email. DONE
+Auto follow when topic posted.
+Use jquery for ajax page auto-populate product name, category.
+Make trigger for add content
+
