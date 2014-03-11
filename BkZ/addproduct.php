@@ -249,7 +249,7 @@ Known bugs:
           || ($_FILES["file"]["type"] == "image/jpg")
           || ($_FILES["file"]["type"] == "image/png"))
           && ($_FILES["file"]["size"] < 204800)
-          && in_array($extension, $allowedExts)) {
+          && in_array($extension, $allowedimagetype)) {
           
           } else { // end if file is a supported type
             $validform = FALSE;
