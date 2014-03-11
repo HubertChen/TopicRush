@@ -43,50 +43,39 @@ Known bugs:
 
 	<!-- Sign Up Form
     ================================================== -->
-   <div class="container">
-
-     <p>&nbsp;</p>
-     <p>&nbsp;</p>
-     <p>&nbsp;</p>
-     
-     <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>-->
-     
-     <?php ?>
-     <div class="alert alert-danger alert-dismissable">
-  		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  		<strong>Warning!</strong> Better check yourself, you're not looking too good.
-	</div>
-      <form action="." class="form-signin form-horizontal" role="form">
-        <h2 class="form-signin-heading">Sign up for Circle</h2>
-             <div class="form-group">
+	<div class="container">
+    	<p>&nbsp;</p>
+     	<p>&nbsp;</p>
+    	<?php echo $errorMessage; ?>
+        <form action="signup.php" method="post" class="form-signin form-horizontal" role="form">
+  			<h2 class="form-signin-heading">Sign up for Circle</h2>
+ 			<div class="form-group">
                 <label class="sr-only" for="email">Email</label>
-    			<input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
- 			 </div>
-             <div class="form-group">
-                <label class="sr-only" for="password1">Password</label>
-    			<input type="password" class="form-control" name="password1" id="password1" placeholder="Password" required>
-             </div>
-             <div class="form-group">
-                <label class="sr-only" for="password2">Password</label>
-                <input type="password" class="form-control" name="password2" id="password2" placeholder="Retype Password" required>
- 			 </div>
-             <p>Role:</p>
-             <div class="radio-inline">
-                <label>
-   					<input type="radio" name="role" id="user" value="option2" checked>User
-  				</label>
-             </div>
-             <div class="radio-inline" align="center">
-                <label>
-   					<input type="radio" name="role" id="seller" value="option2">Seller
-  				</label>
-             </div>
-             
-             
-             
-             
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
-        <p class="text-center" ><a href="signin.html">Sign In </a></p>
+ 				<input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $email; ?>" required>
+			</div>
+			<div class="form-group">
+				<label class="sr-only" for="password1">Password</label>
+				<input type="password" class="form-control" name="password1" id="password1" placeholder="Password" value="<?php $password1 ?>" required>
+			</div>
+			<div class="form-group">
+				<label class="sr-only" for="password2">Password</label>
+				<input type="password" class="form-control" name="password2" id="password2" placeholder="Retype Password" value="<?php $password2 ?>" required>
+			</div>
+			<p>Role:</p>
+			<div class="radio-inline">
+				<label>
+					<input type="radio" name="role" id="user" value="u" checked>User
+				</label>
+			</div>
+			<div class="radio-inline">
+				<label>
+					<input type="radio" name="role" id="seller" value="s">Seller
+				</label>
+			</div>
+
+             <?php echo $button; ?>
+        <!--<button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>-->
+        <p class="text-center" ><a href="signin.html.php">Sign In </a></p>
       </form>
 </div>
      <p>&nbsp;</p>

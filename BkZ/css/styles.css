@@ -176,10 +176,27 @@ body {
 .masthead-nav > li {
   display: inline-block;
 }
+.masthead-obj > li {
+  display: inline-block;
+}
+
 .masthead-nav > li + li {
   margin-left: 20px;
 }
+.masthead-obj > li + li {
+  margin-left: 20px;
+}
 .masthead-nav > li > a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #428bca; /* IE8 proofing */
+  color:  #428bca;
+  border-bottom: 2px solid transparent;
+}
+
+.masthead-obj > li > a {
   padding-right: 0;
   padding-left: 0;
   font-size: 16px;
@@ -188,17 +205,33 @@ body {
   color:  #fff;
   border-bottom: 2px solid transparent;
 }
+
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
   background-color: transparent;
+  border-bottom-color: #428bca;
+}
+
+.masthead-obj > li > a:hover,
+.masthead-obj > li > a:focus {
+  background-color: transparent;
   border-bottom-color: #fff;
 }
+
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
+  color: #428bca;
+  border-bottom-color: #428bca;
+}
+
+.masthead-obj > .active > a,
+.masthead-obj > .active > a:hover,
+.masthead-obj > .active > a:focus {
   color: #fff;
   border-bottom-color: #fff;
 }
+
 
 @media (min-width: 768px) {
   .masthead-brand {
@@ -206,6 +239,9 @@ body {
   }
   .masthead-nav {
     float: right;
+  }
+  .masthead-obj {
+  	float: right;
   }
 }
 
