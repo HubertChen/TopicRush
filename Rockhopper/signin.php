@@ -54,7 +54,7 @@ Known bugs:
   $date = new DateTime();
   $tstamp = $date->format('Y-m-d H:i:s');
 
-  $dbhost = "localhost:3306";
+  $dbhost = "localhost";
   $dbuser = "root";
   $dbpass = "";
   $dbname = "Circle";
