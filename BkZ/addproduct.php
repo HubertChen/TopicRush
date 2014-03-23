@@ -106,8 +106,8 @@ Known bugs:
   $newcategory = "";
   $picturedescription = "";
   $productpath = 'C:\\wamp\\www\\bzk\\products\\';
-  $validform = FALSE;
-  $formerrors = array();
+  $validform = TRUE;
+  $formerrors = "";
   $extension = "";
 
   $dbhost = "localhost:3306";
@@ -172,7 +172,6 @@ Known bugs:
       $memberid = $_SESSION["memberid"];
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $validform = TRUE;
-        $formerrors = array();
         $postproductname = $_POST["productname"];
         $postproductdescription = $_POST["productdescription"];
         $postlistedprice = $_POST["listedprice"];
@@ -191,49 +190,49 @@ Known bugs:
 
         if (strlen($postproductname) <= 3) {
           $validform = FALSE;
-          array_push($formerrors,"Product name must be more than three characters!<br>");
+          $formerrors = $formerrors . "Product name must be more than three characters!<br>";
         } else {
           $productname = $postproductname;
         }
 
         if (strlen($postproductdescription) <= 5) {
           $validform = FALSE;
-          array_push($formerrors,"Product Description must be more than five characters!<br>");
+          $formerrors = $formerrors . "Product Description must be more than five characters!<br>";
         } else {
           $productdescription = $postproductdescription;
         }
 
         if (is_numeric($postretailprice) == FALSE) {
           $validform = FALSE;
-          array_push($formerrors,"Retail Price was not a numeric value!<br>");
+          $formerrors = $formerrors . "Retail Price was not a numeric value!<br>";
         } else {
           $retailprice = $postretailprice;
         }
 
         if (is_numeric($postlistedprice) == FALSE) {
           $validform = FALSE;
-          array_push($formerrors,"Listed Price was not a numeric value!<br>");
+          $formerrors = $formerrors . "Listed Price was not a numeric value!<br>";
         } else {
           $listedprice = $postlistedprice;
         }
 
         if (strlen($postpicturedescription) <= 5) {
           $validform = FALSE;
-          array_push($formerrors,"Picture description must be more than five characters!<br>");
+          $formerrors = $formerrors . "Picture description must be more than five characters!<br>";
         } else {
           $picturedescription = $postpicturedescription;
         }
 
         if (($category == "addnew") and (strlen($postaddnew) < 3)) {
           $validform = FALSE;
-          array_push($formerrors,"Add new category must be atleast three characters!<br>");
+          $formerrors = $formerrors . "Add new category must be atleast three characters!<br>";
         }
 
 
         if ($_FILES["file"]["error"] > 0) {
           echo "Error: " . $_FILES["file"]["error"] . "<br>";
           $valdiform = FALSE;
-          array_push($formerrors,"No file provided or invalid type!<br>");
+          $formerrors = $formerrors . "No file provided or invalid type!<br>";
         } else { // end if no file attached
           echo "Upload: " . $_FILES["file"]["name"] . "<br>";
           echo "Type: " . $_FILES["file"]["type"] . "<br>";
@@ -253,19 +252,13 @@ Known bugs:
           
           } else { // end if file is a supported type
             $validform = FALSE;
-            array_push($formerrors,"File must be gif jpg jpeg or png!<br>");
+            $formerrors = $formerrors . "File must be gif jpg jpeg or png!<br>";
           } // end if-else is a supported type
-
-
-
 
         } // end if-else no file attached
         if ($validform == FALSE) {
           echo "The form has the following errors<br>";
-          foreach($formerrors as $error) {
-            echo $error;
-          } // end for loop to print errors
-          $formerrors = array();
+          echo $formerrors;
         } else { // end if $valiform == FALSE
 // BEGIN HERE
           $productid = 0;
@@ -326,8 +319,8 @@ Known bugs:
             echo "<br> DetailID = " . $detailid . "<br>";
           }
 
-          move_uploaded_file($_FILES["file"]["tmp_name"],$productpath . "\\" . $detailid . ".jpg");
-          $filepath = "/products/" . $productid . "/" . $detailid . ".jpg";
+          move_uploaded_file($_FILES["file"]["tmp_name"],$productpath . "\\" . $detailid . "." . $extension);
+          $filepath = "/products/" . $productid . "/" . $detailid . "." . $extension;
           $sql = "update productdetail set path='" . $filepath . "' where detailid=" . $detailid;
           mysqli_query($con,$sql);
 

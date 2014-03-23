@@ -51,10 +51,11 @@ Known bugs:
   $username = "";
   $memberid = "";
   $role = "";
+  $avatarpath = "";
   $date = new DateTime();
   $tstamp = $date->format('Y-m-d H:i:s');
 
-  $dbhost = "localhost";
+  $dbhost = "localhost:3306";
   $dbuser = "root";
   $dbpass = "";
   $dbname = "Circle";
@@ -79,6 +80,7 @@ Known bugs:
           $memberid = $row["memberid"];
           $username = $row["username"];
           $role = $row["role"];
+          $avatarpath = $row["avatarpath"];
         } // end if password matches
       } // end if email found
     } // end while checking password
@@ -98,10 +100,11 @@ Known bugs:
     $_SESSION["username"] = $username;
     $_SESSION["memberid"] = $memberid;
     $_SESSION["role"] = $role;
+    $_SESSION["avatarpath"] = $avatarpath;
     $sql = "update member set lastlogin='" . $tstamp . "' where memberid=" . $memberid;
     mysqli_query($con,$sql);
   } else { // end if successfully logged in
-    echo "Invalid Login! Please Try Again!<br>";
+//    echo "Invalid Login! Please Try Again!<br>";
   } // end if-else sucessfully logged in
   if (isset($_SESSION["loggedin"])) {
     echo "You are already logged in!<br>";
