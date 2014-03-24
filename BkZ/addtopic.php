@@ -39,7 +39,7 @@ Known bugs:
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="index.php">
           	<img src="images/logo03.png" alt="Circle" width="47" height="47" vspace="2">&nbsp;
          	 <img src="images/logotext.png" alt="Circle" width="94" height="28">
           </a>
@@ -93,50 +93,101 @@ Known bugs:
       </div>
       <div class="row">
         <div class="col-md-6">
-          	<form role="form">
-            
-              <div class="form-group">
-                <label for="topicname">Topic Name</label>
-                <input type="text" class="form-control" name="topicname" id="topicname" placeholder="Enter name">
-              </div>
-              
-              <div class="form-group">
-                <label for="product">Link your Product</label>
-                <select class="form-control">
-  					<option value="">Products</option> <!--Add link to only thier products here-->
-                </select>                
-              </div>
-              
-              <div class="form-group">
-                <label for="file">Picture</label>
-                <input type="file" name="file" id="file">
-                <p class="help-block">Please Enter Picture size of [picSize]</p>
-              </div>
-              
-              <div class="form-group">
-                <label for="retailprice">Description</label>
-                <textarea class="form-control" rows="3" name="description" id="description" placeholder="Descriptions"></textarea>
-              </div>
-              
-              <button type="submit" class="btn btn-default">Add</button>
-            </form>
-        </div>
-        <div class="col-md-6">
-          	<p>&nbsp;</p>
-          	<p>&nbsp;</p>
-          	<p>&nbsp;</p>
-          	<table align="center">
-            	<tr>
-                	<td>
-           			  <img class="img-circle"  data-src="holder.js/300x300" alt="Generic placeholder image">
-            		</td>
-              </tr>    
-          </table>
-        </div>
-      </div>
+
+<?php
+
+  $dbhost = "localhost:3306";
+  $dbuser = "root";
+  $dbpass = "";
+  $dbname = "Circle";
+  $date = new DateTime();
+  $tstamp = $date->format('Y-m-d H:i:s');
+  $communityid = $_GET["id"];
+
+  $validform = TRUE;
+  $topicname = '';
+  $topicproduct = '';
+  $formerrors = '';
+
+  $con=mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+  if (mysqli_connect_errno()) {  
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();  
+  }
+
+  if (isset($_SESSION["loggedin"])) {
+    $memberid = $_SESSION["memberid"];
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      $posttopicname = $_POST["topicname"];
+      $postproductid = $_POST["productid"];
+
+      if ((strlen($posttopicname) <= 5) || (is_numeric($posttopicname))) {
+        $validform = FALSE;
+        $formerrors = $formerrors . 'Topic name must be more than five characters and not numeric!<br>';
+        echo 'Length = ' . strlen($posttopicname) . '<br>';
+      } else { // end if $posttopicname is invalid
+        $topicname = $posttopicname;
+      } // end if-else $posttopicname is invalid
+
+      echo $posttopicname . '<br>';
+      echo $postproductid . '<br>';
+
+      if ($validform == TRUE) {
+        $sql = '';
+        if ($postproductid == 0) {
+          $sql = "insert into topic(communityid,ownerid,followid,name,created) values ('$communityid','$memberid','0','$topicname','$tstamp')";
+        } else { 
+          $sql = "insert into topic(communityid,ownerid,followid,productid,name,created) values ('$communityid','$memberid','0','$postproductid','$topicname','$tstamp')";
+        }
+        mysqli_query($con,$sql);
+
+      } else { // end if $validform == TRUE
+        echo 'Form has the following errors:<br>';
+        echo $formerrors;
+        $formerrors = '';
+      } // end if-else $validform == TRUE
+
+
+    } // end if post message received
+  } // end if user is logged in
+  echo '<form action="addtopic.php?id=' . $communityid . '" method="post" enctype="multipart/form-data" role="form">';        
+  echo '<div class="form-group">'; 
+  echo '<label for="topicname">Topic Name</label>'; 
+  echo '<input type="text" class="form-control" name="topicname" id="topicname" placeholder="Enter Topic Name" value="' . $topicname . '" required>'; 
+  echo '</div>'; 
+  echo '<div class="form-group">'; 
+  echo '<label for="product">Link a Product</label>'; 
+  echo '<select name="productid" class="form-control">';   
+  echo '<option value="0">None</option>';
+  $sql = 'select productid,name from product';
+  $result = mysqli_query($con,$sql);
+  while($row = mysqli_fetch_array($result)) {
+    echo '<option value="'.$row['productid'].'"';
+    echo '>'. $row['name'] . '</option>'."\n";
+  } 
+  echo '</select>';         
+  echo '</div>';
+// CONSIDER DOUBLE CHECKING THAT THE MEMBER IS PART OF THIS COMMUNITY
+  echo '<button type="submit" class="btn btn-default">Add</button>'; 
+  echo '</form>'; 
+  echo '</div>'; 
+  echo '<div class="col-md-6">'; 
+  echo '<p>&nbsp;</p>'; 
+  echo '<p>&nbsp;</p>'; 
+  echo '<p>&nbsp;</p>'; 
+  echo '<table align="center">'; 
+  echo '<tr>'; 
+  echo '<td>'; 
+  echo '<img class="img-circle"  data-src="holder.js/300x300" alt="Generic placeholder image">'; 
+  echo '</td>'; 
+  echo '</tr>'; 
+  echo '</table>'; 
+  echo '</div>'; 
+  echo '</div>'; 
+
+  mysqli_close($con);
        
         
-        
+?>
         
       
 		<p>&nbsp;</p>
@@ -157,7 +208,7 @@ Known bugs:
             -May want to add bread crumb for navigation purposes
     ================================================== -->
       <!--<ol class="breadcrumb">
-      	<li><a href="index.html">Home</a></li>
+      	<li><a href="index.php">Home</a></li>
       </ol>-->
       <hr class="featurette-divider">
       <footer>

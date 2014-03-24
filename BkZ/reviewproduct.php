@@ -262,22 +262,6 @@ Known bugs:
         $sql="insert into review(memberid,productid,reviewdetails,rating,reviewdate) values ('$memberid','$productid','$postdescription','$postrating','$tstamp')";
         mysqli_query($con,$sql);
 
-        $oldrating = 0;
-        $oldreviews = 0;
-
-        $sql="select * from product where productid=" . $productid;
-        $result=mysqli_query($con,$sql);
-        foreach($result as $row) {
-          $oldrating = $row['rating'];
-          $oldreviews = $row['numreviews'];
-        }
-
-        $newrating = $oldrating + $postrating;
-        $newreviews = $oldreviews + 1;
-        $sql="update product set rating=" . $newrating . ",numreviews=" . $newreviews . " where productid=" . $productid;
-        mysqli_query($con,$sql);
-
-
       } else { // end if $validform == TRUE
         echo "Form has the following errors:<br>" . $formerrors;
         $formerrors = '';

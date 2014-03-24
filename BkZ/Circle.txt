@@ -70,7 +70,7 @@ communityid int not null,
 ownerid int not null,
 followid int,
 productid int,
-name varchar(50),
+name varchar(100),
 created timestamp not null,
 primary key(topicid),
 foreign key (communityid) references community(communityid),
@@ -158,7 +158,28 @@ create trigger add_content
 after insert on content
 for each row
 begin
+  declare oldcontent int;
+  declare topic int;
+  declare community int;
+  declare oldrating int;
+  set topic = new.topicid;
+  select communityid into community from topic where topicid=topic;
+  select numcontents,rating into oldcontent,oldrating from community where communityid=community;
+  update community set numcontents=(oldcontent + 1),rating=(oldrating + 5) where communityid=community;
+end//
 
+delimiter //
+drop trigger if exists add_review //
+create trigger add_review
+after insert on review
+for each row
+begin
+  declare product int;
+  declare oldrating int;
+  declare oldreviews int;
+  set product = new.productid;
+  select rating,numreviews into oldrating,oldreviews from product where productid=product;
+  update product set rating=(oldrating + new.rating),numreviews=(oldreviews + 1) where productid=product;
 end//
 
 
