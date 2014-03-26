@@ -107,6 +107,7 @@ foreign key (topicid) references topic(topicid));
 create table block(
 memberid int not null,
 communityid int not null,
+reason varchar(100) not null,
 primary key(memberid, communityid),
 foreign key (memberid) references member(memberid),
 foreign key (communityid) references community(communityid));
