@@ -285,10 +285,10 @@ Known bugs:
       <!--<ol class="breadcrumb">
       	<li><a href="index.php">Home</a></li>
       </ol>-->
-      <hr class="featurette-divider">
+       <hr class="featurette-divider">
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Circle, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">About</a></p>
+        <p>&copy; 2014 Circle, Inc. &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a></p>
       </footer>
     </div><!-- /.container -->
 
