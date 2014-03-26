@@ -269,140 +269,196 @@
         <!--Community Head -->
         <div class="col-lg-4">
           <h3>Top Community</h3>
-          <table align="center">
-                  <tr>
-                    <td class="table-top-product-padding" rowspan="2">1.</td>
-                    <td class="text-left table-top-product-padding" rowspan="2">
-                    	<a href="viewcommunity.php"><img class="img-circle"  data-src="holder.js/90x90" alt="Generic placeholder image"></a>
-                    </td>
-                    <td class="table-top-product-name" height="65" align="left" valign="bottom" >
-                    	[Community Name]
-                        <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
-                    </td>  
-                  </tr>
-                  <tr>
-                    <td class="table-top-product-stars" align="left" valign="top">
-                        [Number of Members]
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="table-top-product-padding" rowspan="2">2.</td>
-                    <td class="text-left table-top-product-padding" rowspan="2">
-                    	<a href="viewcommunity.php"><img class="img-circle"  data-src="holder.js/90x90" alt="Generic placeholder image"></a>
-                    </td>
-                    <td class="table-top-product-name" height="65" align="left" valign="bottom" >
-                    	[Community Name]
-                        <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
-                    </td>  
-                  </tr>
-                  <tr>
-                    <td class="table-top-product-stars" align="left" valign="top">
-                        [Number of Members]
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="table-top-product-padding" rowspan="2">3.</td>
-                    <td class="text-left table-top-product-padding" rowspan="2">
-                    	<a href="viewcommunity.php"><img class="img-circle"  data-src="holder.js/90x90" alt="Generic placeholder image"></a>
-                    </td>
-                    <td class="table-top-product-name" height="65" align="left" valign="bottom" >
-                    	[Community Name]
-                        <a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>
-                    </td>  
-                  </tr>
-                  <tr>
-                    <td class="table-top-product-stars" align="left" valign="top">
-                        [Number of Members]
-                    </td>
-                  </tr>
-                </table>               
-          <p><a class="btn btn-default" href="community.php#topCommunity" role="button">more &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        
-        <!--Topic Head -->
-        <div class="col-lg-4">
-          <h3>Top Topic</h3>         
-          <table class="table-top" align="center">
-            <tr>
-              <td>1.</td>
-              <td class="text-left">[Topic Name 1]</td>
-            </tr>
-            <tr>
-              <td>2.</td>
-              <td class="text-left">[Topic Name 2]</td>
-            </tr>
-            <tr>
-              <td>3.</td>
-              <td class="text-left">[Topic Name 3]</td>
-            </tr>
-            <tr>
-              <td>4.</td>
-              <td class="text-left">[Topic Name 4]</td>
-            </tr>
-            <tr>
-              <td>5.</td>
-              <td class="text-left">[Topic Name 5]</td>
-            </tr>
-          </table>      
-          <p><a class="btn btn-default" href="topic.php#topTopic" role="button">more &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        
-        <!--Product Head -->
-        <div class="col-lg-4">
-          <h3>Top Product</h3>
-              <table align="center">
-                  <tr>
-                    <td class="table-top-product-padding" rowspan="2">1.</td>
-                    <td class="text-left table-top-product-padding" rowspan="2">
-                    	<a href="viewproduct.php"><img class="img-circle"  data-src="holder.js/90x90" alt="Generic placeholder image"></a>
-                    </td>
-                    <td class="table-top-product-name" height="65" align="left" valign="bottom" >[Product Name] </td>  
-                  </tr>
-                  <tr>
-                    <td class="table-top-product-stars" align="left" valign="top">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="table-top-product-padding" rowspan="2">2.</td>
-                    <td class="text-left table-top-product-padding" rowspan="2">
-                    	<a href="viewproduct.php"><img class="img-circle"  data-src="holder.js/90x90" alt="Generic placeholder image"></a>
-                    </td>
-                    <td class="table-top-product-name" height="65" align="left" valign="bottom" >[Product Name] </td>  
-                  </tr>
-                  <tr>
-                    <td class="table-top-product-stars" align="left" valign="top">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="table-top-product-padding" rowspan="2">3.</td>
-                    <td class="text-left table-top-product-padding" rowspan="2">
-                    	<a href="viewproduct.php"><img class="img-circle"  data-src="holder.js/90x90" alt="Generic placeholder image"></a>
-                    </td>
-                    <td class="table-top-product-name" height="65" align="left" valign="bottom" >[Product Name] </td>  
-                  </tr>
-                  <tr>
-                    <td class="table-top-product-stars" align="left" valign="top">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                    </td>
-                  </tr>
-                </table>
-          <p><a class="btn btn-default" href="product.php#topProduct" role="button">more &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
+
+<?php
+  $dbhost = "localhost:3306";
+  $dbuser = "root";
+  $dbpass = "";
+  $dbname = "Circle";
+
+  $con=mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+  if (mysqli_connect_errno()) {  
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();  
+  }
+
+  $totalcommunity = 0;
+  $totaltopic = 0;
+  $totalproduct = 0;
+  $maxcommunity = 0;
+  $maxtopic = 0;
+  $maxproduct = 0;
+
+  $sql = 'select count(communityid) from community';
+  $result = mysqli_query($con,$sql);
+  foreach ($result as $row) { $totalcommunity = $row["count(communityid)"]; }
+  if ($totalcommunity > 2) {
+    $maxcommunity = 3;
+  } else {
+    $maxcommunity = $totalcommunity;
+  }
+
+  $sql = 'select count(topicid) from topic';
+  $result = mysqli_query($con,$sql);
+  foreach ($result as $row) { $totaltopic = $row["count(topicid)"]; }
+  if ($totaltopic > 2) {
+    $maxtopic = 3;
+  } else {
+    $maxtopic = $totaltopic;
+  }
+
+  $sql = 'select count(productid) from product';
+  $result = mysqli_query($con,$sql);
+  foreach ($result as $row) { $totalproduct = $row["count(productid)"]; }
+  if ($totalproduct > 2) {
+    $maxproduct = 3;
+  } else {
+    $maxproduct = $totalproduct;
+  }  
+
+  echo '<table align="center">';
+  if ($maxcommunity > 0) {
+    $count = 0;
+    $sql = 'select * from community order by rating desc';
+    $result = mysqli_query($con,$sql);
+
+    while(($row = mysqli_fetch_array($result)) && ($count < $maxcommunity)) {
+      $count += 1;
+      echo '<tr>';
+      echo '<td class="table-top-product-padding" rowspan="2">' . $count . '.</td>';
+      echo '<td class="text-left table-top-product-padding" rowspan="2">';
+      echo '<a href="viewcommunity.php?id=' . $row["communityid"] . '"><img class="img-circle"  img src="' . $row["path"] . '" height="90" width="90" alt="Generic placeholder image"></a>';
+      echo '</td>';
+      echo '<td class="table-top-product-name" height="65" align="left" valign="bottom" >';
+      echo $row["name"];
+// NEED TO DO CHECKING TO DISPLAY THE CORRECT BUTTON
+//      echo '<a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>';
+      echo '</td>';
+      echo '</tr>';
+      echo '<tr>';
+      echo '<td class="table-top-product-stars" align="left" valign="top">';
+      echo '<td align="center"> (' . $row["rating"] . ') M=' . $row["nummembers"] . ',T=' . $row["numtopics"] . ',C=' . $row["numcontents"] . '.</td>';
+      echo '</td>';
+      echo '</tr>';
+          
+    } // end while loop to display top community
+  } else { // end if $maxcommunity > 0
+
+  } // end if-else $maxcommunity > 0
+  echo '</table>'; 
+  echo '<p><a class="btn btn-default" href="community.php#topCommunity" role="button">more &raquo;</a></p>';
+  echo '</div><!-- /.col-lg-4 -->';   
+
+ 
+  echo '<!--Topic Head -->';
+  echo '<div class="col-lg-4">';
+  echo '<h3>Top Topic</h3>';       
+  echo '<table class="table-top" align="center">';
+  
+  if ($maxtopic > 0) {
+
+    $sql = 'select topicid from topic';
+    $result = mysqli_query($con,$sql);
+    foreach ($result as $row) { 
+      $sql2 = 'select count(contentid) from content where topicid=' . $row["topicid"];
+      $result2 = mysqli_query($con,$sql2);
+      foreach ($result2 as $row2) { $data[] = array("topic" => $row["topicid"], "content" => $row2["count(contentid)"]); }
+    }
+    $ranking = array();
+    foreach ($data as $key => $row) {
+      $ranking[$key] = $row['content'];
+    }
+
+    array_multisort($ranking,SORT_DESC,$data);
+    $toptopics = array();
+    foreach ($data as $row) {
+      foreach ($row as $key => $value) {
+        array_push($toptopics,$value);
+      }
+    }
+
+    $count = 0;
+
+    while($count < $maxtopic) {
+      $sql = 'select * from topic where topicid=' . $toptopics[$count];
+      $result = mysqli_query($con,$sql);
+
+      foreach ($result as $row) {
+        echo '<tr>';
+        echo '<td>' . ($count+1) . '.</td>';
+        echo '<td class="text-left"> <a href="viewtopic.php?id=' . $row["topicid"] . '">' . $row["name"] . '</a></td>';
+        echo '</tr>';
+      } // end for loop to print Topic Information.
+      $count += 1;
+    } // end while loop to print top topics
+
+  } else { // end if $maxtopic > 0
+
+  } // end if-else $maxtopic > 0
+
+  echo '</table>';   
+  echo '<p><a class="btn btn-default" href="topic.php#topTopic" role="button">more &raquo;</a></p>';
+  echo '</div><!-- /.col-lg-4 -->';  
+
+  
+  echo '<!--Product Head -->';
+  echo '<div class="col-lg-4">';
+  echo '<h3>Top Product</h3>';
+  echo '<table align="center">';
+
+  if ($maxproduct > 0) {
+    $count = 0;
+    $sql = 'select * from product order by (rating/numreviews) desc';
+    $result = mysqli_query($con,$sql);
+    while(($row = mysqli_fetch_array($result)) && ($count < $maxproduct)) {
+      $count += 1;
+
+      $rating = 0;
+      if ($row["numreviews"] != 0) {
+        $rating = $row["rating"] / $row["numreviews"];
+      }
+
+      $numrecords = 0;
+      $imagepath = "";
+      $sql2 = 'select path from productdetail where productid=' . $row["productid"];
+      $result2 = mysqli_query($con,$sql2);
+      while(($row2 = mysqli_fetch_array($result2)) && ($numrecords == 0)) {
+        $numrecords += 1;
+        $imagepath = $imagepath . $row2["path"];
+      }
+
+
+      echo '<tr>';
+      echo '<td class="table-top-product-padding" rowspan="2">' . $count . '.</td>';
+      echo '<td class="text-left table-top-product-padding" rowspan="2">';
+      echo '<a href="viewproduct.php?id=' . $row["productid"] . '"><img class="img-circle"  img src="' . $imagepath . '" width="90" height="90" alt="Generic placeholder image"></a>';
+      echo '</td>';
+      echo '<td class="table-top-product-name" height="65" align="left" valign="bottom" >' . $row["name"] . '</td>';
+      echo '</tr>';
+      echo '<tr>';
+      echo '<td class="table-top-product-stars" align="left" valign="top">';
+      $stars = 0;
+      $rating = round($rating,1);
+      while ($stars < round($rating,0,PHP_ROUND_HALF_EVEN)) {        
+        echo '<span class="glyphicon glyphicon-star"></span>';
+        $stars += 1;
+      }
+      echo '(' . $rating . ')';
+      echo '</tr>';
+    } // end while loop to print top proucts
+  } else { // end if $maxproduct > 0
+
+  } // end if-else $maxproduct > 0
+
+
+  echo '</table>';
+  echo '<p><a class="btn btn-default" href="product.php#topProduct" role="button">more &raquo;</a></p>';
+  echo '</div><!-- /.col-lg-4 -->';
+  echo '</div><!-- /.row -->';
+
+
+  mysqli_close($con);
+
+?>
       <hr class="featurette-divider">
       <!-- /END THE FEATURETTES -->
 
@@ -416,8 +472,8 @@
       	<li><a href="index.php">Home</a></li>
       </ol>-->
       <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Circle, Inc. &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a></p>
+        <p class="pull-right"><a href="#top">Back to top</a></p>
+        <p>&copy; 2014 Circle, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">About</a></p>
       </footer>
     </div><!-- /.container -->
 
