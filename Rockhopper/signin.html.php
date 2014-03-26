@@ -1,7 +1,3 @@
-<?php header('Location: http://webmaster.iu.edu/'); ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,9 +45,9 @@
         <form class="form-signin" role="form" action="signin.php" method="post">
         	<h2 class="form-signin-heading">Please sign in</h2>
             <label class="sr-only" for="email">Email</label>
-			<input type="text" class="form-control" placeholder="Email" name="email" value="<?php echo $email ?>" required autofocus>
+			<input type="text" class="form-control" placeholder="Email" name="email" value="<?php echo $email; ?>" required autofocus>
             <label class="sr-only" for="password">Password</label>
-			<input type="password" class="form-control" placeholder="Password" name="password" id="password" value="<?php echo $password ?>" required>
+			<input type="password" class="form-control" placeholder="Password" name="password" id="password" value="<?php echo $password; ?>" required>
 			<!-- Keeps User logged In - involves cache -->
             <!--<label class="checkbox">
 				<input type="checkbox" value="remember-me"> Remember me

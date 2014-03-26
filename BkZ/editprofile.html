@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/favicon.ico">
 
-    <title>Circle  | Edit Profile</title>
+    <title>Circle | Edit Profile</title>
     
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -73,12 +73,7 @@ Known bugs:
     <div class="container">
     	<p>&nbsp;</p>
       	<p>&nbsp;</p>
-      
-		<div class="row">
-          <div class="col-md-12">
-          	<h5 align="center"><a href="profile.html">&laquo; Go back</a>
-          </div>
-        </div>
+
       <div class="row">
         <div class="col-md-12">
           	<h1>Edit Profile</h1>
@@ -87,78 +82,108 @@ Known bugs:
       <div class="row">
         <div class="col-md-6">
           	<form role="form">
-            
-              <div class="form-group">
-                <label for="name">Username</label>
-                <input type="text" class="form-control" name="Username" id="name" placeholder="Enter Username">
-              </div>
-              
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" name="email" id="email" placeholder="Enter email">
-              </div>
-              
-              <div class="form-group">
-                <label for="password1">Password</label>
-    			<input type="password" class="form-control" name="password1" id="password1" placeholder="Password">
+            	<div class="row">
+                	<div class="col-sm-6">
+                    	<div class="form-group">
+                    		<label for="first">First</label>
+                			<input type="text" class="form-control" name="first" id="first" placeholder="First Name">
+                		</div>
+                    </div>
+                    <div class="col-sm-6">
+                    	<div class="form-group">
+                    		<label for="last">Last</label>
+                			<input type="text" class="form-control" name="last" id="last" placeholder="Last Name">
+                		</div>
+                    </div>
                 </div>
-                
-                <div class="form-group">
-                <label for="password2">Retype Password</label>
-                <input type="password" class="form-control" name="password2" id="password2" placeholder="Retype Password">
- 			 </div>
-             
-             <div class="form-group">
-                <label for="city">City</label>
-   				<input type="text" class="form-control" name="cityt" id="city" placeholder="City">
- 			</div>
-            
-             <div class="form-group">
-                 <label for="state">State</label>
-   				 <input type="text" class="form-control" name="state" id="state" placeholder="State">
- 			 </div>
-             
-             <div class="form-group">
-                 <label for="zip">Zip Code</label>
-   				 <input type="text" class="form-control" name="zip" id="zip" placeholder="Zip Code">
- 			 </div>
-             
-             <p>Role:</p>
-             <div class="radio-inline">
-                <label>
-   					<input type="radio" name="role" id="user" value="option2">User
-  				</label>
-             </div>
-             
-             <div class="radio-inline">
-                <label>
-   					<input type="radio" name="role" id="seller" value="option2">Seller
-  				</label>
-             </div>
-              
               <div class="form-group">
-                <label for="birthday">Birthday</label>
-                <input type="date" class="form-control" name="birthday" id="birthday" placeholder="birthday">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username">
               </div>
               
               <div class="form-group">
-                <label for="aim">AIM</label>
-                <input type="text" class="form-control" name="aim" id="aim" placeholder="AIM">
+              	<div class="row">
+                	<div class="col-sm-6">
+                    	<div class="form-group">
+                			<label for="city">City</label>
+   							<input type="text" class="form-control" name="city" id="city" placeholder="City">
+ 						</div>
+                    </div>
+                    <div class="col-sm-3">
+                    <label for="city">City</label>
+                    	<select class="form-control">
+                            <option></option>
+                            <option>AK</option>
+                            <option>AL</option>
+                            <option>AR</option>
+                            <option>AZ</option>
+                            <option>CA</option>
+                            <option>CO</option>
+                            <option>CT</option>
+                            <option>DE</option>
+                            <option>FL</option>
+                            <option>GA</option>
+                            <option>HI</option>
+                            <option>IA</option>
+                            <option>ID</option>
+                            <option>IL</option>
+                            <option>IN</option>
+                            <option>KS</option>
+                            <option>KY</option>
+                            <option>LA</option>
+                            <option>MA</option>
+                            <option>MD</option>
+                            <option>ME</option>
+                            <option>MI</option>
+                            <option>MN</option>
+                            <option>MO</option>
+                            <option>MS</option>
+                            <option>MT</option>
+                            <option>NC</option>
+                            <option>ND</option>
+                            <option>NE</option>
+                            <option>NH</option>
+                            <option>NJ</option>
+                            <option>NM</option>
+                            <option>NV</option>
+                            <option>NY</option>
+                            <option>OH</option>
+                            <option>OK</option>
+                            <option>OR</option>
+                            <option>PA</option>
+                            <option>RI</option>
+                            <option>SC</option>
+                            <option>SD</option>
+                            <option>TN</option>
+                            <option>TX</option>
+                            <option>UT</option>
+                            <option>VA</option>
+                            <option>VT</option>
+                            <option>WA</option>
+                            <option>WI</option>
+                            <option>WV</option>
+                            <option>WY</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                    	<div class="form-group">
+                			<label for="city">Zip Code</label>
+   							<input type="text" class="form-control" name="zip" id="zip" placeholder="zip" maxlength="5">
+ 						</div>
+                    </div>
+                </div>
               </div>
-              
+
               <div class="form-group">
                 <label for="file">Profile Picture</label>
                 <input type="file" name="file" id="file">
                 <p class="help-block">Please Enter Picture size of [picSize]</p>
               </div>
               
-              <button type="submit" class="btn btn-default">Submit</button>
+              <a href="profile.html"><button type="submit" class="btn btn-primary">Update</button></a>
             </form>
         </div>
         <div class="col-md-6">
-          	<p>&nbsp;</p>
-          	<p>&nbsp;</p>
-          	<p>&nbsp;</p>
           	<table align="center">
             	<tr>
                 	<td>
@@ -168,18 +193,7 @@ Known bugs:
           </table>
         </div>
       </div>
-       
-        
-        
-        
-      
-		<p>&nbsp;</p>
-      	<p>&nbsp;</p>
-      	<p>&nbsp;</p>
-    	<p>&nbsp;</p>
-     	<p>&nbsp;</p>
-      
-      
+
       
       
       <!-- /END THE FEATURETTES -->

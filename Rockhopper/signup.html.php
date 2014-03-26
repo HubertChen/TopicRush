@@ -50,11 +50,11 @@
 			</div>
 			<div class="form-group">
 				<label class="sr-only" for="password1">Password</label>
-				<input type="password" class="form-control" name="password1" id="password1" placeholder="Password" value="<?php $password1 ?>" required>
+				<input type="password" class="form-control" name="password1" id="password1" placeholder="Password" value="<?php $password1; ?>" required>
 			</div>
 			<div class="form-group">
 				<label class="sr-only" for="password2">Password</label>
-				<input type="password" class="form-control" name="password2" id="password2" placeholder="Retype Password" value="<?php $password2 ?>" required>
+				<input type="password" class="form-control" name="password2" id="password2" placeholder="Retype Password" value="<?php $password2; ?>" required>
 			</div>
 			<p>Role:</p>
 			<div class="radio-inline">

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  
+  	<!-- Need to add necessary meta tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,11 +22,6 @@
   
   
 <!-- NAVBAR
-Known bugs: 	
-	-Eliminate in the first name and last name and add username
-    -Password field and a confirm password field
-    -Add type field of: user and seller
-    	-Maybe add description of what a user and seller does
 ================================================== -->
   <body>
     <div class="navbar navbar-default navbar-fixed-top" role="navigation" align="center">   
@@ -37,21 +34,19 @@ Known bugs:
         </div>
       </div>
     </div>
+   
     
-    
-    
-
 	<!-- Sign Up Form
     ================================================== -->
 	<div class="container">
     	<p>&nbsp;</p>
-     	<p>&nbsp;</p>
+        <p>&nbsp;</p>
     	<?php echo $errorMessage; ?>
         <form action="signup.php" method="post" class="form-signin form-horizontal" role="form">
   			<h2 class="form-signin-heading">Sign up for Circle</h2>
  			<div class="form-group">
                 <label class="sr-only" for="email">Email</label>
- 				<input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $email; ?>" required>
+ 				<input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $email; ?>" required autofocus>
 			</div>
 			<div class="form-group">
 				<label class="sr-only" for="password1">Password</label>
@@ -72,37 +67,24 @@ Known bugs:
 					<input type="radio" name="role" id="seller" value="s">Seller
 				</label>
 			</div>
-
-             <?php echo $button; ?>
-        <!--<button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>-->
-        <p class="text-center" ><a href="signin.html.php">Sign In </a></p>
-      </form>
-</div>
-     <p>&nbsp;</p>
-     <p>&nbsp;</p>
-     <p>&nbsp;</p>
-     <p>&nbsp;</p>
-     <p>&nbsp;</p>
- 
-
-  <hr class="featurette-divider">
-      <!-- /END THE FEATURETTES -->
-
-
-      <!-- Footer
-          Need to do:
-    		-Add color to the bottom
-            -May want to add bread crumb for navigation purposes
-    ================================================== -->
-      <!--<ol class="breadcrumb">
-      	<li><a href="index.html">Home</a></li>
-      </ol>-->
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Circle, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">About</a></p>
-      </footer>
+			<?php echo $button; ?>
+            <!--<button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button> -->
+            <p class="text-center" ><a href="signin.html.php">Sign In </a></p>
+		</form>
+		
+        
+        <hr class="featurette-divider">
+		
+        <!-- Footer
+   		 ================================================== -->
+      	<footer>
+            <!--<ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+            </ol>-->
+        	<p class="pull-right"><a href="#">Back to top</a></p>
+        	<p>&copy; 2014 Circle, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">About</a></p>
+     	</footer>
     </div><!-- /.container -->
-      <!-- /END THE FEATURETTES -->
 
 
     <!-- Bootstrap core JavaScript
