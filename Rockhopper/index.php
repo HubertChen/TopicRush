@@ -53,12 +53,12 @@
 
 <?php               
   if (isset($_SESSION["loggedin"])) {
-    echo '<a href="signout.php"><button type="button" class="btn btn-primary navbar-btn-right" >Sign Out</button></a>';
+    echo '<a href="signout.php"><button type="button" class="btn btn-primary navbar-btn-right btn-sm" >Sign Out</button></a>';
     echo '<div class="navbar-right">';
     echo '<a href="profile.php">';
-    echo '<img src="'. $_SESSION["avatarpath"] . '" alt="Generic placeholder image" width="35" height="35" class="img-circle">';
+    echo '<img src="images/userDefault.png" alt="Generic placeholder image" width="35" height="35" class="img-circle">';
     echo '</a>';
-    echo '<a href="profile.php">' . $_SESSION["username"] . '</a>';
+    echo '<a href="profile.php">[User Name]</a>';
     echo '</div>';
 
 
@@ -77,15 +77,15 @@
         </div>
       </div>
     </div>
-
+    
 
     <!-- Carousel
     Need to:
     		-Change slides with common color and theme (adds bubbles as necessary)
             -add links where neccessary
     ================================================== -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      
+    <div id="myCarousel" class="carousel slide" data-ride="carousel"> 
+	  
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -97,9 +97,14 @@
       
       	<!--SLIDE 1 - CIRCLE-->
         <div class="item active">
+        
           <img data-src="holder.js/900x500/auto/#7aadd9:#7a7a7a/text: " alt="Circle">
           <div class="container">
+          	
             <div class="carousel-caption">
+       <?php echo $errorMessage; ?>
+			
+
               <a href="objective.html"><img src="images/logoWhite.png" alt="Circle" width="165" height="165" vspace="5"></a><br/>
               <a href="objective.html"><img src="images/logotextWhite.png" alt="Circle" width="117" height="37" vspace="20"></a><br/>
               <img src="images/carousel-circleInfo-01.png" alt="Circle" vspace="30">&nbsp;&nbsp;&nbsp;&nbsp;
@@ -416,8 +421,8 @@
       	<li><a href="index.php">Home</a></li>
       </ol>-->
       <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Circle, Inc. &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a></p>
+        <p class="pull-right"><a href="#top">Back to top</a></p>
+        <p>&copy; 2014 Circle, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">About</a></p>
       </footer>
     </div><!-- /.container -->
 

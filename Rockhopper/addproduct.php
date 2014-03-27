@@ -213,7 +213,7 @@
           	$sql = "update productdetail set path='" . $filepath . "' where detailid=" . $detailid;
           	mysqli_query($con,$sql);
 
-			$errorMessage = '<div class="alert alert-danger alert-dismissable" align="center">
+			$errorMessage = '<div class="alert alert-success alert-dismissable" align="center">
      							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 								Product added Successfully!
 							</div>';
@@ -242,63 +242,4 @@
 	exit();  
   }// end if user is not logged in
   mysqli_close($con);
-<<<<<<< HEAD
 ?>
-=======
-?>
-            </form>
-        </div>
-        <div class="col-md-6">
-          	<p>&nbsp;</p>
-          	<p>&nbsp;</p>
-          	<p>&nbsp;</p>
-          	<table align="center">
-            	<tr>
-                	<td>
-           			  <img class="img-circle"  data-src="holder.js/300x300" alt="Generic placeholder image">
-            		</td>
-              </tr>    
-          </table>
-        </div>
-      </div>
-       
-        
-        
-        
-      
-		<p>&nbsp;</p>
-      	<p>&nbsp;</p>
-      	<p>&nbsp;</p>
-    	<p>&nbsp;</p>
-     	<p>&nbsp;</p>
-      
-      
-      
-      
-      <!-- /END THE FEATURETTES -->
-
-
-      <!-- Footer
-          Need to do:
-    		-Add color to the bottom
-            -May want to add bread crumb for navigation purposes
-    ================================================== -->
-      <!--<ol class="breadcrumb">
-      	<li><a href="index.php">Home</a></li>
-      </ol>-->
-      <hr class="featurette-divider">
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Circle, Inc. &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a></p>
-      </footer>
-    </div><!-- /.container -->
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/docs.min.js"></script>
-  </body>
-</html>
->>>>>>> FETCH_HEAD
