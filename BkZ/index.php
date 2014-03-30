@@ -100,8 +100,8 @@
           <img data-src="holder.js/900x500/auto/#7aadd9:#7a7a7a/text: " alt="Circle">
           <div class="container">
             <div class="carousel-caption">
-              <a href="objective.html"><img src="images/logoWhite.png" alt="Circle" width="165" height="165" vspace="5"></a><br/>
-              <a href="objective.html"><img src="images/logotextWhite.png" alt="Circle" width="117" height="37" vspace="20"></a><br/>
+              <a href="objective.php"><img src="images/logoWhite.png" alt="Circle" width="165" height="165" vspace="5"></a><br/>
+              <a href="objective.php"><img src="images/logotextWhite.png" alt="Circle" width="117" height="37" vspace="20"></a><br/>
               <img src="images/carousel-circleInfo-01.png" alt="Circle" vspace="30">&nbsp;&nbsp;&nbsp;&nbsp;
               <img src="images/carousel-circleInfo-02.png" alt="Circle">
             </div>
@@ -115,8 +115,8 @@
             <div class="carousel-caption">
             	<div class="row" align="left">
                 	<div class="col-md-12">
-                    	<a href="objective.html#obj-community"><img src="images/whitecircle.png" alt="circle" width="165" height="165"></a>&nbsp;&nbsp;
-                    	<a href="objective.html#obj-community"><img src="images/communitytxt-00.png" alt="community" height="37"></a>
+                    	<a href="objective.php#obj-community"><img src="images/whitecircle.png" alt="circle" width="165" height="165"></a>&nbsp;&nbsp;
+                    	<a href="objective.php#obj-community"><img src="images/communitytxt-00.png" alt="community" height="37"></a>
                     </div>
                 </div> 
                 <br/>
@@ -129,7 +129,7 @@
 				<br/>
                 <div class="row" align="right">
                 	<div class="col-md-12">
-                    	<a class="btn btn-lg btn-signin" href="objective.html#obj-community" role="button">Learn more</a>
+                    	<a class="btn btn-lg btn-signin" href="objective.php#obj-community" role="button">Learn more</a>
                     </div>
                 </div>
        			<br/>
@@ -144,8 +144,8 @@
             <div class="carousel-caption">
               <div class="row" align="right">
                 	<div class="col-md-12">
-                    	<a href="objective.html#obj-topic"><img src="images/topictxt-00.png" alt="community" height="37"></a>&nbsp;&nbsp;
-                    	<a href="objective.html#obj-topic"><img src="images/whitecircle.png" alt="circle" width="130" height="130"></a>
+                    	<a href="objective.php#obj-topic"><img src="images/topictxt-00.png" alt="community" height="37"></a>&nbsp;&nbsp;
+                    	<a href="objective.php#obj-topic"><img src="images/whitecircle.png" alt="circle" width="130" height="130"></a>
                     </div>
                 </div> 
                 <br/>
@@ -158,7 +158,7 @@
 				<br/>
                 <div class="row" align="left">
                 	<div class="col-md-12">
-                    	<a class="btn btn-lg btn-signin" href="objective.html#obj-topic" role="button">Learn more</a>
+                    	<a class="btn btn-lg btn-signin" href="objective.php#obj-topic" role="button">Learn more</a>
                     </div>
                 </div>
        			<br/>
@@ -173,8 +173,8 @@
             <div class="carousel-caption">
               <div class="row" align="left">
                 	<div class="col-md-12">
-                    	<a href="objective.html#obj-product"><img src="images/whitecircle.png" alt="circle" width="95" height="95"></a>&nbsp;&nbsp;
-                    	<a href="objective.html#obj-product"><img src="images/producttxt-00.png" alt="community" height="37"></a>
+                    	<a href="objective.php#obj-product"><img src="images/whitecircle.png" alt="circle" width="95" height="95"></a>&nbsp;&nbsp;
+                    	<a href="objective.php#obj-product"><img src="images/producttxt-00.png" alt="community" height="37"></a>
                     </div>
                 </div> 
                 <br/>
@@ -187,7 +187,7 @@
 				<br/>
                 <div class="row" align="right">
                 	<div class="col-md-12">
-                    	<a class="btn btn-lg btn-signin" href="objective.html#obj-product" role="button">Learn more</a>
+                    	<a class="btn btn-lg btn-signin" href="objective.php#obj-product" role="button">Learn more</a>
                     </div>
                 </div>
                 <br/>
@@ -363,17 +363,18 @@
       $result2 = mysqli_query($con,$sql2);
       foreach ($result2 as $row2) { $data[] = array("topic" => $row["topicid"], "content" => $row2["count(contentid)"]); }
     }
-    $ranking = array();
+
     foreach ($data as $key => $row) {
-      $ranking[$key] = $row['content'];
+      $topic[$key] = $row['topic'];
+      $content[$key] = $row['content'];
     }
 
-    array_multisort($ranking,SORT_DESC,$data);
+    array_multisort($content,SORT_DESC,$data);
+
     $toptopics = array();
+
     foreach ($data as $row) {
-      foreach ($row as $key => $value) {
-        array_push($toptopics,$value);
-      }
+      array_push($toptopics,$row['topic']);
     }
 
     $count = 0;

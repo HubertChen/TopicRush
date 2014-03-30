@@ -128,6 +128,7 @@ Known bugs:
     echo "Failed to connect to MySQL: " . mysqli_connect_error();  
   }
 
+  $memberid = 0;
   $communityid = $_GET["id"];
   $communityname  = '';
   $ownerid = 0;
@@ -138,6 +139,17 @@ Known bugs:
   $numcontent = 0;
   $rating = 0;
   $communityimage = '';
+  $alreadyjoined = FALSE;
+
+  if (isset($_SESSION["loggedin"])) { 
+    $loggedin = TRUE;
+    $memberid = $_SESSION["memberid"];
+    $alreadyjoined = FALSE;
+    $memberid = $_SESSION["memberid"];
+    $sql = 'select * from joins where memberid=' . $memberid . ' and communityid=' . $communityid;
+    $result = mysqli_query($con,$sql);
+    while($row = mysqli_fetch_array($result)) { $alreadyjoined = TRUE; }
+  }
 
   $sql = 'select * from community where communityid=' . $communityid;
   $result = mysqli_query($con,$sql);
@@ -177,15 +189,11 @@ Known bugs:
   echo '<h1>';
   echo $communityname;
   if (isset($_SESSION["loggedin"])) {
-    $alreadyjoined = FALSE;
-    $memberid = $_SESSION["memberid"];
-    $sql = 'select * from joins where memberid=' . $memberid . ' and communityid=' . $communityid;
-    $result = mysqli_query($con,$sql);
-    while($row = mysqli_fetch_array($result)) { $alreadyjoined = TRUE; }
+
     if ($alreadyjoined == FALSE) {
-      echo '<a href="php/join.php?id=' . $communityid . '"><button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span></button></a>';
+      echo '<a href="join.php?id=' . $communityid . '"><button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"> Join</span></button></a>';
     } else { // end if $alreadyjoined == FALSE
-      echo '<a href="php/leave.php?id=' . $communityid . '"><button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-remove"></span></button></a>';
+      echo '<a href="leave.php?id=' . $communityid . '"><button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-remove"> Leave</span></button></a>';
     }
   } // end if user logged in
   echo '</h1>';
@@ -210,8 +218,11 @@ Known bugs:
     $result = mysqli_query($con,$sql);
     while($row = mysqli_fetch_array($result)) { $alreadyjoined = TRUE; }
     if ($alreadyjoined == TRUE) {
-      echo '<a href="topic.php"> <button type="button" class="btn btn-primary btn-xs">Create Topic</button></a>';
+      echo '<a href="addtopic.php?id=' . $communityid . '"> <button type="button" class="btn btn-primary btn-xs">Create Topic</button></a>';
     }
+    if ($ownerid == $memberid) {
+      echo '<a href="communityadmin.php?id=' . $communityid . '"> <button type="button" class="btn btn-primary btn-xs">Community Admin Page</button></a>';
+    } // end if user is community owner
   } // end if user logged in
 
   echo '</h4>';
@@ -221,23 +232,30 @@ Known bugs:
     $result = mysqli_query($con,$sql);
     $topicowner = 0;
     $topicownername = '';
+    $topicavatarpath = '';
     foreach ($result as $row) {    
       $productid = $row["productid"];
       $productname = '';
 
-      $sql2 = 'select username from member where memberid=' . $row["ownerid"];
+      $sql2 = 'select username,avatarpath from member where memberid=' . $row["ownerid"];
       $result2 = mysqli_query($con,$sql2);
-      foreach ($result2 as $row2) { $topicownername = $row2["username"]; }
+      foreach ($result2 as $row2) { 
+        $topicownername = $row2["username"]; 
+        $topicavatarpath = $row2["avatarpath"];
+      }
       echo '&nbsp;';
       echo '<div class="row">';
       echo '<div class="col-md-12">';
       echo '<div class="media">';
       echo '<a class="pull-left" href="#">';
-      echo '<img class="img-circle" data-src="holder.js/64x64" alt="Generic placeholder image">';
+      echo '<img class="img-circle" img src="' . $topicavatarpath . '" width="64" height="64" alt="Generic placeholder image">';
       echo '</a>';
       echo '<div class="media-body">';
       echo '<h4 class="media-heading"><a href="viewtopic.php?id=' . $row["topicid"] . '">' . $row["name"] . '</a>' . '</h4>';
-      echo 'Created: ' . $row["created"] . ' by ' . $topicownername . '.';      
+      echo 'Created: ' . $row["created"] . ' by ' . $topicownername . '.';
+      if ($alreadyjoined == TRUE) {
+        echo '<a href="addcontent.php?id=' . $row["topicid"] . '"> <button type="button" class="btn btn-primary btn-xs">Add Content</button></a>';
+      } // end if alreadyjoined == TRUE to display add content button
       if (is_numeric($productid)) {
         $sql4 = 'select name from product where productid=' . $productid;
         $result4 = mysqli_query($con,$sql4);
@@ -254,11 +272,24 @@ Known bugs:
         echo '<br>';
         foreach ($result2 as $row2) {
           $contentownername = '';
-          $sql3 = 'select username from member where memberid=' . $row2["ownerid"];
+          $contentowneravatarpath = '';
+          $sql3 = 'select username,avatarpath from member where memberid=' . $row2["ownerid"];
           $result3 = mysqli_query($con,$sql3);
-          foreach ($result3 as $row3) { $contentownername = $row3["username"]; }
-          echo '     ' . $row2["message"] . '<br>';
-          echo '          added: ' . $row2["created"] . ' by ' . $contentownername . '.<br>';
+          foreach ($result3 as $row3) { 
+            $contentownername = $row3["username"]; 
+            $contentowneravatarpath = $row3["avatarpath"];
+          }
+          echo '<img class="img-circle" img src="' . $contentowneravatarpath . '" width="64" height="64" alt="Generic placeholder image">';
+          echo '     ' . $row2["message"] . ' ';
+          if (is_numeric($row2["productid"])) { 
+            $sql4 = 'select name from product where productid=' . $row2["productid"];
+            $result4 = mysqli_query($con,$sql4);
+            foreach ($result4 as $row4) {
+              echo '<a href="viewproduct.php?id=' . $row2["productid"] . '">' . $row4["name"] . '</a>';
+            } // end foreach loop to build product link
+          } // end if productid is numeric for content   
+          echo '<br>';
+          echo '          added: ' . $row2["created"] . ' by ' . $contentownername . '<br>';
           if ($row2["type"] == 1) { 
             echo '<img class="img-circle" img src="' . $row2["path"] . '" width="100" height="100" alt="Generic placeholder image">';
             echo $row2["description"] . '<br>';

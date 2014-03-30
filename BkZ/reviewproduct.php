@@ -113,7 +113,7 @@ Known bugs:
     $listedprice = '';
     $categoryid = 0;
     $categoryname = '';
-    $imagepath = '/bzk';
+    $imagepath = '';
     $date = new DateTime();
     $tstamp = $date->format('Y-m-d H:i:s');
 
@@ -158,7 +158,7 @@ Known bugs:
     echo '<div class="col-md-3">';
     echo '<table align="center">';
     echo '<tr>';
-    echo '<td align="center"><img class="img-circle"  img src="' . $imagepath . '" alt="Generic placeholder image"></td>';
+    echo '<td align="center"><img class="img-circle"  img src="' . $imagepath . '" width="300"  height="300" alt="Generic placeholder image"></td>';
     echo '</tr>';
     echo '<tr>';
     echo '<td align="center">';
@@ -187,17 +187,17 @@ Known bugs:
     echo '</tr>';
     echo '<tr>';
     echo '<td>';
-    echo '<h4><em>' . $ownername . '</em></h4>';
+    echo '<h4><em>Owner : ' . $ownername . '</em></h4>';
     echo '</td>';
     echo '</tr>';
     echo '<tr>';
     echo '<td>';
-    echo '<h6>' . $categoryname . '</h6>';
+    echo '<h6>Category : ' . $categoryname . '</h6>';
     echo '</td>';
     echo '</tr>';
     echo '<tr>';
     echo '<td>';
-    echo '<p>' . $description . '</p>';
+    echo '<p>Description : ' . $description . '</p>';
     echo '</td>';
     echo '</tr>';
     echo '</table>';

@@ -213,7 +213,7 @@ Known bugs:
   $maxproducts = 0;
   $sql = 'select * from product order by (rating/numreviews) desc';
   $result = mysqli_query($con,$sql);
-  while(($row = mysqli_fetch_array($result)) && ($maxproducts < 4)) {
+  while(($row = mysqli_fetch_array($result)) && ($maxproducts < 6)) {
     $rating = 0;
     if ($row["numreviews"] != 0) {
       $rating = $row["rating"] / $row["numreviews"];

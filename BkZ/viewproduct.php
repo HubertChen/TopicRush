@@ -9,7 +9,29 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/favicon.ico">
 
-    <title>Circle | [Product Name]</title>
+<?php
+
+  $dbhost = "localhost:3306";
+  $dbuser = "root";
+  $dbpass = "";
+  $dbname = "Circle";
+
+  $con=mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+  if (mysqli_connect_errno()) {  
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();  
+  }
+  
+  $productid = $_GET["id"];
+  $productname = '';
+  $sql = 'select name from product where productid=' . $productid;
+  $result = mysqli_query($con,$sql);
+  foreach ($result as $row) { $productname = $row["name"]; }  
+
+  echo '<title>Circle | ' . $productname . '</title>';
+
+  mysqli_close($con);
+
+?>
     
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -177,17 +199,17 @@ Known bugs:
   echo '</tr>';
   echo '<tr>';
   echo '<td>';
-  echo '<h4><em>' . $ownername . '</em></h4>';
+  echo '<h4><em>Owner : ' . $ownername . '</em></h4>';
   echo '</td>';
   echo '</tr>';
   echo '<tr>';
   echo '<td>';
-  echo '<h6>' . $categoryname . '</h6>';
+  echo '<h6>Category : ' . $categoryname . '</h6>';
   echo '</td>';
   echo '</tr>';
   echo '<tr>';
   echo '<td>';
-  echo '<p>' . $description . '</p>';
+  echo '<p>Description : ' . $description . '</p>';
   echo '</td>';
   echo '</tr>';
   echo '</table>';

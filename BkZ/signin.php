@@ -52,6 +52,7 @@ Known bugs:
   $memberid = "";
   $role = "";
   $avatarpath = "";
+  date_default_timezone_set('EST');
   $date = new DateTime();
   $tstamp = $date->format('Y-m-d H:i:s');
 

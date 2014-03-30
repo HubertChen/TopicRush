@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/favicon.ico">
 
-    <title>Circle  | Add Topic</title>
+    <title>Circle | Follow</title>
     
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +48,7 @@ Known bugs:
         <div class="navbar-collapse collapse" align="center">  
           <form class="navbar-form navbar-form-length"  role="search" >
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Seach for communities, topics, and products" size="70" maxlength="70">
+              <input type="text" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70">
             </div>
 
 <?php               
@@ -67,32 +67,26 @@ Known bugs:
     echo '<a href="signup.php"><button type="button" class="btn btn-primary navbar-btn-right" >Sign Up</button></a>';
   } // end if-else user is logged in
 
-?>
-            	
+?>         	
+
           </form>  
         </div>
       </div>
     </div>
+
     
     
     
     <!-- Look at grid layouts on Bootstrap: http://getbootstrap.com/css/#grid -->
     <div class="container">
-    	<p>&nbsp;</p>
+    	 <p>&nbsp;</p>
       	<p>&nbsp;</p>
       
 		<div class="row">
           <div class="col-md-12">
-          	<h5 align="center"><a href="#">Community</a> |  <a href="#">Topic</a> | <a href="#">Product</a>
+          	&nbsp;
           </div>
         </div>
-      <div class="row">
-        <div class="col-md-12">
-          	<h1>Add Topic</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
 
 <?php
 
@@ -100,106 +94,88 @@ Known bugs:
   $dbuser = "root";
   $dbpass = "";
   $dbname = "Circle";
-  date_default_timezone_set('EST');
-  $date = new DateTime();
-  $tstamp = $date->format('Y-m-d H:i:s');
-  $communityid = $_GET["id"];
-
-  $validform = TRUE;
-  $topicname = '';
-  $topicproduct = '';
-  $formerrors = '';
 
   $con=mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
   if (mysqli_connect_errno()) {  
     echo "Failed to connect to MySQL: " . mysqli_connect_error();  
   }
+  $topicid = $_GET["id"];
+  $communityid = 0;
+  $memberid = 0;
+  $communitylogo = '';
+  $topicname = '';
+  $topiccommunityid = 0;
 
-  if (isset($_SESSION["loggedin"])) {
+  $loggedin = FALSE;
+  $communitymember = FALSE;
+  $memberjoined = FALSE;
+  $memberfollows = FALSE;
+  $validtopicid = FALSE;
+
+  if (isset($_SESSION["loggedin"])) { 
+    $loggedin = TRUE;
     $memberid = $_SESSION["memberid"];
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $posttopicname = $_POST["topicname"];
-      $postproductid = $_POST["productid"];
+  }
 
-      if ((strlen($posttopicname) <= 5) || (is_numeric($posttopicname))) {
-        $validform = FALSE;
-        $formerrors = $formerrors . 'Topic name must be more than five characters and not numeric!<br>';
-        echo 'Length = ' . strlen($posttopicname) . '<br>';
-      } else { // end if $posttopicname is invalid
-        $topicname = $posttopicname;
-      } // end if-else $posttopicname is invalid
-
-      echo $posttopicname . '<br>';
-      echo $postproductid . '<br>';
-
-      if ($validform == TRUE) {
-        $sql = '';
-        if ($postproductid == 0) {
-          $sql = "insert into topic(communityid,ownerid,followid,name,created) values ('$communityid','$memberid','0','$topicname','$tstamp')";
-        } else { 
-          $sql = "insert into topic(communityid,ownerid,followid,productid,name,created) values ('$communityid','$memberid','0','$postproductid','$topicname','$tstamp')";
-        }
-        mysqli_query($con,$sql);
-
-      } else { // end if $validform == TRUE
-        echo 'Form has the following errors:<br>';
-        echo $formerrors;
-        $formerrors = '';
-      } // end if-else $validform == TRUE
-
-
-    } // end if post message received
-  } // end if user is logged in
-  echo '<form action="addtopic.php?id=' . $communityid . '" method="post" enctype="multipart/form-data" role="form">';        
-  echo '<div class="form-group">'; 
-  echo '<label for="topicname">Topic Name</label>'; 
-  echo '<input type="text" class="form-control" name="topicname" id="topicname" placeholder="Enter Topic Name" value="' . $topicname . '" required>'; 
-  echo '</div>'; 
-  echo '<div class="form-group">'; 
-  echo '<label for="product">Link a Product</label>'; 
-  echo '<select name="productid" class="form-control">';   
-  echo '<option value="0">None</option>';
-  $sql = 'select productid,name from product';
+  $sql = 'select * from topic where topicid=' . $topicid;
   $result = mysqli_query($con,$sql);
-  while($row = mysqli_fetch_array($result)) {
-    echo '<option value="'.$row['productid'].'"';
-    echo '>'. $row['name'] . '</option>'."\n";
-  } 
-  echo '</select>';         
-  echo '</div>';
-// CONSIDER DOUBLE CHECKING THAT THE MEMBER IS PART OF THIS COMMUNITY
-  echo '<button type="submit" class="btn btn-default">Add</button>'; 
-  echo '</form>'; 
-  echo '</div>'; 
-  echo '<div class="col-md-6">'; 
-  echo '<p>&nbsp;</p>'; 
-  echo '<p>&nbsp;</p>'; 
-  echo '<p>&nbsp;</p>'; 
-  echo '<table align="center">'; 
-  echo '<tr>'; 
-  echo '<td>'; 
-  echo '<img class="img-circle"  data-src="holder.js/300x300" alt="Generic placeholder image">'; 
-  echo '</td>'; 
-  echo '</tr>'; 
-  echo '</table>'; 
-  echo '</div>'; 
-  echo '</div>'; 
+  while($row = mysqli_fetch_array($result)) { 
+    $topiccommunityid = $row["communityid"];
+    $topicname = $row["name"];
+    $validtopicid = TRUE;
+  }
+
+  if ($validtopicid == TRUE) {
+
+    $sql = 'select communityid from topic where topicid=' . $topicid;
+    $result = mysqli_query($con,$sql);
+    foreach ($result as $row) { $communityid = $row["communityid"]; }
+    if ($loggedin == TRUE) {
+      $sql = 'select * from joins where memberid=' . $memberid . ' and communityid=' . $communityid;
+      $result = mysqli_query($con,$sql);
+      while($row = mysqli_fetch_array($result)) { $memberjoined = TRUE; }    
+      $sql = 'select * from follows where memberid=' . $memberid . ' and topicid=' . $topicid;
+      $result = mysqli_query($con,$sql);
+      while($row = mysqli_fetch_array($result)) { $memberfollows = TRUE; }
+    }
+
+    $sql = 'select path from community where communityid=' . $communityid;
+    $result = mysqli_query($con,$sql);
+    while($row = mysqli_fetch_array($result)) {  $communitylogo = $row["path"]; }
+ 
+    $communitylogo = '';
+    $sql = 'select path from community where communityid=' . $topiccommunityid;
+    $result = mysqli_query($con,$sql);
+    foreach ($result as $row) { $communitylogo = $row["path"]; }
+
+    if ($memberfollows == FALSE) {
+      echo '<div class="row">';
+      echo '<div class="col-md-3">';
+      echo '<table align="center">';
+      echo '<tr>';
+      echo '<td align="center">';
+      echo '<a href="viewcommunity.php?id=' . $topiccommunityid . '"><img class="img-circle"  img src="' . $communitylogo . '" height="150" width="150" alt="Generic placeholder image"></a>';
+      echo '</td>';
+      echo '</tr>';
+      echo '</div>';
+      echo '</div>';
+      echo '<h1>';
+      echo $topicname;
+      echo '</h1>';
+      echo 'You are now following this topic!<br>';
+      $sql = "insert into follows(memberid,topicid) values('" . $memberid . "','" . $topicid . "')";
+      mysqli_query($con,$sql);
+    } else { // end if $memberfollows == FALSE
+      echo 'You are already following this topic!<br>';
+    }
+
+  } else { // end if $validtopic == TRUE
+    echo 'You have navigated to this page in error, please try again!<br>';
+  }
 
   mysqli_close($con);
-       
-        
+
 ?>
-        
-      
-		<p>&nbsp;</p>
-      	<p>&nbsp;</p>
-      	<p>&nbsp;</p>
-    	<p>&nbsp;</p>
-     	<p>&nbsp;</p>
-      
-      
-      
-      
       <!-- /END THE FEATURETTES -->
 
 
@@ -211,10 +187,9 @@ Known bugs:
       <!--<ol class="breadcrumb">
       	<li><a href="index.php">Home</a></li>
       </ol>-->
-      <hr class="featurette-divider">
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Circle, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">About</a></p>
+        <p>&copy; 2014 Circle, Inc. &middot; <a href="#top">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">About</a></p>
       </footer>
     </div><!-- /.container -->
 

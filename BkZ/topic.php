@@ -163,16 +163,19 @@ Known bugs:
       $topicownername = '';
       foreach ($result as $row) {
         $topicownerid = $row["ownerid"];
-        $sql2 = 'select username from member where memberid=' . $topicownerid;
+        $topicavatarpath = '';
+        $sql2 = 'select username,avatarpath from member where memberid=' . $topicownerid;
         $result2 = mysqli_query($con,$sql2);
-        foreach ($result2 as $row2) { $topicownername = $row2["username"]; }
-
+        foreach ($result2 as $row2) { 
+          $topicownername = $row2["username"]; 
+          $topicavatarpath = $row2["avatarpath"];
+        }
         echo '&nbsp;';
         echo '<div class="row">';
         echo '<div class="col-md-12">';
         echo '<div class="media">';
         echo '<a class="pull-left" href="viewtopic.php?id=' . $row["topicid"] . '">';
-        echo '<img class="img-circle" data-src="holder.js/100x100" alt="Generic placeholder image">';
+        echo '<img class="img-circle" img src="' . $topicavatarpath . '" width="64" height="64" alt="Generic placeholder image">';
         echo '</a>';
         echo '<div class="media-body">';
         echo '<h4 class="media-heading">' . $row["name"] . '</h4>';
@@ -203,17 +206,18 @@ Known bugs:
       $result2 = mysqli_query($con,$sql2);
       foreach ($result2 as $row2) { $data[] = array("topic" => $row["topicid"], "content" => $row2["count(contentid)"]); }
     }
-    $ranking = array();
+
     foreach ($data as $key => $row) {
-      $ranking[$key] = $row['content'];
+      $topic[$key] = $row['topic'];
+      $content[$key] = $row['content'];
     }
 
-    array_multisort($ranking,SORT_DESC,$data);
+    array_multisort($content,SORT_DESC,$data);
+
     $toptopics = array();
+
     foreach ($data as $row) {
-      foreach ($row as $key => $value) {
-        array_push($toptopics,$value);
-      }
+      array_push($toptopics,$row['topic']);
     }
 
     echo '&nbsp;';
@@ -228,9 +232,13 @@ Known bugs:
       $index += 1;
       foreach ($result as $row) {
         $topicownerid = $row["ownerid"];
-        $sql2 = 'select username from member where memberid=' . $topicownerid;
+        $topicownervatarpath = '';
+        $sql2 = 'select username,avatarpath from member where memberid=' . $topicownerid;
         $result2 = mysqli_query($con,$sql2);
-        foreach ($result2 as $row2) { $topicownername = $row2["username"]; }
+        foreach ($result2 as $row2) { 
+          $topicownername = $row2["username"]; 
+          $topicowneravatarpath = $row2["avatarpath"];
+        }
         echo '<tr>';
         echo '<td valign="top"><h4>' . $index . '.</h4></td>';
         echo '<td>';
@@ -238,7 +246,7 @@ Known bugs:
         echo '<div class="col-md-12">';
         echo '<div class="media">';
         echo '<a class="pull-left" href="viewtopic.php?id=' . $row["topicid"] . '">';
-        echo '<img class="img-circle" data-src="holder.js/100x100" alt="Generic placeholder image">';
+        echo '<img class="img-circle" img src="' . $topicowneravatarpath . '" width="64" height="64" alt="Generic placeholder image">';
         echo '</a>';
         echo '<div class="media-body">';
         echo '<h4 class="media-heading">' . $row["name"] . '</h4>';
