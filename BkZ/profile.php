@@ -50,7 +50,7 @@ Known bugs:
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Seach for communities, topics, and products" size="70" maxlength="70">
             </div>
-            	
+
 <?php               
   if (isset($_SESSION["loggedin"])) {
     echo '<a href="signout.php"><button type="button" class="btn btn-primary navbar-btn-right" >Sign Out</button></a>';
@@ -68,159 +68,236 @@ Known bugs:
   } // end if-else user is logged in
 
 ?>
+            	
           </form>  
         </div>
       </div>
     </div>
     
-    
-    
-    <!-- Look at grid layouts on Bootstrap: http://getbootstrap.com/css/#grid -->
-    <div class="container">
-    	 <p>&nbsp;</p>
-      	<p>&nbsp;</p>
-      
-		<div class="row">
-          <div class="col-md-12">
-          	&nbsp;
-          </div>
-        </div>
+
 
 <?php
+  $dbhost = "localhost:3306";
+  $dbuser = "root";
+  $dbpass = "";
+  $dbname = "Circle";
+
+  $con=mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+  if (mysqli_connect_errno()) {  
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();  
+  }
+
   if (isset($_SESSION["loggedin"])) {
-
-    $dbhost = "localhost:3306";
-    $dbuser = "root";
-    $dbpass = "";
-    $dbname = "Circle";
-    $email = "";
-    $state = "";
-    $city = "";
-    $zip = "";
-    $joined = "";
-    $lastlogin = "";  
-    $role = "";
-    $numcommunities = 0;
-    $numtopics = 0;
-    $numcontent = 0;
-    if ($_SESSION["role"] == 'u') { $role = "User"; }
-    if ($_SESSION["role"] == 's') { $role = "Seller"; }
-    if ($_SESSION["role"] == 'a') { $role = "Admin"; }
-    
     $memberid = $_SESSION["memberid"];
-
-    $con=mysqli_connect($dbhost, $dbuser, $dbpass, $dbname); 
-    if (mysqli_connect_errno()) {  
-      echo "Failed to connect to MySQL: " . mysqli_connect_error();  
-    }
-
-    $sql = "select * from member where memberid=" . $memberid;
+    $sql = 'select * from member where memberid=' . $memberid;
     $result = mysqli_query($con,$sql);
+
     foreach ($result as $row) {
-      $email = $row["email"];
-      $state = $row["state"];
-      $city = $row["city"];
-      $zip = $row["zip"];
-      $joined = $row["joindate"];
-      $lastlogin = $row["lastlogin"];  
-    } // end for loop to obtain member information
+      $userrole = '';
+      if ($row["role"] == 'u') { $userrole = 'User'; } else
+        if ($row["role"] == 's') { $userrole = 'Seller'; } else 
+          if ($row["role"] == 'a') { $userrole = 'Admin';}
+      
 
-    $sql = "select count(ownerid) from community where ownerid=" . $memberid;
+      echo '<div class="container">';
+      echo '<p>&nbsp;</p>';
+      echo '<p>&nbsp;</p>';
+      echo '<div class="row">';
+      echo '<div class="col-md-12">';
+      echo '&nbsp;';
+      echo '</div>';
+      echo '</div>';
+      echo '<div class="row">';
+      echo '<div class="col-md-3">';
+      echo '<table align="center">';
+      echo '<tr>';
+      echo '<td align="center"><img class="img-circle"  src="' . $row["avatarpath"] . '" width="150" height="150" alt="Generic placeholder image"></td>';
+      echo '</tr>';
+      echo '<tr>';
+      echo '<td align="center">' . $userrole . '</td>';
+      echo '</tr>';
+      echo '<tr>';
+      echo '<td align="center">';
+      echo $row["city"] . ',' . $row["state"];
+      echo '</td>';
+      echo '</tr>';
+      echo '</table>';
+      echo '</div>';
+      echo '<div class="col-md-9">';
+      echo '<table width="100%">';
+      echo '<tr>';
+      echo '<td colspan="2">';
+      echo '&nbsp;';
+      echo '<h1>';
+      echo $row["username"];
+      echo '<a href="editprofile.php"><button type="button" class="btn btn-primary btn-sm">Edit Profile</button></a>';
+      echo '</h1>';
+      echo '</td>';
+      echo '</tr>';
+      echo '<tr>';
+      echo '<td>';
+      echo '<h3><em>' . $row["email"] . '</em></h3>';
+      echo '</td>';
+      echo '<td>';
+      echo '<h3></h3>';
+      echo '</td>';
+      echo '</tr>';
+      echo '<tr>';
+      echo '<td>';
+      echo 'Joined : ' . $row["joindate"];
+      echo '</td>';
+      echo '</tr>';
+      echo '<tr>';
+      echo '<td>';
+      echo 'Last Login : ' . $row["lastlogin"];
+      echo '</td>';
+      echo '</tr>';
+      echo '</table>';
+      echo '</div>';
+      echo '</div><!-- /row -->';
+      echo '</div>';
+    } // end for loop to print user information
+   
+    $totalcommunity = 0;
+    $totaltopic = 0;
+    $totalproduct = 0;
+
+    $sql = 'select count(memberid) from joins where memberid=' . $memberid;
     $result = mysqli_query($con,$sql);
-    foreach ($result as $row) { $numcommunity = $row["count(ownerid)"]; }
+    while($row = mysqli_fetch_array($result)) { $totalcommunity = $row["count(memberid)"]; }
 
-    $sql = "select count(ownerid) from topic where ownerid=" . $memberid;
+    $sql = 'select count(memberid) from follows where memberid=' . $memberid;
     $result = mysqli_query($con,$sql);
-    foreach ($result as $row) { $numtopic = $row["count(ownerid)"]; }
+    while($row = mysqli_fetch_array($result)) { $totaltopic = $row["count(memberid)"]; }
 
-    $sql = "select count(ownerid) from content where ownerid=" . $memberid;
+    $sql = 'select count(ownerid) from product where ownerid=' . $memberid;
     $result = mysqli_query($con,$sql);
-    foreach ($result as $row) { $numcontent = $row["count(ownerid)"]; }
+    while($row = mysqli_fetch_array($result)) { $totalproduct = $row["count(ownerid)"]; }
 
+
+    echo '&nbsp;';
     echo '<div class="row">';
-    echo '<div class="col-md-3">';
-    echo '<table align="center">';
-    echo '<tr>';
-    echo '<td align="center"><img class="img-circle"  img src="' . $_SESSION["avatarpath"] . '" alt="Generic placeholder image"></td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '</table>';
-    echo '</div>';
-    echo '<div class="col-md-9">';
-    echo '<table>';
-    echo '<tr>';
-    echo '<td align="right">';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h1>' . $_SESSION["username"] . '</h1>';
-    echo '<a href="editprofile.php"> <button type="button" class="btn btn-primary btn-xs">Edit Profile</button></a>';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h4>Email: ' . $email . '</h4>';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h4>Joined Date: ' . $joined . '</h4>';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h4>City: ' . $city . '</h4>';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h4>State: ' . $state .'</h4>';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h4>Zipcode: ' . $zip .'</h4>';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h4>Last Login: ' . $lastlogin . '</h4>';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h4>Communities Created: ' . $numcommunity . '</h4>';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h4>Topics Created: ' . $numtopic . '</h4>';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h4>Content Created: ' . $numcontent . '</h4>';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h4>User Role: ' . $role . '</h4>';
-    echo '</td>';
-    echo '</tr>';
-    echo '</table>';
-    echo '</div>';
-    echo '</div>';   
+    echo '<div class="container marketing">';
+    echo '<div class="row">';
+    echo '<div class="col-lg-4">';
+    echo '<h3>Joined Communities</h3>';
+    if ($totalcommunity > 0) {
+      echo '<table align="center">';
+      $sql = 'select communityid from joins where memberid=' . $memberid;
+      $result = mysqli_query($con,$sql);
+      foreach ($result as $row) {
+        $sql2 = 'select name,path from community where communityid=' . $row["communityid"];
+        $result2 = mysqli_query($con,$sql2);
+        foreach ($result2 as $row2) {
+          echo '<tr>';
+          echo '<td class="table-top-product-padding" rowspan="2"></td>';
+          echo '<td class="text-left table-top-product-padding" rowspan="2">';
+          echo '<a href="viewcommunity.php?id=' . $row["communityid"] . '"><img class="img-circle"  src="' . $row2["path"] . '" width="90" height="90" alt="Generic placeholder image"></a>';
+          echo '</td>';
+          echo '<td class="table-top-product-name" height="65" align="left" valign="bottom" >';
+          echo $row2["name"];
+          echo '</td>';
+          echo '</tr>';
+          echo '<tr>';
+          echo '<td class="table-top-product-stars" align="left" valign="top">';
+          echo '</td>';
+          echo '</tr>';
+        } // end per community loop
+      } // end loop to obtain communityid member has joined
+      echo '</table>';           
+      echo '</div><!-- /.col-lg-4 -->';
+//      echo '</div>';
+    } else { // end if $totalcommunity > 0
+      echo 'You have not joined any communities, get involved!<br>';
+    } // end if-else $totalcommunity > 0
+    echo '<!--Topic Head -->';
+    echo '<div class="col-lg-4">';
+    echo '<h3>Followed Topics</h3>';
+    if ($totaltopic > 0) {
+      echo '<table class="table-top" align="center">';
+      $sql = 'select topicid from follows where memberid=' . $memberid;
+      $result = mysqli_query($con,$sql);
+      foreach ($result as $row) {
+        $sql2 = 'select name from topic where topicid=' . $row["topicid"];
+        $result2 = mysqli_query($con,$sql2);
+        foreach ($result2 as $row2) {
+          echo '<tr>';
+          echo '<td></td>';
+          echo '<td class="text-left"><a href="viewtopic.php?id=' . $row["topicid"] . '">' . $row2["name"] . '</a></td>';
+          echo '</tr>';
+        } // end for loop per individual topic
+      } // end for loop to get topicid from follows
+
+
+      echo '</table>';
+      echo '</div><!-- /.col-lg-4 -->';
+    } else { // end it $totaltopic > 0
+      echo 'You are not following any topics, get involved!<br>';
+    } // end if-else $totaltopics > 0
+
+    echo '<!--Product Head -->';
+    echo '<div class="col-lg-4">';
+    echo '<h3>Top Product</h3>';
+
+    if ($totalproduct > 0) {
+      echo '<table align="center">';
+
+      $sql = 'select * from product where ownerid=' . $memberid;
+      $result = mysqli_query($con,$sql);
+      foreach ($result as $row) {
+        $productimagepath = '';
+        $found = 0;
+        $sql2 = 'select path from productdetail where productid=' . $row["productid"];
+        $result2 = mysqli_query($con,$sql2);
+        while(($row2 = mysqli_fetch_array($result2)) && ($found == 0)) {
+          $found += 1;
+          $productimagepath = $row2["path"];
+        }
+        echo '<tr>';
+        echo '<td class="table-top-product-padding" rowspan="2"></td>';
+        echo '<td class="text-left table-top-product-padding" rowspan="2">';
+        echo '<a href="viewproduct.php?id=' . $row["productid"] . '"><img class="img-circle"  src="' . $productimagepath . '" width="90" height="90" alt="Generic placeholder image"></a>';
+        echo '</td>';
+        echo '<td class="table-top-product-name" height="65" align="left" valign="bottom" >' . $row["name"] . '</td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<td class="table-top-product-stars" align="left" valign="top">';
+
+        $rating = 0;
+        if ($row["numreviews"] != 0) {
+          $rating = $row["rating"] / $row["numreviews"];
+        }
+
+        $stars = 0;
+        $rating = round($rating,1);
+        while ($stars < round($rating,0,PHP_ROUND_HALF_EVEN)) {        
+          echo '<span class="glyphicon glyphicon-star"></span>';
+          $stars += 1;
+        }
+      echo '(' . $rating . ')';
+        echo '</td>';
+        echo '</tr>';
+      } // end for loop to dispay products
+
+    } else { // end if $totalproducts > 0
+      echo 'You do not own any products!<br>';
+    } // end if-else $totalproducts > 0
+      echo '</table>';
+      echo '</div><!-- /.col-lg-4 -->';
+      echo '</div><!-- /.row -->';
+
   } else { // end if user is logged in
-    echo "You must be registered and logged in to use this page!<br>";
+    echo 'You have navigated to this page in error and must be logged in!<br>';
   } // end if-else user is logged in
 
-  mysqli_close($con);
+  mysqli_Close($con);
 
 ?>
-      <hr class="featurette-divider">
-      <!-- /END THE FEATURETTES -->
+
+                &nbsp;
+            </div>
+        </div>
+    	<hr class="featurette-divider">
 
 
       <!-- Footer
