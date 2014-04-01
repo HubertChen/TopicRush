@@ -4415,7 +4415,7 @@ select[multiple].input-group-sm>.input-group-addon, select[multiple].input-group
 .navbar-default {
     background-color: #f8f8f8;
     border-color: #e7e7e7;
-	opacity:0.80;
+	/*opacity:0.80;*/
 }
 
 .navbar-default .navbar-brand {

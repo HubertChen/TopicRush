@@ -315,3 +315,14 @@ a.text-dec:link{
     margin-top: 120px;
   }
 }
+
+/* FOOTER
+-------------------------------------------------- */
+.footer-color, a:hover {
+	color: #CCC;
+}
+.footer-color {
+	color: #FFF;
+}
+
+
