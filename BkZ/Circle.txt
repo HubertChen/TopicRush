@@ -1,7 +1,7 @@
 create table member(
 memberid int not null AUTO_INCREMENT,
 username varchar(30) not null,
-password varchar(30) not null,
+password varchar(256) not null,
 city varchar(30) not null,
 state varchar(2) not null,
 zip varchar(5) not null,
