@@ -23,7 +23,7 @@
   
 <!-- NAVBAR
 ================================================== -->
-  <body>
+  <body style="background-color:#7aadd9">
     <div class="navbar navbar-default navbar-fixed-top" role="navigation" align="center">   
       <div class="container">
         <div class="navbar-header">
@@ -38,7 +38,7 @@
     
 	<!-- Sign Up Form
     ================================================== -->
-	<div class="container">
+	<div class="container" style="background-color:rgb(255, 255, 255)">
     	<p>&nbsp;</p>
         <p>&nbsp;</p>
     	<?php echo $errorMessage; ?>
@@ -56,7 +56,7 @@
 				<label class="sr-only" for="password2">Password</label>
 				<input type="password" class="form-control" name="password2" id="password2" placeholder="Retype Password" value="<?php $password2; ?>" required>
 			</div>
-			<p>Role:</p>
+			<h5>Role:</h5>
 			<div class="radio-inline">
 				<label>
 					<input type="radio" name="role" id="user" value="u" checked>User
@@ -70,20 +70,32 @@
 			<?php echo $button; ?>
             <!--<button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button> -->
             <p class="text-center" ><a href="signin.php">Sign In </a></p>
-		</form>   
-        <hr class="featurette-divider">
+		</form> 
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+      </div><!-- /end of container -->
+ 
 		
         <!-- Footer
-   		 ================================================== -->
-      	<footer>
-            <!--<ol class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-            </ol>-->
-        	<p class="pull-right"><a href="#">Back to top</a></p>
-        	<p>&copy; 2014 Circle, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">About</a></p>
-     	</footer>
+    ================================================== -->
+      <div class="container">
+          <footer>
+              <br/>
+              <br/>
+              <br/>
+              <div align="center">
+                <img src="images/logoWhite.png" width="75" height="75" align="Circle">
+              </div>
+              <br/>
+              <br/>
+              <br/>
+              <hr/>
+              <p class="pull-right footer-color"><a href="#top" class="footer-color">Back to top</a></p>
+              <p class="footer-color">&copy; 2014 Circle, Inc. &middot; <a href="privacy.php" class="footer-color">Privacy</a> &middot; <a href="terms.php" class="footer-color">Terms</a> &middot; <a href="about.php" class="footer-color">About</a></p>
+      	</footer>
     </div><!-- /.container -->
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

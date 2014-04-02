@@ -57,7 +57,7 @@
         <p>&nbsp;</p>
     	<?php echo $errorMessage; ?>
 
-        <div class="row show-grid">
+        <div class="row">
         	<div class="col-md-12">
             	<table align="center">
                 	<tr>
@@ -74,7 +74,7 @@
            		</table>
 			</div> 
         </div>
-        <div class="row show-grid">
+        <div class="row">
         	<div class="col-md-12">
           		<h1 class="pull-left">Product</h1>
                 <?php echo $addproduct; ?>

@@ -13,7 +13,7 @@
 	
 	//navbar: user is logged in           
   	if (isset($_SESSION["loggedin"])) {
-    	$navbar = '<a href="signout.php"><button type="button" class="btn btn-primary navbar-btn-right btn-sm" >Sign Out</button></a>
+    	$navbar = '<a href="signout.php"><button type="button" class="btn btn-signin navbar-btn-right btn-sm" >Sign Out</button></a>
 					<div class="navbar-right">
 						<a href="profile.php">
 							<img src="'. $_SESSION["avatarpath"] . '" alt="User Profile Image" width="35" height="35" class="img-circle">
@@ -34,7 +34,7 @@
      					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						There seems to be a problem, please try again later!
 						</div>';
-	$button = '<button type="submit" class="btn btn-primary" disabled="disabled">Add Community</button>';
+	$button = '<button type="submit" class="btn btn-primary pull-right" disabled="disabled">Add Community</button>';
 		include 'addproduct.html.php';
 		exit(); 
   	} 
@@ -106,7 +106,7 @@
      							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 								Community added Successfully!
 							</div>';
-							$button = '<button type="submit" class="btn btn-primary">Add Community</button>';
+							$button = '<button type="submit" class="btn btn-primary pull-right">Add Community</button>';
 			include 'addcommunity.html.php';
 			
 			
@@ -115,7 +115,7 @@
      								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 									' . $formerrors. '
 								</div>';
-								$button = '<button type="submit" class="btn btn-primary">Add Community</button>';
+								$button = '<button type="submit" class="btn btn-primary pull-right">Add Community</button>';
 			include 'addcommunity.html.php';
 			//exit();			
       	} // end if-else form valid
@@ -126,7 +126,7 @@
      					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						Need to sign in to add a community!
 					</div>';
-	$button = '<button type="submit" class="btn btn-primary" disabled="disabled">Add Community</button>';
+	$button = '<button type="submit" class="btn btn-primary pull-right" disabled="disabled">Add Community</button>';
 	
 	include 'addcommunity.html.php';
 	exit();

@@ -22,7 +22,7 @@
             
   <!-- NAVBAR
   ================================================== -->
-  <body>
+  <body style="background-color:#7aadd9">
 	<div class="navbar navbar-default navbar-fixed-top" role="navigation">   
     	<div class="container">
         	<div class="navbar-header">
@@ -54,7 +54,7 @@
     
     
     <!-- Look at grid layouts on Bootstrap: http://getbootstrap.com/css/#grid -->
-  	<div class="container">
+  	<div class="container" style="background-color:rgb(255, 255, 255)">
    		<p>&nbsp;</p>
         <p>&nbsp;</p>
     	<?php echo $errorMessage; ?>
@@ -66,9 +66,9 @@
                     	<td>
                         	<div>
                             	<ul class="nav masthead-nav">
-                                	<li><a href="community.html">Community</a></li>
-                                    <li><a href="topic.html">Topic</a></li>
-                                    <li><a href="product.html">Product</a></li>
+                                	<li><a href="community.php">Community</a></li>
+                                    <li><a href="topic.php">Topic</a></li>
+                                    <li><a href="product.php">Product</a></li>
                                 </ul>
                            	</div>
                   		</td>
@@ -93,7 +93,7 @@
 					<div class="form-group">
 						<label for="file">Picture</label>
 						<input type="file" name="file" id="file" required>
-						<span class="help-block">Submit only .gif, .jgp,  .jpeg, or png <br/>Maximum 200 KB.</span>
+						<span class="help-block">Submit only .gif, .jgp,  .jpeg, or .png <br/>Maximum 200 KB.</span>
 					</div>
                     <?php echo $button; ?>
 					<!--<button type="submit" class="btn btn-primary">Create Community</button>-->
@@ -103,37 +103,35 @@
           		<table align="center">
             		<tr>
                 		<td>
-           			  	<img class="img-circle"  data-src="holder.js/300x300" alt="Generic placeholder image">
+           			  	<img class="img-circle" src="images/communityLogo-03.png" width="300" height="300" alt="Community Logo">
             			</td>
               		</tr>    
           		</table>
         	</div>
       	</div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+      </div><!-- /end of container -->
 
-      
-		<p>&nbsp;</p>
-      	<p>&nbsp;</p>
-      	<p>&nbsp;</p>
-    	<p>&nbsp;</p>
-     	<p>&nbsp;</p>
-
-      
-      <!-- /END THE FEATURETTES -->
-
-
-      <!-- Footer
-          Need to do:
-    		-Add color to the bottom
-            -May want to add bread crumb for navigation purposes
+	<!-- Footer
     ================================================== -->
-      <!--<ol class="breadcrumb">
-      	<li><a href="index.php">Home</a></li>
-      </ol>-->
-      <hr class="featurette-divider">
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Circle, Inc. &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a></p>
-      </footer>
+      <div class="container">
+          <footer>
+              <br/>
+              <br/>
+              <br/>
+              <div align="center">
+                <img src="images/logoWhite.png" width="75" height="75" align="Circle">
+              </div>
+              <br/>
+              <br/>
+              <br/>
+              <hr/>
+              <p class="pull-right footer-color"><a href="#top" class="footer-color">Back to top</a></p>
+              <p class="footer-color">&copy; 2014 Circle, Inc. &middot; <a href="privacy.php" class="footer-color">Privacy</a> &middot; <a href="terms.php" class="footer-color">Terms</a> &middot; <a href="about.php" class="footer-color">About</a></p>
+      	</footer>
     </div><!-- /.container -->
 
     <!-- Bootstrap core JavaScript

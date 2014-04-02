@@ -15,7 +15,7 @@
           
   //navbar: user is logged in           
   	if (isset($_SESSION["loggedin"])) {
-    	$navbar = '<a href="signout.php"><button type="button" class="btn btn-primary navbar-btn-right btn-sm" >Sign Out</button></a>
+    	$navbar = '<a href="signout.php"><button type="button" class="btn btn-signin navbar-btn-right btn-sm" >Sign Out</button></a>
 					<div class="navbar-right">
 						<a href="profile.php">
 							<img src="'. $_SESSION["avatarpath"] . '" alt="User Profile Image" width="35" height="35" class="img-circle">
@@ -65,7 +65,7 @@
     	echo '<div class="row">';
     	echo '<div class="col-md-12"><h3>Explore</h3></div>';
     	echo '</div>';
-    	echo '<div class="row show-grid">';
+    	echo '<div class="row">';
     	
 		if ($totalproducts > 15) {
 
@@ -87,7 +87,7 @@
 				  $imagepath = $imagepath . $row2["path"];
         		}
 				echo '<div class="col-md-3">';
-				echo '<table align="center" border="1">';
+				echo '<table align="center">';
 				echo '<tr>';
 				echo '<td align="center"><a href="viewproduct.php?id=' . $row["productid"] . '"><img class="img-circle"  img src="' . $imagepath . '" height="150" width="150" alt="' . $row["name"] . '"></a></td>';
 				echo '</tr>';
@@ -124,14 +124,13 @@
 	/*TOP PRODUCTS*/
 	// for top producs $sql = 'select * from product order by (rating/numreviews) desc';
   	echo '<p>&nbsp;</p>';
-  	echo '<div class="row show-grid">';
+  	echo '<div class="row">';
   	echo '<div class="col-md-12">';
   	echo '<hr class="featurette-divider" id="topProduct">';
-  	echo '<p>&nbsp;</p>';
-  	echo '<h3 >Top Products</h3>';
+  	echo '<h3 >Top</h3>';
   	echo '</div>';
   	echo '</div>';
-  	echo '<div class="row show-grid">';
+  	echo '<div class="row">';
   
   	$maxproducts = 0;
   	$sql = 'select * from product order by (rating/numreviews) desc';
@@ -153,7 +152,7 @@
     	}
     	
 		echo '<div class="col-md-3">';
-    	echo '<table align="center" border="1">';
+    	echo '<table align="center">';
     	echo '<tr>';
     	echo '<td rowspan="3" valign="top"><h4>' . $maxproducts . '.</h4></td>';
     	echo '<td align="center"><a href="viewproduct.php?id=' . $row["productid"] . '"><img class="img-circle"  img src="' . $imagepath . '" height="150" width="150" alt="' . $row["name"] . '"></a></td>';

@@ -16,5 +16,5 @@ $errorMessage = '
 		include 'index.php';
 		exit();
 		
-		?>
+?>
 

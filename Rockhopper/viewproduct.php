@@ -90,7 +90,7 @@ Known bugs:
 
 <?php
 
-  $dbhost = "localhost:3306";
+  $dbhost = "localhost";
   $dbuser = "root";
   $dbpass = "";
   $dbname = "Circle";
@@ -111,7 +111,7 @@ Known bugs:
   $listedprice = '';
   $categoryid = 0;
   $categoryname = '';
-  $imagepath = '/bzk';
+  $imagepath = '';
 
   $sql = 'select * from product where productid=' . $productid;
   $result = mysqli_query($con,$sql);
@@ -148,7 +148,7 @@ Known bugs:
   echo '<table align="center">';
   echo '<tr>';
 // GOING TO NEED TO WORK OUT HOW TO DISPLAY MULTIPLE PICTURES
-  echo '<td align="center"><img class="img-circle"  img src="' . $imagepath . '" alt="Generic placeholder image"></td>';
+  echo '<td align="center"><img class="img-circle"  img src="' . $imagepath . '" width="300" height="300" alt="Generic placeholder image"></td>';
   echo '</tr>';
   echo '<tr>';
   echo '<td align="center">';
@@ -272,7 +272,7 @@ Known bugs:
       </ol>-->
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Circle, Inc. &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a></p>
+        <p>&copy; 2014 Circle, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">About</a></p>
       </footer>
     </div><!-- /.container -->
 

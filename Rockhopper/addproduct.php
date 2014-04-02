@@ -22,21 +22,19 @@
 
 
 	//navbar: user is logged in           
-	if (isset($_SESSION["loggedin"])) {
-    	$navbar = '<a href="signout.php"><button type="button" class="btn btn-primary navbar-btn-right btn-sm" >Sign Out</button></a>
+  	if (isset($_SESSION["loggedin"])) {
+    	$navbar = '<a href="signout.php"><button type="button" class="btn btn-signin navbar-btn-right btn-sm" >Sign Out</button></a>
 					<div class="navbar-right">
 						<a href="profile.php">
-							<img src="images/userDefault.png" alt="Generic placeholder image" width="35" height="35" class="img-circle">
+							<img src="'. $_SESSION["avatarpath"] . '" alt="User Profile Image" width="35" height="35" class="img-circle">
 						</a>
-						<a href="profile.php">[User Name]</a>
+						<a href="profile.php">' . $_SESSION["username"] . '</a>
 					</div>';
 	
-	} else {// end if user is logged in
-    	
-		//navbar: user not logged in
-		$navbar = '<a href="signin.php"><button type="button" class="btn btn-signin navbar-btn-right">Sign In</button></a>
+	} else { // end if user is logged in
+    	$navbar ='<a href="signin.php"><button type="button" class="btn btn-signin navbar-btn-right">Sign In</button></a>
 					<a href="signup.php"><button type="button" class="btn btn-primary navbar-btn-right" >Sign Up</button></a>';
-	}// end if-else user is logged in
+  	} // end if-else user is logged in
 
 
 
@@ -58,7 +56,7 @@
 		
 		//If user is a 'seller'
 		if ($_SESSION["role"] == "s") {
-      		$button = '<button type="submit" class="btn btn-primary">Add Product</button>';
+      		$button = '<button type="submit" class="btn btn-primary pull-right">Add Product</button>';
       		$memberid = $_SESSION["memberid"];
 	  
 	  		//If post message received
@@ -116,7 +114,7 @@
 				if ($_FILES["file"]["error"] > 0) {
 					//echo "Error: " . $_FILES["file"]["error"] . "<br>";
 				  	$valdiform = FALSE;
-				  	$formerrors = $formerrors . "Invalid picture file!<br>";
+				  	$formerrors = $formerrors . "Invalid picture file!<br/>";
 				} else { // end if no file attached
 				  	//echo "Upload: " . $_FILES["file"]["name"] . "<br>";
 				  	//echo "Type: " . $_FILES["file"]["type"] . "<br>";
@@ -145,7 +143,7 @@
      								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 									' . $formerrors. '
 								</div>';
-				$button = '<button type="submit" class="btn btn-primary">Add Product</button>';
+				$button = '<button type="submit" class="btn btn-primary pull-right">Add Product</button>';
 				
 				include 'addproduct.html.php';
 				exit();					
@@ -227,7 +225,7 @@
      						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 							Account is not authorized to add a product!
 						</div>';
-		$button = '<button type="submit" class="btn btn-primary" disabled="disabled">Add Product</button>';
+		$button = '<button type="submit" class="btn btn-primary" disabled="disabled pull-right">Add Product</button>';
 		include 'addproduct.html.php';
 		exit();
 	}// end if user is a not a sller
@@ -237,7 +235,7 @@
      						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 							Need to sign in to add a product!
 						</div>';
-	$button = '<button type="submit" class="btn btn-primary" disabled="disabled">Add Product</button>';
+	$button = '<button type="submit" class="btn btn-primary pull-right" disabled="disabled">Add Product</button>';
 	include 'addproduct.html.php';
 	exit();  
   }// end if user is not logged in

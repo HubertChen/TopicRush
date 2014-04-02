@@ -10,7 +10,7 @@
   	
 	//navbar: user is logged in           
   	if (isset($_SESSION["loggedin"])) {
-    	$navbar = '<a href="signout.php"><button type="button" class="btn btn-primary navbar-btn-right btn-sm" >Sign Out</button></a>
+    	$navbar = '<a href="signout.php"><button type="button" class="btn btn-signin navbar-btn-right btn-sm" >Sign Out</button></a>
 					<div class="navbar-right">
 						<a href="profile.php">
 							<img src="'. $_SESSION["avatarpath"] . '" alt="User Profile Image" width="35" height="35" class="img-circle">
@@ -56,7 +56,7 @@
 		$sql = "select * from member where memberid=" . $memberid;
 		$result = mysqli_query($con,$sql);
 		
-		$button = '<button type="submit" class="btn btn-primary">Update</button>';
+		$button = '<button type="submit" class="btn btn-primary pull-right">Update</button>';
     	
 		//Pulls member information
 		foreach($result as $row) { 
@@ -163,7 +163,7 @@
      								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 									' . $formerrors. '
 								</div>';
-			$button = '<button type="submit" class="btn btn-primary">Update</button>';
+			$button = '<button type="submit" class="btn btn-primary pull-right">Update</button>';
 				
 			include 'editprofile.html.php';
 			exit();		  
@@ -175,7 +175,7 @@
      						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 							Need to sign in to edit profile!
 						</div>';
-	$button = '<button type="submit" class="btn btn-primary" disabled="disabled">Update</button>';
+	$button = '<button type="submit" class="btn btn-primary pull-right" disabled="disabled">Update</button>';
 	include 'editprofile.html.php';
 	exit();  
   } // end if-else user is logged in

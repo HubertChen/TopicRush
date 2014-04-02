@@ -21,7 +21,7 @@
   
   <!-- NAVBAR
   ================================================== -->
-  <body>
+  <body style="background-color:#7aadd9">
 	<div class="navbar navbar-default navbar-fixed-top" role="navigation">   
     	<div class="container">
         	<div class="navbar-header">
@@ -51,8 +51,8 @@
   		</div>
   	</div>
     
-    <!-- Look at grid layouts on Bootstrap: http://getbootstrap.com/css/#grid -->
-  	<div class="container">
+    <!-- Add Product Section-->
+  	<div class="container" style="background-color:rgb(255, 255, 255)">
    		<p>&nbsp;</p>
         <p>&nbsp;</p>
     	<?php echo $errorMessage; ?>
@@ -64,9 +64,9 @@
                     	<td>
                         	<div>
                             	<ul class="nav masthead-nav">
-                                	<li><a href="community.html">Community</a></li>
-                                    <li><a href="topic.html">Topic</a></li>
-                                    <li><a href="product.html">Product</a></li>
+                                	<li><a href="community.php">Community</a></li>
+                                    <li><a href="topic.php">Topic</a></li>
+                                    <li><a href="product.php">Product</a></li>
                                 </ul>
                            	</div>
                   		</td>
@@ -92,34 +92,43 @@
 						<textarea class="form-control" rows="3" name="productdescription" id="prodctdescription" placeholder="Product Description" value="<?php echo $productdescription; ?>" required></textarea>
 					</div>
 					<div class="form-group">
-						<label for="listedprice">Listed Price</label>
-						<input type="text" class="form-control" name="listedprice" id="listedprice" placeholder="Enter Price" value="<?php echo $listedprice; ?>" required>
+                    	<div class="row">
+                        	<div class="col-sm-6">
+                            	<label for="listedprice">Listed Price</label>
+								<input type="text" class="form-control" name="listedprice" id="listedprice" placeholder="Enter Price" value="<?php echo $listedprice; ?>" required>
+                            </div>
+                            <div class="col-sm-6">
+                            	<label for="retailprice">Retail Price</label>
+								<input type="text" class="form-control" name="retailprice" id="retailprice" placeholder="Enter Price" value="<?php echo $retailprice; ?>" required>
+                            </div>
+                      	</div>
+						
 					</div>
 					<div class="form-group">
-						<label for="retailprice">Retail Price</label>
-						<input type="text" class="form-control" name="retailprice" id="retailprice" placeholder="Enter Price" value="<?php echo $retailprice; ?>" required>
-					</div>
-					<div class="form-group">
-						<label for="Category">Category</label>
-						<select name="category" class="form-control">
-							<?php 						
-                                $result = mysqli_query($con,"select categoryid,name  from category");
-                                foreach($result as $row) {
-                                    echo '<option value="'.$row['categoryid'].'"';
-                                    echo '>'. $row['name'] . '</option>'."\n";
-                                } // end for loop to print Category 
-                            ?>						                  
-							<option value="addnew">Add New</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="retailprice">New Category</label>
-						<input type="text" class="form-control" name="newcategory" id="newcategory" placeholder="Enter Category">
+                    	<div class="row">
+                        	<div class="col-sm-6">
+                            	<label for="Category">Category</label>
+								<select name="category" class="form-control">
+								<?php 						
+                                	$result = mysqli_query($con,"select categoryid,name  from category");
+                                	foreach($result as $row) {
+                                    	echo '<option value="'.$row['categoryid'].'"';
+                                    	echo '>'. $row['name'] . '</option>'."\n";
+                                	} // end for loop to print Category 
+                            	?>
+                                <option value="addnew">Add New</option>
+								</select>
+                            </div>
+                            <div class="col-sm-6">
+                            	<label for="retailprice">New Category</label>
+								<input type="text" class="form-control" name="newcategory" id="newcategory" placeholder="Enter Category">
+                            </div>
+                        </div>								                  
 					</div>
 					<div class="form-group">
 						<label for="file">Picture</label>
 						<input type="file" name="file" id="file">
-						<p class="help-block">Must be .gif .jpg .jpeg or .png and less than 200kbytes.</p>
+						<span class="help-block">Submit only .gif, .jgp,  .jpeg, or png <br/>Maximum 200 KB.</span>
 					</div>
 					<div class="form-group">
 						<label for="retailprice">Picture Description</label>
@@ -127,38 +136,40 @@
 					</div>
                     <?php echo $button; ?>
 				</form>
-        	</div>
-        	
+        	</div>	
             <div class="col-md-6">
-          		<p>&nbsp;</p>
-          		<p>&nbsp;</p>
-          		<p>&nbsp;</p>
+          		<br/>
                 <table align="center">
                     <tr>
                         <td>
-                          <img class="img-circle"  data-src="holder.js/300x300" alt="Generic placeholder image">
+                          <img class="img-circle" src="images/productLogo-03.png" height="300" width="300" alt="Product Logo">
                         </td>
                   </tr>    
               </table>
         	</div>
       	</div>
-
-      <!-- /END THE FEATURETTES -->
-
+        <br/>
+        <br/>
+        <br/>
+      </div>
 
       <!-- Footer
-          Need to do:
-    		-Add color to the bottom
-            -May want to add bread crumb for navigation purposes
     ================================================== -->
-      <!--<ol class="breadcrumb">
-      	<li><a href="index.php">Home</a></li>
-      </ol>-->
-      <hr class="featurette-divider">
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Circle, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">About</a></p>
-      </footer>
+      <div class="container">
+          <footer>
+              <br/>
+              <br/>
+              <br/>
+              <div align="center">
+                <img src="images/logoWhite.png" width="75" height="75" align="Circle">
+              </div>
+              <br/>
+              <br/>
+              <br/>
+              <hr/>
+              <p class="pull-right footer-color"><a href="#top" class="footer-color">Back to top</a></p>
+              <p class="footer-color">&copy; 2014 Circle, Inc. &middot; <a href="privacy.php" class="footer-color">Privacy</a> &middot; <a href="terms.php" class="footer-color">Terms</a> &middot; <a href="about.php" class="footer-color">About</a></p>
+      	</footer>
     </div><!-- /.container -->
 
     <!-- Bootstrap core JavaScript

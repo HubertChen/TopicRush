@@ -90,7 +90,7 @@ Known bugs:
   
   if (isset($_SESSION["loggedin"])) {
 
-    $dbhost = "localhost:3306";
+    $dbhost = "localhost";
     $dbuser = "root";
     $dbpass = "";
     $dbname = "Circle";

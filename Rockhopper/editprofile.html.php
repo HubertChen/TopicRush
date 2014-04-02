@@ -21,7 +21,7 @@
   
   <!-- NAVBAR
   ================================================== -->
-  <body>
+  <body style="background-color:#7aadd9">
 	<div class="navbar navbar-default navbar-fixed-top" role="navigation">   
     	<div class="container">
         	<div class="navbar-header">
@@ -52,7 +52,7 @@
   	</div>
     
         <!-- Look at grid layouts on Bootstrap: http://getbootstrap.com/css/#grid -->
-    <div class="container">
+    <div class="container" style="background-color:rgb(255, 255, 255)">
     	<p>&nbsp;</p>
       	<p>&nbsp;</p>
         <?php echo $errorMessage; ?>
@@ -106,38 +106,41 @@
 				</form>
 			</div>
 			<div class="col-md-6">
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
 				<table align="center">
 					<tr>
 						<td>
                         	<!-- May switch to a generic photo rather then a users photo-->
-  							<img class="img-circle"  img src="<?php echo $avatarpath; ?>" alt="Generic placeholder image">
+  							<img class="img-circle" src="images/editprofileLogo-03.png" width="300" height="300" alt="Edit Profile Logo">
   						</td>
     				</tr> 
 				</table>
 			</div>
 		</div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+      </div><!-- /end of contianer -->
 
-		
-      
-      <!-- /END THE FEATURETTES -->
-
-
-      <!-- Footer
-          Need to do:
-    		-Add color to the bottom
-            -May want to add bread crumb for navigation purposes
+	<!-- Footer
     ================================================== -->
-      <!--<ol class="breadcrumb">
-      	<li><a href="index.php">Home</a></li>
-      </ol>-->
-      <hr class="featurette-divider">
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Circle, Inc. &middot; <a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="about.html">About</a></p>
-      </footer>
+      <div class="container">
+          <footer>
+              <br/>
+              <br/>
+              <br/>
+              <div align="center">
+                <img src="images/logoWhite.png" width="75" height="75" align="Circle">
+              </div>
+              <br/>
+              <br/>
+              <br/>
+              <hr/>
+              <p class="pull-right footer-color"><a href="#top" class="footer-color">Back to top</a></p>
+              <p class="footer-color">&copy; 2014 Circle, Inc. &middot; <a href="privacy.php" class="footer-color">Privacy</a> &middot; <a href="terms.php" class="footer-color">Terms</a> &middot; <a href="about.php" class="footer-color">About</a></p>
+      	</footer>
     </div><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
