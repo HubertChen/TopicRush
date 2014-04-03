@@ -1,14 +1,30 @@
-insert into member VALUES (1, "Taku", "Tman91", "Long Branch", "NJ", "07764", 'u', default, "taffy@monmouth.edu", '2014-01-22 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/4.png");
-insert into member VALUES (2, "George", "George1", "Long Island", "NY", "11101", 's', default, "georgeS@hotmail.com", '2014-02-02 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/1.png");
-insert into member VALUES (3, "Sarah", "Ponies77", "Cape May", "NJ", "08204", 's', default, "sarah90@gmail.com", '2014-01-12 10:23:09', '2014-02-22 10:23:09', "/bzk/images/avatars/3.png");
-insert into member VALUES (4, "Anne", "Skull17", "New York", "NY", "10007", 'u', default, "annie7@yahoo.com", '2014-02-24 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/2.png");
-insert into member VALUES (5, "Luis", "Lasagne34", "Clifton", "NJ", "07015", 's', default, "luisGate@outlook.com", '2014-01-12 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/1.png");
-insert into member VALUES (6, "Shannon", "puppieLover8", "Wall", "NJ", "07057", 's', default, "shannonM@hotmail.com", '2014-02-09 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/2.png");
-insert into member VALUES (7, "Clara", "d23Clara", "Bakerstown", "PA", "15007", 'u', default, "claraEnglish@gmail.com", '2014-01-17 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/3.png");
-insert into member VALUES (8, "Phil", "Cold4Lyf", "Syracuse", "NY", "13244", 'u', default, "phil.s@syracuse.edu", '2014-02-27 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/4.png");
-insert into member VALUES (9, "Bruno", "bBoy88", "Baltimore", "MD", "21201", 's', default, "bruno.friend@rutgers.edu", '2014-01-22 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/1.png");
-insert into member VALUES (10, "Steve", "Steve13", "Philadelphia", "PA", "19119", 'u', default, "steve.books@monmouth.edu", '2014-01-12 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/1.png");
-insert into member VALUES (11, "Linda", "l65Linda", "Bloomfield", "NJ", "07003", 'u', default, "lindaFake@comcast.com", '2014-03-01 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/3.png");
+/*
+Plaintext Passwords:
+
+taffy@monmouth.edu - Tman91
+georgeS@hotmail.com - George1
+sarah90@gmail.com - Ponies77
+annie7@yahoo.com - Skull17
+luisGate@outlook.com - Lasagne34
+shannonM@hotmail.com - puppieLover8
+claraEnglish@gmail.com - d23Clara
+phil.s@syracuse.edu - Cold4Lyf
+bruno.friend@rutgers.edu - bBoy88
+steve.books@monmouth.edu - Steve13
+lindaFake@comcast.com - l65Linda
+*/
+
+insert into member VALUES (1, "Taku", "SfPMPAFDHlM1M", "Long Branch", "NJ", "07764", 'u', default, "taffy@monmouth.edu", '2014-01-22 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/4.png");
+insert into member VALUES (2, "George", "SfnTNPbdsXdHk", "Long Island", "NY", "11101", 's', default, "georgeS@hotmail.com", '2014-02-02 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/1.png");
+insert into member VALUES (3, "Sarah", "SfWY6QZytO3DM", "Cape May", "NJ", "08204", 's', default, "sarah90@gmail.com", '2014-01-12 10:23:09', '2014-02-22 10:23:09', "/bzk/images/avatars/3.png");
+insert into member VALUES (4, "Anne", "Sfm2rCFht.0Zc", "New York", "NY", "10007", 'u', default, "annie7@yahoo.com", '2014-02-24 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/2.png");
+insert into member VALUES (5, "Luis", "Sf.e/gqdsWhZg", "Clifton", "NJ", "07015", 's', default, "luisGate@outlook.com", '2014-01-12 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/1.png");
+insert into member VALUES (6, "Shannon", "SfvVF.9z8lX6c", "Wall", "NJ", "07057", 's', default, "shannonM@hotmail.com", '2014-02-09 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/2.png");
+insert into member VALUES (7, "Clara", "SfSW1IIlWf/Q.", "Bakerstown", "PA", "15007", 'u', default, "claraEnglish@gmail.com", '2014-01-17 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/3.png");
+insert into member VALUES (8, "Phil", "SfeNzqlusrOb.", "Syracuse", "NY", "13244", 'u', default, "phil.s@syracuse.edu", '2014-02-27 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/4.png");
+insert into member VALUES (9, "Bruno", "Sfoi1.OD3IfrA", "Baltimore", "MD", "21201", 's', default, "bruno.friend@rutgers.edu", '2014-01-22 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/1.png");
+insert into member VALUES (10, "Steve", "SfBD05JMC.Ffc", "Philadelphia", "PA", "19119", 'u', default, "steve.books@monmouth.edu", '2014-01-12 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/1.png");
+insert into member VALUES (11, "Linda", "SfJzUH./arCAA", "Bloomfield", "NJ", "07003", 'u', default, "lindaFake@comcast.com", '2014-03-01 10:23:09', '2014-03-12 10:23:09', "/bzk/images/avatars/3.png");
 
 insert into community VALUES (1, 1, "Coffee", '2014-01-12 10:23:09', 0, 0, 0, 0,"/bzk/community/com_coffee.png");
 insert into community VALUES (2, 1, "Cats", '2014-02-02 10:23:09', 0, 0, 0, 0,"/bzk/community/com_cats.png");
