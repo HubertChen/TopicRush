@@ -124,7 +124,8 @@ Known bugs:
     	if ($validform == TRUE) {
       		$username = substr($email,0,strpos($email,"@"));
 
-			$sql = "insert into member(username,password,email,role,status,joindate,lastlogin) values('$username','$password1','$email','$role','0','$tstamp','$tstamp')";
+			$hashedPass = crypt($password1, 'Sfgh9m66MZ9zdn46XYK6');
+			$sql = "insert into member(username,password,email,role,status,joindate,lastlogin) values('$username','$hashedPass','$email','$role','0','$tstamp','$tstamp')";
 			mysqli_query($con,$sql);
 			$sql="select memberid from member where email='$email'";
 			$result=mysqli_query($con,$sql);
@@ -225,7 +226,7 @@ Known bugs:
       $username = substr($email,0,strpos($email,"@"));
 //      echo "Username = " . $username . "<br>";
 
-      $sql = "insert into member(username,password,email,role,status,joindate,lastlogin,avatarpath) values('$username','$password1','$email','$role','0','$tstamp','$tstamp','/images/avatar1.png')";
+      $sql = "insert into member(username,password,email,role,status,joindate,lastlogin,avatarpath) values('$username','$hashedPass','$email','$role','0','$tstamp','$tstamp','/images/avatar1.png')";
       mysqli_query($con,$sql);
       $sql="select memberid from member where email='$email'";
       $result=mysqli_query($con,$sql);

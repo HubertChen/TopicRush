@@ -76,7 +76,8 @@ Known bugs:
     while(($row = mysqli_fetch_array($result)) and ($found == FALSE)){
       if (strtolower($postemail) == strtolower($row["email"])) {
         $found =  TRUE;
-        if ($postpassword == $row["password"]) {
+
+	  if (crypt($postpassword, 'Sfgh9m66MZ9zdn46XYK6')==$row["password"]){
           $valid = TRUE;
           $memberid = $row["memberid"];
           $username = $row["username"];
