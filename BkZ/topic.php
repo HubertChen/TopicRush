@@ -1,3 +1,4 @@
+// DONE 04/04/14 10:49 AM
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -138,7 +139,6 @@ Known bugs:
         array_push($randomorder,$topicarray[$rand]);
       }
     } // end while loop to generate random order
-  
 
     echo '<div class="col-md-6" align="right">';
     echo '</div>';
@@ -195,7 +195,7 @@ Known bugs:
     echo '<div class="row">';
     echo '<div class="col-md-12">';
     echo '<hr class="featurette-divider" id="topTopic">';
-    echo '<h3 >Top</h3>';
+    echo '<h3 >Top Topics</h3>';
     echo '</div>';
     echo '</div>';
 

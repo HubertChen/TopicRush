@@ -1,3 +1,4 @@
+// DONE 04/04/14 10:50 AM
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +10,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/favicon.ico">
 
-    <title>Review | Circle</title>
+    <title>Circle | Review</title>
     
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -101,7 +102,8 @@ Known bugs:
     }
 
     $memberid = $_SESSION["memberid"];
-    $productid = $_GET["id"];
+    $productid = 0;
+    if (isset($_GET["id"])) { $productid = $_GET["id"]; }
     $alreadyreviewed = FALSE;
     $productname = '';
     $ownerid = '';
@@ -114,162 +116,176 @@ Known bugs:
     $categoryid = 0;
     $categoryname = '';
     $imagepath = '';
+    date_default_timezone_set('EST');
     $date = new DateTime();
     $tstamp = $date->format('Y-m-d H:i:s');
+    $validproductid = FALSE;
 
-    $sql = 'select * from review where productid=' . $productid . ' and memberid=' . $memberid;
+    $sql = 'select name from product where productid=' . $productid;
     $result = mysqli_query($con,$sql);
-    $found = 0;
     while($row = mysqli_fetch_array($result)) { 
-      $found += 1; 
-    }
-    if ($found > 0) { $alreadyreviewed = TRUE; }
-    $sql = 'select * from product where productid=' . $productid;
-    $result = mysqli_query($con,$sql);
-    foreach ($result as $row) {
-      $productname = $row["name"];
-      $ownerid = $row["ownerid"];
-      $description = $row["description"];
-      $ratingpoints = $row["rating"];
-      $numreviews = $row["numreviews"];
-      $listedprice = $row["listedprice"];
-      $categoryid = $row["category"];
-    } // end for loop to get product information
-
-    if ($numreviews > 0) { $rating = $ratingpoints / $numreviews; }
-
-    $sql = 'select name from category where categoryid=' . $categoryid;
-    $result = mysqli_query($con,$sql);
-    foreach ($result as $row) { $categoryname = $row["name"]; }
-
-    $sql = 'select username from member where memberid=' . $ownerid;
-    $result = mysqli_query($con,$sql);
-    foreach ($result as $row) { $ownername = $row["username"]; }
-
-    $numrecords = 0;
-    $sql2 = 'select path from productdetail where productid=' . $productid;
-    $result2 = mysqli_query($con,$sql2);
-    while(($row2 = mysqli_fetch_array($result2)) && ($numrecords == 0)) {
-      $numrecords += 1;
-      $imagepath = $imagepath . $row2["path"];
+      $validproductid = TRUE;
     }
 
-    echo '<div class="row">';
-    echo '<div class="col-md-3">';
-    echo '<table align="center">';
-    echo '<tr>';
-    echo '<td align="center"><img class="img-circle"  img src="' . $imagepath . '" width="300"  height="300" alt="Generic placeholder image"></td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td align="center">';
-    $stars = 0;
-    $rating = round($rating,1);
-    while ($stars < round($rating,0,PHP_ROUND_HALF_EVEN)) {        
-      echo '<span class="glyphicon glyphicon-star"></span>';
-      $stars += 1;
-    }
-    echo '(' . $rating . ')';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h6>Listed Price: ' . $listedprice . '</h6>';
-    echo '</td>';
-    echo '</tr>';
-    echo '</table>';
-    echo '</div>';
-    echo '<div class="col-md-9">';
-    echo '<table>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h1>' . $productname . '</h1>';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h4><em>Owner : ' . $ownername . '</em></h4>';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<h6>Category : ' . $categoryname . '</h6>';
-    echo '</td>';
-    echo '</tr>';
-    echo '<tr>';
-    echo '<td>';
-    echo '<p>Description : ' . $description . '</p>';
-    echo '</td>';
-    echo '</tr>';
-    echo '</table>';
-    echo '</div>';
-    echo '</div>';
-    echo '<hr class="featurette-divider">';
-    echo '<div class="row">';
-    echo '<div class="col-md-12">';
-    if ($alreadyreviewed == FALSE) {
-      echo '<h4>Write Review</h4>';
-      echo '</div>';
-      echo '</div>';
+    if ($validproductid == TRUE) {
+
+      $sql = 'select * from review where productid=' . $productid . ' and memberid=' . $memberid;
+      $result = mysqli_query($con,$sql);
+      $found = 0;
+      while($row = mysqli_fetch_array($result)) { 
+        $found += 1; 
+      }
+      if ($found > 0) { $alreadyreviewed = TRUE; }
+      $sql = 'select * from product where productid=' . $productid;
+      $result = mysqli_query($con,$sql);
+      foreach ($result as $row) {
+        $productname = $row["name"];
+        $ownerid = $row["ownerid"];
+        $description = $row["description"];
+        $ratingpoints = $row["rating"];
+        $numreviews = $row["numreviews"];
+        $listedprice = $row["listedprice"];
+        $categoryid = $row["category"];
+      } // end for loop to get product information
+
+      if ($numreviews > 0) { $rating = $ratingpoints / $numreviews; }
+
+      $sql = 'select name from category where categoryid=' . $categoryid;
+      $result = mysqli_query($con,$sql);
+      foreach ($result as $row) { $categoryname = $row["name"]; }
+
+      $sql = 'select username from member where memberid=' . $ownerid;
+      $result = mysqli_query($con,$sql);
+      foreach ($result as $row) { $ownername = $row["username"]; }
+
+      $numrecords = 0;
+      $sql2 = 'select path from productdetail where productid=' . $productid;
+      $result2 = mysqli_query($con,$sql2);
+      while(($row2 = mysqli_fetch_array($result2)) && ($numrecords == 0)) {
+        $numrecords += 1;
+        $imagepath = $imagepath . $row2["path"];
+      }
+
       echo '<div class="row">';
-      echo '<div class="col-md-1">';
-      echo '<form action="reviewproduct.php?id=' . $productid . '" method="post" role="form">';
-      echo '<div class="form-group">';
-      echo '<label for="rating">Rating</label>';
-      echo '<select class="form-control" name="rating" id="rating">';
-      echo '<option value="0">0</option>';
-      echo '<option value="1">1</option>';
-      echo '<option value="2">2</option>';
-      echo '<option value="3">3</option>';
-      echo '<option value="4">4</option>';
-      echo '<option value="5">5</option>';
-      echo '</select>';
+      echo '<div class="col-md-3">';
+      echo '<table align="center">';
+      echo '<tr>';
+      echo '<td align="center"><img class="img-circle"  img src="' . $imagepath . '" width="300"  height="300" alt="Generic placeholder image"></td>';
+      echo '</tr>';
+      echo '<tr>';
+      echo '<td align="center">';
+      $stars = 0;
+      $rating = round($rating,1);
+      while ($stars < round($rating,0,PHP_ROUND_HALF_EVEN)) {        
+        echo '<span class="glyphicon glyphicon-star"></span>';
+        $stars += 1;
+      }
+      echo '(' . $rating . ')';
+      echo '</td>';
+      echo '</tr>';
+      echo '<tr>';
+      echo '<td>';
+      echo '<h6>Listed Price: ' . $listedprice . '</h6>';
+      echo '</td>';
+      echo '</tr>';
+      echo '</table>';
+      echo '</div>';
+      echo '<div class="col-md-9">';
+      echo '<table>';
+      echo '<tr>';
+      echo '<td>';
+      echo '<h1>' . $productname . '</h1>';
+      echo '</td>';
+      echo '</tr>';
+      echo '<tr>';
+      echo '<td>';
+      echo '<h4><em>Owner : ' . $ownername . '</em></h4>';
+      echo '</td>';
+      echo '</tr>';
+      echo '<tr>';
+      echo '<td>';
+      echo '<h6>Category : ' . $categoryname . '</h6>';
+      echo '</td>';
+      echo '</tr>';
+      echo '<tr>';
+      echo '<td>';
+      echo '<p>Description : ' . $description . '</p>';
+      echo '</td>';
+      echo '</tr>';
+      echo '</table>';
       echo '</div>';
       echo '</div>';
-      echo '<div class="col-md-7">';
-      echo '<div class="form-group">';
-      echo '<label for="ratedescript">Description</label>';
-      echo '<textarea class="form-control" rows="3" name="ratedescript" id="ratedescript" placeholder="Descriptions" required></textarea>';
-      echo '</div>';
-      echo '</div>';
-      echo '</div>';
+      echo '<hr class="featurette-divider">';
       echo '<div class="row">';
-      echo '<div class="col-md-8" align="right">';
-      if (($ownerid != $memberid) && ($alreadyreviewed == FALSE)) {
-        echo '<button type="submit" class="btn btn-primary">Review</button>';
+      echo '<div class="col-md-12">';
+      if ($alreadyreviewed == FALSE) {
+        echo '<h4>Write Review</h4>';
+        echo '</div>';
+        echo '</div>';
+        echo '<div class="row">';
+        echo '<div class="col-md-1">';
+        echo '<form action="reviewproduct.php?id=' . $productid . '" method="post" role="form">';
+        echo '<div class="form-group">';
+        echo '<label for="rating">Rating</label>';
+        echo '<select class="form-control" name="rating" id="rating">';
+        echo '<option value="0">0</option>';
+        echo '<option value="1">1</option>';
+        echo '<option value="2">2</option>';
+        echo '<option value="3">3</option>';
+        echo '<option value="4">4</option>';
+        echo '<option value="5">5</option>';
+        echo '</select>';
+        echo '</div>';
+        echo '</div>';
+        echo '<div class="col-md-7">';
+        echo '<div class="form-group">';
+        echo '<label for="ratedescript">Description</label>';
+        echo '<textarea class="form-control" rows="3" name="ratedescript" id="ratedescript" placeholder="Descriptions" required></textarea>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '<div class="row">';
+        echo '<div class="col-md-8" align="right">';
+        if (($ownerid != $memberid) && ($alreadyreviewed == FALSE)) {
+          echo '<button type="submit" class="btn btn-primary">Review</button>';
+        }
+        echo '</div>';
+        echo '</div>';
+        echo '</form>';
+      } else { // end if $alreadyreviewed == FALSE
+        echo "You have already reviewed this product!<br>";
       }
-      echo '</div>';
-      echo '</div>';
-      echo '</form>';
-    } else { // end if $alreadyreviewed == FALSE
-      echo "You have already reviewed this product!<br>";
-    }
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $validform = TRUE;
-      $formerrors = '';
-      $postrating = $_POST["rating"];
-      $postdescription = $_POST["ratedescript"];
- //     echo $postrating . "<br>" . $postdescription . "<br>";
-      if ($postrating == 0) {
-        $validform = FALSE;
-        $formerrors = $formerrors . "Rating must be between 1 and 5!<br>";
-      }
-      if ((strlen($postdescription) < 20) || is_numeric($postdescription)) {
-        $validform = FALSE;
-        $formerrors = $formerrors . "Description must be twenty or more characters and must not contain all numbers!<br>";
-      }
-
-      if ($validform == TRUE) {
-        $sql="insert into review(memberid,productid,reviewdetails,rating,reviewdate) values ('$memberid','$productid','$postdescription','$postrating','$tstamp')";
-        mysqli_query($con,$sql);
-
-      } else { // end if $validform == TRUE
-        echo "Form has the following errors:<br>" . $formerrors;
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $validform = TRUE;
         $formerrors = '';
-      } // end if-else $valiform == TRUE
+        $postrating = $_POST["rating"];
+        $postdescription = $_POST["ratedescript"];
+ //       echo $postrating . "<br>" . $postdescription . "<br>";
+        if ($postrating == 0) {
+          $validform = FALSE;
+          $formerrors = $formerrors . "Rating must be between 1 and 5!<br>";
+        }
+        if ((strlen($postdescription) < 20) || is_numeric($postdescription)) {
+          $validform = FALSE;
+          $formerrors = $formerrors . "Description must be twenty or more characters and must not contain all numbers!<br>";
+        }
+
+        if ($validform == TRUE) {
+          $sql="insert into review(memberid,productid,reviewdetails,rating,reviewdate) values ('$memberid','$productid','$postdescription','$postrating','$tstamp')";
+          mysqli_query($con,$sql);
+          $postdescription = '';
+          $postrating = 0;
+        } else { // end if $validform == TRUE
+          echo "Form has the following errors:<br>" . $formerrors;
+        $formerrors = '';
+        } // end if-else $valiform == TRUE
 
 
-    }
-
+      }
+ 
+  } else { // end if $validproductid == TRUE
+    echo 'Invalid Product specified please try again!<br>';
+  } // end if-else $validproductid == TRUE
       
   mysqli_close($con);
 

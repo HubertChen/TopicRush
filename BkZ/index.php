@@ -1,3 +1,4 @@
+// DONE 04/04/14 10:50 AM
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -251,7 +252,6 @@
           <p><a class="btn btn-default" href="reviewproduct.php" role="button">Review &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
-
 
     <!-- Top Section
     Need to do:

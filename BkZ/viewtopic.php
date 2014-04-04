@@ -1,3 +1,4 @@
+// DONE 04/04/14 10:49 AM
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -206,9 +207,9 @@ Known bugs:
   echo $topicname;
   if ($loggedin == TRUE) {
     if ($memberfollows == TRUE) {
-      echo '<a href="unfollow.php?id=' . $topicid . '"><button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-minus"></span></button></a>';
+      echo '<a href="unfollow.php?id=' . $topicid . '"><button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-minus"> Unfollow</span></button></a>';
     } else {
-      echo '<a href="follow.php?id=' . $topicid . '"><button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span></button></a>';
+      echo '<a href="follow.php?id=' . $topicid . '"><button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"> Follow</span></button></a>';
     }
   } // end if $loggedin == TRUE
   echo '</h1>';
@@ -265,7 +266,11 @@ Known bugs:
         } // end foreach loop to build product link
       } // end if productid is numeric for content
       echo '<br>';
-      echo '          added: ' . $row["created"] . ' by ' . $contentownername . '.<br>';
+      echo '          added: ' . $row["created"] . ' by ' . $contentownername . '.';
+      if ($loggedin == TRUE) {
+        if ($row["created"] > $_SESSION["lastlogin"]) { echo '<font color="red">NEW!</font>'; }
+      }
+      echo '<br>';
       if ($row["type"] == 1) { 
         echo '<img class="img-circle" img src="' . $row["path"] . '" width="100" height="100" alt="Generic placeholder image">';
         echo $row["description"] . '<br>';

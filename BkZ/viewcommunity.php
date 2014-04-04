@@ -1,3 +1,4 @@
+// DONE 04/04/14 10:49 AM
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,18 +16,24 @@
   $dbuser = "root";
   $dbpass = "";
   $dbname = "Circle";
+  $validcommunityid = FALSE;
   
   $con=mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
   if (mysqli_connect_errno()) {  
     echo "Failed to connect to MySQL: " . mysqli_connect_error();  
   }
 
-  $communityid = $_GET["id"];
+  $communityid = 0;
+  if (isset($_GET["id"])) { $communityid = $_GET["id"]; }
   $communityname = "";
+
+
   $sql = 'select name from community where communityid=' . $communityid;
   $result = mysqli_query($con,$sql);
-  foreach ($result as $row) { $communityname = $row["name"]; }
-
+  while($row = mysqli_fetch_array($result)) {
+    $validcommunityid = TRUE;
+    $communityname = $row["name"]; 
+  }
 
   echo '<title>Circle | ' . $communityname . ' </title>'; 
 
@@ -114,10 +121,6 @@ Known bugs:
 
 <?php
 
-// NEED TO CHECK FOR MEMBER ALREADY JOINED - DISPLAY THE CORRECT BUTTON
-// NEED TO CHECK IF MEMBER BLOCKED
-// NEED TO CREATE ADMIN PAGE TO BLOCK MEMBERS
-
   $dbhost = "localhost:3306";
   $dbuser = "root";
   $dbpass = "";
@@ -139,7 +142,10 @@ Known bugs:
   $numcontent = 0;
   $rating = 0;
   $communityimage = '';
+  $loggedin = FALSE;
   $alreadyjoined = FALSE;
+  $blocked = FALSE;
+  $blockreason = '';
 
   if (isset($_SESSION["loggedin"])) { 
     $loggedin = TRUE;
@@ -149,6 +155,12 @@ Known bugs:
     $sql = 'select * from joins where memberid=' . $memberid . ' and communityid=' . $communityid;
     $result = mysqli_query($con,$sql);
     while($row = mysqli_fetch_array($result)) { $alreadyjoined = TRUE; }
+    $sql = 'select * from block where memberid=' . $memberid . ' and communityid=' . $communityid;
+    $result = mysqli_query($con,$sql);
+    while($row = mysqli_fetch_array($result)) { 
+      $blocked = TRUE; 
+      $blockreason = $row["reason"];
+    }    
   }
 
   $sql = 'select * from community where communityid=' . $communityid;
@@ -191,7 +203,7 @@ Known bugs:
   if (isset($_SESSION["loggedin"])) {
 
     if ($alreadyjoined == FALSE) {
-      echo '<a href="join.php?id=' . $communityid . '"><button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"> Join</span></button></a>';
+      if ($blocked == FALSE) { echo '<a href="join.php?id=' . $communityid . '"><button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"> Join</span></button></a>'; }
     } else { // end if $alreadyjoined == FALSE
       echo '<a href="leave.php?id=' . $communityid . '"><button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-remove"> Leave</span></button></a>';
     }
@@ -210,104 +222,113 @@ Known bugs:
   echo '&nbsp;';
   echo '<div class="row">';
   echo '<div class="col-md-8">';
-  echo '<h4>Topics &nbsp;';
-  if (isset($_SESSION["loggedin"])) {
-    $alreadyjoined = FALSE;
-    $memberid = $_SESSION["memberid"];
-    $sql = 'select * from joins where memberid=' . $memberid . ' and communityid=' . $communityid;
-    $result = mysqli_query($con,$sql);
-    while($row = mysqli_fetch_array($result)) { $alreadyjoined = TRUE; }
-    if ($alreadyjoined == TRUE) {
-      echo '<a href="addtopic.php?id=' . $communityid . '"> <button type="button" class="btn btn-primary btn-xs">Create Topic</button></a>';
-    }
-    if ($ownerid == $memberid) {
-      echo '<a href="communityadmin.php?id=' . $communityid . '"> <button type="button" class="btn btn-primary btn-xs">Community Admin Page</button></a>';
-    } // end if user is community owner
-  } // end if user logged in
-
-  echo '</h4>';
-
-  if ($numtopics > 0) {
-    $sql = 'select * from topic where communityid=' . $communityid;
-    $result = mysqli_query($con,$sql);
-    $topicowner = 0;
-    $topicownername = '';
-    $topicavatarpath = '';
-    foreach ($result as $row) {    
-      $productid = $row["productid"];
-      $productname = '';
-
-      $sql2 = 'select username,avatarpath from member where memberid=' . $row["ownerid"];
-      $result2 = mysqli_query($con,$sql2);
-      foreach ($result2 as $row2) { 
-        $topicownername = $row2["username"]; 
-        $topicavatarpath = $row2["avatarpath"];
-      }
-      echo '&nbsp;';
-      echo '<div class="row">';
-      echo '<div class="col-md-12">';
-      echo '<div class="media">';
-      echo '<a class="pull-left" href="#">';
-      echo '<img class="img-circle" img src="' . $topicavatarpath . '" width="64" height="64" alt="Generic placeholder image">';
-      echo '</a>';
-      echo '<div class="media-body">';
-      echo '<h4 class="media-heading"><a href="viewtopic.php?id=' . $row["topicid"] . '">' . $row["name"] . '</a>' . '</h4>';
-      echo 'Created: ' . $row["created"] . ' by ' . $topicownername . '.';
+  if ($blocked == TRUE) {
+    echo 'You have been blocked from this community for the following reason:<br>' . $blockreason . '<br>';
+  } else { // end if $blocked == TRUE
+    echo '<h4>Topics &nbsp;';
+    if (isset($_SESSION["loggedin"])) {
+      $alreadyjoined = FALSE;
+      $memberid = $_SESSION["memberid"];
+      $sql = 'select * from joins where memberid=' . $memberid . ' and communityid=' . $communityid;
+      $result = mysqli_query($con,$sql);
+      while($row = mysqli_fetch_array($result)) { $alreadyjoined = TRUE; }
       if ($alreadyjoined == TRUE) {
-        echo '<a href="addcontent.php?id=' . $row["topicid"] . '"> <button type="button" class="btn btn-primary btn-xs">Add Content</button></a>';
-      } // end if alreadyjoined == TRUE to display add content button
-      if (is_numeric($productid)) {
-        $sql4 = 'select name from product where productid=' . $productid;
-        $result4 = mysqli_query($con,$sql4);
-        foreach ($result4 as $row4) { $productname = $row4["name"]; }
-        echo '<td align="center"><a href="viewproduct.php?id=' . $productid . '">' . $productname . '</a></td>';
-      } 
-      $numtopiccontent = 0;
-      $sql2 = 'select count(contentid) from content where topicid=' . $row["topicid"];
-      $result2 = mysqli_query($con,$sql2);
-      while($row2 = mysqli_fetch_array($result2)) { $numtopiccontent = $row2["count(contentid)"]; }
-      if ($numtopiccontent > 0) {
-        $sql2 = 'select * from content where topicid=' . $row["topicid"];
+        echo '<a href="addtopic.php?id=' . $communityid . '"> <button type="button" class="btn btn-primary btn-xs">Create Topic</button></a>';
+      }
+      if ($ownerid == $memberid) {
+        echo '<a href="communityadmin.php?id=' . $communityid . '"> <button type="button" class="btn btn-primary btn-xs">Community Admin Page</button></a>';
+      } // end if user is community owner
+    } // end if user logged in
+
+    echo '</h4>';
+
+    if ($numtopics > 0) {
+      $sql = 'select * from topic where communityid=' . $communityid;
+      $result = mysqli_query($con,$sql);
+      $topicowner = 0;
+      $topicownername = '';
+      $topicavatarpath = '';
+      foreach ($result as $row) {    
+        $productid = $row["productid"];
+        $productname = '';
+
+        $sql2 = 'select username,avatarpath from member where memberid=' . $row["ownerid"];
         $result2 = mysqli_query($con,$sql2);
-        echo '<br>';
-        foreach ($result2 as $row2) {
-          $contentownername = '';
-          $contentowneravatarpath = '';
-          $sql3 = 'select username,avatarpath from member where memberid=' . $row2["ownerid"];
-          $result3 = mysqli_query($con,$sql3);
-          foreach ($result3 as $row3) { 
-            $contentownername = $row3["username"]; 
-            $contentowneravatarpath = $row3["avatarpath"];
-          }
-          echo '<img class="img-circle" img src="' . $contentowneravatarpath . '" width="64" height="64" alt="Generic placeholder image">';
-          echo '     ' . $row2["message"] . ' ';
-          if (is_numeric($row2["productid"])) { 
-            $sql4 = 'select name from product where productid=' . $row2["productid"];
-            $result4 = mysqli_query($con,$sql4);
-            foreach ($result4 as $row4) {
-              echo '<a href="viewproduct.php?id=' . $row2["productid"] . '">' . $row4["name"] . '</a>';
-            } // end foreach loop to build product link
-          } // end if productid is numeric for content   
+        foreach ($result2 as $row2) { 
+          $topicownername = $row2["username"]; 
+          $topicavatarpath = $row2["avatarpath"];
+        }
+        echo '&nbsp;';
+        echo '<div class="row">';
+        echo '<div class="col-md-12">';
+        echo '<div class="media">';
+        echo '<a class="pull-left" href="#">';
+        echo '<img class="img-circle" img src="' . $topicavatarpath . '" width="64" height="64" alt="Generic placeholder image">';
+        echo '</a>';
+        echo '<div class="media-body">';
+        echo '<h4 class="media-heading"><a href="viewtopic.php?id=' . $row["topicid"] . '">' . $row["name"] . '</a>' . '</h4>';
+        echo 'Created: ' . $row["created"] . ' by ' . $topicownername . '.';
+        if ($alreadyjoined == TRUE) {
+          echo '<a href="addcontent.php?id=' . $row["topicid"] . '"> <button type="button" class="btn btn-primary btn-xs">Add Content</button></a>';
+        } // end if alreadyjoined == TRUE to display add content button
+        if (is_numeric($productid)) {
+          $sql4 = 'select name from product where productid=' . $productid;
+          $result4 = mysqli_query($con,$sql4);
+          foreach ($result4 as $row4) { $productname = $row4["name"]; }
+          echo '<td align="center"><a href="viewproduct.php?id=' . $productid . '">' . $productname . '</a></td>';
+        } 
+        $numtopiccontent = 0;
+        $sql2 = 'select count(contentid) from content where topicid=' . $row["topicid"];
+        $result2 = mysqli_query($con,$sql2);
+        while($row2 = mysqli_fetch_array($result2)) { $numtopiccontent = $row2["count(contentid)"]; }
+        if ($numtopiccontent > 0) {
+          $sql2 = 'select * from content where topicid=' . $row["topicid"];
+          $result2 = mysqli_query($con,$sql2);
           echo '<br>';
-          echo '          added: ' . $row2["created"] . ' by ' . $contentownername . '<br>';
-          if ($row2["type"] == 1) { 
-            echo '<img class="img-circle" img src="' . $row2["path"] . '" width="100" height="100" alt="Generic placeholder image">';
-            echo $row2["description"] . '<br>';
-          }
-        } // end for loop to print content
-      } else { // end if $numtopiccontent > 0
+          foreach ($result2 as $row2) {
+            $contentownername = '';
+            $contentowneravatarpath = '';
+            $sql3 = 'select username,avatarpath from member where memberid=' . $row2["ownerid"];
+            $result3 = mysqli_query($con,$sql3);
+            foreach ($result3 as $row3) { 
+              $contentownername = $row3["username"]; 
+              $contentowneravatarpath = $row3["avatarpath"];
+            }
+            echo '<img class="img-circle" img src="' . $contentowneravatarpath . '" width="64" height="64" alt="Generic placeholder image">';
+            echo '     ' . $row2["message"] . ' ';
+            if (is_numeric($row2["productid"])) { 
+              $sql4 = 'select name from product where productid=' . $row2["productid"];
+              $result4 = mysqli_query($con,$sql4);
+              foreach ($result4 as $row4) {
+                echo '<a href="viewproduct.php?id=' . $row2["productid"] . '">' . $row4["name"] . '</a>';
+              } // end foreach loop to build product link
+            } // end if productid is numeric for content   
+            echo '<br>';
+            echo '          added: ' . $row2["created"] . ' by ' . $contentownername . '.';
+            if ($loggedin == TRUE) {
+              if ($row2["created"] > $_SESSION["lastlogin"]) { echo '<font color="red">NEW!</font>'; }
+            }
+            echo '<br>';
+            if ($row2["type"] == 1) { 
+              echo '<img class="img-circle" img src="' . $row2["path"] . '" width="100" height="100" alt="Generic placeholder image">';
+              echo $row2["description"] . '<br>';
+            }
+          } // end for loop to print content
+        } else { // end if $numtopiccontent > 0
 
-      } // end if-else $numtopiccontent > 0
+        } // end if-else $numtopiccontent > 0
 
 
-      echo '</div>';
-      echo '</div>';
-      echo '</div>';
-      echo '</div>';
-    } // end for loop to print topics
-  } else { // end if $numtopics > 0
-    echo "There are currenty no topics!Why not create one!<br>";
-  }
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+      } // end for loop to print topics
+    } else { // end if $numtopics > 0
+      echo "There are currenty no topics!Why not create one!<br>";
+    }
+
+  } // end if-else $blocked == TRUE
 
   echo '</div>';
   echo '</div>';

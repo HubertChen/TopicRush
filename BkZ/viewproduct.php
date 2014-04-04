@@ -1,3 +1,4 @@
+// DONE 04/04/14 10:49 AM
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -242,16 +243,18 @@ Known bugs:
     $result = mysqli_query($con,$sql);
     foreach ($result as $row) {
       $reviewname = '';
-      $sql2 = 'select username from member where memberid=' . $row["memberid"];
+      $reviewavatar = '';
+      $sql2 = 'select username,avatarpath from member where memberid=' . $row["memberid"];
       $result2 = mysqli_query($con,$sql2);
-      foreach ($result2 as $row2) { $reviewname = $row2["username"]; }
-
+      foreach ($result2 as $row2) { 
+        $reviewname = $row2["username"]; 
+        $reviewavatar = $row2["avatarpath"];
+      }
       echo '<div class="row">';
       echo '<div class="col-md-12">';
       echo '<div class="media">';
       echo '<a class="pull-left" href="#">';
-      echo '<img class="img-circle" data-src="holder.js/64x64" alt="Generic placeholder image">';
-// WHAT IS THIS USE FOR?
+      echo '<img class="img-circle" src="' . $reviewavatar . '" width="64" height="64" alt="Generic placeholder image">';
       echo '</a>';
       echo '<div class="media-body">';
       echo '<h4 class="media-heading">' . $reviewname . '</h4>';

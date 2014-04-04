@@ -1,3 +1,4 @@
+// DONE 04/04/14 10:50 AM
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -221,9 +222,21 @@ Known bugs:
         $sql2 = 'select name from topic where topicid=' . $row["topicid"];
         $result2 = mysqli_query($con,$sql2);
         foreach ($result2 as $row2) {
+          $newcontent = FALSE;
+          $newmessage = '';
+          $sql3 = 'select created,message from content where topicid=' . $row["topicid"];
+          $result3 = mysqli_query($con,$sql3);
+          while($row3 = mysqli_fetch_array($result3)) {
+            if ($row3["created"] > $_SESSION["lastlogin"]) { 
+              $newcontent = TRUE;
+              $newmessage = $newmessage . $row3["message"] . '<br>';
+            } // end if new message posted after lastlogin
+          }
           echo '<tr>';
-          echo '<td></td>';
           echo '<td class="text-left"><a href="viewtopic.php?id=' . $row["topicid"] . '">' . $row2["name"] . '</a></td>';
+          if ($newcontent == TRUE) {
+            echo '<td><font color="red">New</font></td><td>' . $newmessage . '</td>';
+          }
           echo '</tr>';
         } // end for loop per individual topic
       } // end for loop to get topicid from follows
@@ -235,56 +248,61 @@ Known bugs:
       echo 'You are not following any topics, get involved!<br>';
     } // end if-else $totaltopics > 0
 
-    echo '<!--Product Head -->';
-    echo '<div class="col-lg-4">';
-    echo '<h3>Top Product</h3>';
+    if ($userrole == 'Seller') {
 
-    if ($totalproduct > 0) {
-      echo '<table align="center">';
+      echo '<!--Product Head -->';
+      echo '<div class="col-lg-4">';
+      echo '<h3>Owned Products</h3>';
 
-      $sql = 'select * from product where ownerid=' . $memberid;
-      $result = mysqli_query($con,$sql);
-      foreach ($result as $row) {
-        $productimagepath = '';
-        $found = 0;
-        $sql2 = 'select path from productdetail where productid=' . $row["productid"];
-        $result2 = mysqli_query($con,$sql2);
-        while(($row2 = mysqli_fetch_array($result2)) && ($found == 0)) {
-          $found += 1;
-          $productimagepath = $row2["path"];
-        }
-        echo '<tr>';
-        echo '<td class="table-top-product-padding" rowspan="2"></td>';
-        echo '<td class="text-left table-top-product-padding" rowspan="2">';
-        echo '<a href="viewproduct.php?id=' . $row["productid"] . '"><img class="img-circle"  src="' . $productimagepath . '" width="90" height="90" alt="Generic placeholder image"></a>';
-        echo '</td>';
-        echo '<td class="table-top-product-name" height="65" align="left" valign="bottom" >' . $row["name"] . '</td>';
-        echo '</tr>';
-        echo '<tr>';
-        echo '<td class="table-top-product-stars" align="left" valign="top">';
+      if ($totalproduct > 0) {
+        echo '<table align="center">';
 
-        $rating = 0;
-        if ($row["numreviews"] != 0) {
-          $rating = $row["rating"] / $row["numreviews"];
-        }
+        $sql = 'select * from product where ownerid=' . $memberid;
+        $result = mysqli_query($con,$sql);
+        foreach ($result as $row) {
+          $productimagepath = '';
+          $found = 0;
+          $sql2 = 'select path from productdetail where productid=' . $row["productid"];
+          $result2 = mysqli_query($con,$sql2);
+          while(($row2 = mysqli_fetch_array($result2)) && ($found == 0)) {
+            $found += 1;
+            $productimagepath = $row2["path"];
+          }
+          echo '<tr>';
+          echo '<td class="table-top-product-padding" rowspan="2"></td>';
+          echo '<td class="text-left table-top-product-padding" rowspan="2">';
+          echo '<a href="viewproduct.php?id=' . $row["productid"] . '"><img class="img-circle"  src="' . $productimagepath . '" width="90" height="90" alt="Generic placeholder image"></a>';
+          echo '</td>';
+          echo '<td class="table-top-product-name" height="65" align="left" valign="bottom" >' . $row["name"] . '</td>';
+          echo '</tr>';
+          echo '<tr>';
+          echo '<td class="table-top-product-stars" align="left" valign="top">';
 
-        $stars = 0;
-        $rating = round($rating,1);
-        while ($stars < round($rating,0,PHP_ROUND_HALF_EVEN)) {        
-          echo '<span class="glyphicon glyphicon-star"></span>';
-          $stars += 1;
-        }
-      echo '(' . $rating . ')';
-        echo '</td>';
-        echo '</tr>';
-      } // end for loop to dispay products
+          $rating = 0;
+          if ($row["numreviews"] != 0) {
+            $rating = $row["rating"] / $row["numreviews"];
+          }
 
-    } else { // end if $totalproducts > 0
-      echo 'You do not own any products!<br>';
-    } // end if-else $totalproducts > 0
-      echo '</table>';
-      echo '</div><!-- /.col-lg-4 -->';
-      echo '</div><!-- /.row -->';
+          $stars = 0;
+          $rating = round($rating,1);
+          while ($stars < round($rating,0,PHP_ROUND_HALF_EVEN)) {        
+            echo '<span class="glyphicon glyphicon-star"></span>';
+            $stars += 1;
+          }
+        echo '(' . $rating . ')';
+          echo '</td>';
+          echo '</tr>';
+        } // end for loop to dispay products
+
+      } else { // end if $totalproducts > 0
+        echo 'You do not own any products!<br>';
+      } // end if-else $totalproducts > 0
+  
+    } // end if userrole = 'Seller'
+ 
+    echo '</table>';
+    echo '</div><!-- /.col-lg-4 -->';
+    echo '</div><!-- /.row -->';
 
   } else { // end if user is logged in
     echo 'You have navigated to this page in error and must be logged in!<br>';

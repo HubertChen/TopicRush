@@ -1,3 +1,4 @@
+// DONE 04/04/14 10:50 AM
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,22 +131,45 @@ Known bugs:
   }
 
   $totalprodducts = 0;
+  $maxdisplay = 0;
 
   $sql = "select count(productid) from product";
   $result = mysqli_query($con,$sql);
   foreach ($result as $row) { $totalproducts = $row["count(productid)"]; }
-  echo "Total Products = " . $totalproducts . "<br>";
   if ($totalproducts > 0) {
     echo '<div class="row">';
     echo '<div class="col-md-12"><h3>Explore</h3></div>';
     echo '</div>';
     echo '<div class="row">';
+
+    $productarray = array();
+    $sql = 'select productid from product';
+    $result = mysqli_query($con,$sql);
+    foreach ($result as $row) { array_push($productarray,$row["productid"]); }
+
+    $maxproducts = count($productarray);  
+
+    $randomorder = array();
+    $index = 0;
+    while ($index < $maxproducts) {
+      $rand = rand(0,($maxproducts-1));
+      if (in_array($productarray[$rand],$randomorder) == FALSE) {
+        $index += 1;
+        array_push($randomorder,$productarray[$rand]);
+      }
+    } // end while loop to generate random order
+
     if ($totalproducts > 15) {
+      $maxdisplay = 15;
+    } else { 
+      $maxdisplay = $maxproducts;
+    }
 
-
-    } else { // end if $totalproducts > 4
-      $sql = 'select * from product';
+    $index = 0;
+    while ($index < $maxdisplay) {
+      $sql = 'select * from product where productid=' . $randomorder[$index];
       $result = mysqli_query($con,$sql);
+      $index += 1;
       foreach ($result as $row) {
         $rating = 0;
         if ($row["numreviews"] != 0) {
@@ -182,24 +206,16 @@ Known bugs:
         echo '</table>';
         echo '</div>';
 
-
-
       } // end for-loop to display the products
 
-      echo '</div>';
-    } // end if-else $totalproducts > 4
+    } // end while loop to print random order
 
-
-
-
+    echo '</div>';
 
   } else { // end if $totalproducts > 0
     echo "There are currently no products to display!<br>";
     echo "Please check back soon!<br>";
   } // end if-else $totalproducts > 0
-
-
-// for top producs $sql = 'select * from product order by (rating/numreviews) desc';
 
   echo '<p>&nbsp;</p>';
   echo '<div class="row">';
@@ -213,7 +229,7 @@ Known bugs:
   $maxproducts = 0;
   $sql = 'select * from product order by (rating/numreviews) desc';
   $result = mysqli_query($con,$sql);
-  while(($row = mysqli_fetch_array($result)) && ($maxproducts < 6)) {
+  while(($row = mysqli_fetch_array($result)) && ($maxproducts < 5)) {
     $rating = 0;
     if ($row["numreviews"] != 0) {
       $rating = $row["rating"] / $row["numreviews"];
@@ -240,7 +256,7 @@ Known bugs:
     echo '<td align="center">';
 
     $stars = 0;
-    $rating = round($rating,1);
+    $rating = round($rating,2);
     while ($stars < round($rating,0,PHP_ROUND_HALF_EVEN)) {        
       echo '<span class="glyphicon glyphicon-star"></span>';
       $stars += 1;
@@ -250,15 +266,8 @@ Known bugs:
     echo '</tr>';
     echo '</table>';     
     echo '</div>';
-
-
     
-  } 
-
-
-
-
-
+  } // end while loop to print the products by rating
 
   mysqli_close($con);
 

@@ -1,3 +1,4 @@
+// DONE 04/04/14 10:50 AM
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +49,7 @@ Known bugs:
         <div class="navbar-collapse collapse" align="center">  
           <form class="navbar-form navbar-form-length"  role="search" >
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Seach for communities, topics, and products" size="70" maxlength="70">
+              <input type="text" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70">
             </div>
             	
                 <!--USER IS LOGGED IN-->
@@ -104,7 +105,7 @@ Known bugs:
             </div>-->
             
             
-            <h5 align="center"><a href="community.php">Community</a> |  <a href="#">Topic</a> | <a href="product.php">Product</a></h5>
+            <h5 align="center"><a href="community.php">Community</a> |  <a href="topic.php">Topic</a> | <a href="product.php">Product</a></h5>
           </div>
         </div>
         </div>
@@ -131,8 +132,6 @@ Known bugs:
   $result = mysqli_query($con,$sql);
   foreach ($result as $row) { $totalcommunities = $row["count(communityid)"]; }
 
-  echo 'Total Communities = ' . $totalcommunities . '<br>';
-
   echo '<div class="row">';
   echo '<div class="col-md-6">';
   echo '<h1>Community</h1>';
@@ -142,32 +141,57 @@ Known bugs:
   echo '</div>';
 
   if ($totalcommunities > 0) {
+
+    $communityarray = array();
+    $sql = 'select communityid from community';
+    $result = mysqli_query($con,$sql);
+    foreach ($result as $row) { array_push($communityarray,$row["communityid"]); }
+
+    $maxcommunity = count($communityarray);  
+
+    $randomorder = array();
+    $index = 0;
+    while ($index < $maxcommunity) {
+      $rand = rand(0,($maxcommunity-1));
+      if (in_array($communityarray[$rand],$randomorder) == FALSE) {
+        $index += 1;
+        array_push($randomorder,$communityarray[$rand]);
+      }
+    } // end while loop to generate random order
+
+
+
     echo '<div class="row">';
     echo '<div class="col-md-12"><h3>Explore</h3></div>';
     $communityowners = array();
-    $sql = 'select * from community';
-    $result = mysqli_query($con,$sql);
-// MOST LIKELY WILL RANDOMIZE THE ORDER BUT FOR NOW JUST DISPLAYING THEM IN DATABASE ORDER
-    foreach ($result as $row) {
-      echo '</div>';
-      echo '<div class="row">';
-      echo '<div class="col-md-3">';
-      echo '<table align="center">';
-      echo '<tr>';
-      echo '<td align="center">';
-      echo '<a href="viewcommunity.php?id=' . $row["communityid"] . '"><img class="img-circle"  img src="' . $row["path"] . '" height="150" width="150" alt="Generic placeholder image"></a>';
-      echo '</td>';
-      echo '</tr>';
-      echo '<tr>';
-      echo '<td align="center">';
-      echo $row["name"];
-      echo '<button type="button" class="btn btn-primary btn-xs" id="whenClicked"><span class="glyphicon glyphicon-plus" id="picClicked"></span></button>';
-      echo '</td>';
-      echo '</tr>';
-      echo '</table>';
-    } // end for loop to display communities
-      echo '</div>';
-      echo '</div>';
+    $index = 0;
+    while ($index < $maxcommunity) {
+      $sql = 'select * from community where communityid=' . $randomorder[$index];
+      $result = mysqli_query($con,$sql);
+      $index += 1;
+      foreach ($result as $row) {
+        echo '</div>';
+        echo '<div class="row">';
+        echo '<div class="col-md-3">';
+        echo '<table align="center">';
+        echo '<tr>';
+        echo '<td align="center">';
+        echo '<a href="viewcommunity.php?id=' . $row["communityid"] . '"><img class="img-circle"  img src="' . $row["path"] . '" height="150" width="150" alt="Generic placeholder image"></a>';
+        echo '</td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<td align="center">';
+        echo $row["name"];
+//        echo '<button type="button" class="btn btn-primary btn-xs" id="whenClicked"><span class="glyphicon glyphicon-plus" id="picClicked"></span></button>';
+        echo '</td>';
+        echo '</tr>';
+        echo '</table>';
+      } // end for loop to display communities
+    
+    } // end while loop to print community randomly
+
+    echo '</div>';
+    echo '</div>';
 
     echo '<p>&nbsp;</p>';
     echo '<div class="row">';
@@ -194,11 +218,11 @@ Known bugs:
       echo '<tr>';
       echo '<td align="center">';
       echo $row["name"];
-      echo '<a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>';
+//      echo '<a href="php/join.php"><button type="button" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span></button></a>';
       echo '</td>';
       echo '</tr>';
       echo '<tr>';
-      echo '<td align="center"> (' . $row["rating"] . ') M=' . $row["nummembers"] . ',T=' . $row["numtopics"] . ',C=' . $row["numcontents"] . '.</td>';
+      echo '<td align="center"> (' . $row["rating"] . ')</td>';// M=' . $row["nummembers"] . ',T=' . $row["numtopics"] . ',C=' . $row["numcontents"] . '.</td>';
       echo '</tr>';
       echo '</table>';
       echo '</div>';
