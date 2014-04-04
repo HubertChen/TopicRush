@@ -1,3 +1,4 @@
+//DONE 04/03/14 - 21:23
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -135,7 +136,8 @@ Known bugs:
 			$_SESSION['loggedin'] = TRUE;
 			$_SESSION['username'] = $username;
 			$_SESSION['memberid'] = $memberid;
-			$_SESSION['role'] = $role; 
+			$_SESSION['role'] = $role;
+                        $_SESSION['lastlogin'] = $tstamp;
 		} else { // end if $validform == TRUE
       		
 			$errorMessage = '<div class="alert alert-danger alert-dismissable" align="center">

@@ -1,3 +1,4 @@
+// DONE - 04/03/13- 21:20
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,6 +53,7 @@ Known bugs:
   $memberid = "";
   $role = "";
   $avatarpath = "";
+  $lastlogin = "";
   date_default_timezone_set('EST');
   $date = new DateTime();
   $tstamp = $date->format('Y-m-d H:i:s');
@@ -83,6 +85,7 @@ Known bugs:
           $username = $row["username"];
           $role = $row["role"];
           $avatarpath = $row["avatarpath"];
+          $lastlogin = $row["lastlogin"];
         } // end if password matches
       } // end if email found
     } // end while checking password
@@ -103,6 +106,7 @@ Known bugs:
     $_SESSION["memberid"] = $memberid;
     $_SESSION["role"] = $role;
     $_SESSION["avatarpath"] = $avatarpath;
+    $_SESSION["lastlogin"] = $lastlogin;
     $sql = "update member set lastlogin='" . $tstamp . "' where memberid=" . $memberid;
     mysqli_query($con,$sql);
   } else { // end if successfully logged in
