@@ -45,6 +45,7 @@
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Seach for communities, topics, and products" size="70" maxlength="70">
             </div>
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
             	
                 <!--USER IS LOGGED IN-->
                 <!--<div class="navbar-right">

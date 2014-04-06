@@ -51,6 +51,7 @@ Known bugs:
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70">
             </div>
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
             	
  
 <?php               
