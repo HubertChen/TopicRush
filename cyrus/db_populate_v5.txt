@@ -66,7 +66,7 @@ insert into product VALUES (5, 3, "Dog Food", "Chewy Doggie Daily food - 5lbs.",
 insert into product VALUES (6, 5, "Avatar (DVD)", "DVD of the popular movie Avatar. Includes behind the scenes and directors cut.", 0, 25.00, 25.00, 4, 0);
 insert into product VALUES (7, 5, "Inception (DVD)", "DVD of the popular movie Inception.", 0, 28.00, 26.00, 4, 0);
 insert into product VALUES (8, 6, "DVD Player", "Fakey DVD player - with bluetooth and wifi compatibility. Play your DVDs via bluetooth from your phone! Surf the web and download DVDs directly to the 64 GB memory.", 0, 150.00, 180.00, 3, 0);
-insert into product VALUES (9, 6, "Titanic (DVD)", "The famous movie Titanic now on DVD! Watch Di Cprio at his best!", 0, 30.00, 26.50, 4, 0);
+insert into product VALUES (9, 6, "Titanic (DVD)", "The famous movie Titanic now on DVD! Watch Di Caprio at his best!", 0, 30.00, 26.50, 4, 0);
 insert into product VALUES (10, 9, "Shovel", "Better than your Father's favorite Shovel! Give our Super Dig shovel a try.", 0, 13.50, 15.50, 5, 0);
 insert into product VALUES (11, 9, "Fertilizer", "Strong, non-smelling fertilizer. This will make your roses grow like steroids! Supa-Gro will bring your garden back to life!", 0, 10.20, 12.00, 5, 0);
 
