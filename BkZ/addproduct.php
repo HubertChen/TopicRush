@@ -23,9 +23,9 @@
   
   
 <!-- NAVBAR
-Known bugs: 	
-	-in Collapse it displays a line through the buttons
-	-Readjusting back to full view the buttons don't display properly
+Known bugs:   
+  -in Collapse it displays a line through the buttons
+  -Readjusting back to full view the buttons don't display properly
 
 ================================================== -->
   <body>
@@ -41,24 +41,24 @@ Known bugs:
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="index.php">
-          	<img src="images/logo03.png" alt="Circle" width="47" height="47" vspace="2">&nbsp;
-         	 <img src="images/logotext.png" alt="Circle" width="94" height="28">
+            <img src="images/logo03.png" alt="Circle" width="47" height="47" vspace="2">&nbsp;
+           <img src="images/logotext.png" alt="Circle" width="94" height="28">
           </a>
         </div>
-		<!--Navbar that goes inside collapssed navbar-->
+    <!--Navbar that goes inside collapssed navbar-->
         <div class="navbar-collapse collapse" align="center">  
           <form class="navbar-form navbar-form-length"  role="search" >
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70">
             </div>
             <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-            	
+              
                 <!--USER IS LOGGED IN-->
                 <!--<div class="navbar-right">
-                	<a href="profile.php">
-                  		<img src="images/userDefault.png" alt="Generic placeholder image" width="35" height="35" class="img-circle">
-                  	</a>
-				  	<a href="profile.php">[User Name]</a>
+                  <a href="profile.php">
+                      <img src="images/userDefault.png" alt="Generic placeholder image" width="35" height="35" class="img-circle">
+                    </a>
+            <a href="profile.php">[User Name]</a>
                 </div>-->
                     
                 <!--USER IS NOT LOGGED IN-->    
@@ -86,19 +86,19 @@ Known bugs:
   <p>&nbsp;</p>
   <p>&nbsp;</p>
       
-		<div class="row">
+    <div class="row">
           <div class="col-md-12">
-          	<h5 align="center"><a href="community.php">Community</a> |  <a href="topic.php">Topic</a> | <a href="product.php">Product</a>
+            <h5 align="center"><a href="community.php">Community</a> |  <a href="topic.php">Topic</a> | <a href="product.php">Product</a>
           </div>
         </div>
       <div class="row">
         <div class="col-md-12">
-          	<h1>Add Product</h1>
+            <h1>Add Product</h1>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          	<form action="addproduct.php" method="post" enctype="multipart/form-data" role="form">
+            <form action="addproduct.php" method="post" enctype="multipart/form-data" role="form">
 <?php
   $productname = "";
   $productdescription = "";
@@ -341,14 +341,14 @@ Known bugs:
             </form>
         </div>
         <div class="col-md-6">
-          	<p>&nbsp;</p>
-          	<p>&nbsp;</p>
-          	<p>&nbsp;</p>
-          	<table align="center">
-            	<tr>
-                	<td>
-           			  <img class="img-circle"  data-src="holder.js/300x300" alt="Generic placeholder image">
-            		</td>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <table align="center">
+              <tr>
+                  <td>
+                  <img class="img-circle"  data-src="holder.js/300x300" alt="Generic placeholder image">
+                </td>
               </tr>    
           </table>
         </div>
@@ -358,11 +358,11 @@ Known bugs:
         
         
       
-		<p>&nbsp;</p>
-      	<p>&nbsp;</p>
-      	<p>&nbsp;</p>
-    	<p>&nbsp;</p>
-     	<p>&nbsp;</p>
+    <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
       
       
       
@@ -372,11 +372,11 @@ Known bugs:
 
       <!-- Footer
           Need to do:
-    		-Add color to the bottom
+        -Add color to the bottom
             -May want to add bread crumb for navigation purposes
     ================================================== -->
       <!--<ol class="breadcrumb">
-      	<li><a href="index.php">Home</a></li>
+        <li><a href="index.php">Home</a></li>
       </ol>-->
       <hr class="featurette-divider">
       <footer>
