@@ -46,9 +46,9 @@ Known bugs:
         </div>
 		<!--Navbar that goes inside collapssed navbar-->
         <div class="navbar-collapse collapse" align="center">  
-          <form class="navbar-form navbar-form-length"  role="search" >
+          <form class="navbar-form navbar-form-length"  role="search" action="search.php" method="post">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70">
+              <input type="text" name="search" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70" required>
             </div>
             <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
 
