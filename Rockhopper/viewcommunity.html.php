@@ -1,5 +1,4 @@
-<!-- DONE: 4/6/14 -->
-
+<!-- DONE: 4/8/14 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +11,23 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/favicon.ico">
 
-    <title>Circle | Product</title>
+    <title>Circle<?php 
+	
+						$communityid = 0;
+  						if (isset($_GET["id"])) { $communityid = $_GET["id"]; }
+  						$communityname = "";
+
+  						$sql = 'select name from community where communityid=' . $communityid;
+  						$result = mysqli_query($con,$sql);
+  						while($row = mysqli_fetch_array($result)) {
+    						$validcommunityid = TRUE;
+    						$communityname = $row["name"]; 
+  						}
+  						echo ' | ' . $communityname; 
+						//Might need to add back
+  						//mysqli_close($con);	
+				?>
+ 	</title>
     
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +35,8 @@
     <!-- Custom styles for this template -->
     <link href="css/styles.css" rel="stylesheet">
   </head>
-  
+              
+            
   <!-- NAVBAR
   ================================================== -->
   <body style="background-color:#7aadd9">
@@ -43,9 +59,9 @@
 			
             <!--Navbar that goes inside collapssed navbar-->
         	<div class="navbar-collapse collapse" align="center">  
-          		<form class="navbar-form navbar-form-length"  role="search" >
+          		<form class="navbar-form navbar-form-length"  role="search" action="search.php" method="post">
             		<div class="form-group">
-              			<input type="text" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70">
+              			<input type="text" name="search" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70" required>
             		</div>
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
             		<?php echo $navbar; ?>
@@ -54,12 +70,13 @@
   		</div>
   	</div>
     
-    <!--Products -->
+    
+    <!-- Look at grid layouts on Bootstrap: http://getbootstrap.com/css/#grid -->
   	<div class="container" style="background-color:rgb(255, 255, 255)">
    		<p>&nbsp;</p>
         <p>&nbsp;</p>
     	<?php echo $errorMessage; ?>
-
+		
         <div class="row">
         	<div class="col-md-12">
             	<table align="center">
@@ -77,16 +94,30 @@
            		</table>
 			</div> 
         </div>
+        
         <div class="row">
-        	<div class="col-md-12">
-          		<h1 class="pull-left">Product</h1>
-                <?php echo $addproduct; ?>
-        	</div>
-	  </div>
-      <!--Rest of HTML Code resides in product.php -->
-      
-      
-      
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/docs.min.js"></script>
+        	<div class="col-md-3">
+            	<table align="center">
+                	<tr>
+						<td align="center"><img class="img-circle"  img src="<?php echo $communityimage; ?>" width="150" height="150" alt="Generic placeholder image"></td>
+					</tr>
+					<tr>
+						<td align="center">Members: <?php echo $nummembers; ?></td>
+                    </tr>
+				</table>
+           	</div>
+            <div class="col-md-9">
+            	<table>
+                	<tr>
+                    	<td>&nbsp;<h1><?php echo $communityname; ?>&nbsp;<?php echo $btnState; ?></h1></td>
+                    </tr>
+					<tr>
+						<td>
+							<p>Created: <?php  echo $created; ?> by <?php echo $ownername; ?></p><br/> 
+                        </td>'
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8"><h4>Topics &nbsp;<?php echo $createtopic; ?>&nbsp;<?php echo $adminpage; ?></h4></div>

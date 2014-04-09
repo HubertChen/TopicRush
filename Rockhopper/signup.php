@@ -1,4 +1,6 @@
+<!-- DONE: 4/6/14 -->
 <?php session_start(); ?>
+     
 
 <?php
 	$validform = TRUE;
@@ -7,6 +9,7 @@
   	$password1 = "";
   	$password2 = "";
   	$role = "";
+    date_default_timezone_set('EST');
   	$date = new DateTime();
   	$tstamp = $date->format('Y-m-d H:i:s');
 
@@ -15,7 +18,7 @@
   	$dbuser = "root";
   	$dbpass = "";
   	$dbname = "Circle";
-	
+
   	$con=mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
   	if (mysqli_connect_errno()) { 
   
@@ -70,7 +73,8 @@
     	if ($validform == TRUE) {
       		$username = substr($email,0,strpos($email,"@"));
 
-			$sql = "insert into member(username,password,email,role,status,joindate,lastlogin) values('$username','$password1','$email','$role','0','$tstamp','$tstamp')";
+			$hashedPass = crypt($password1, 'Sfgh9m66MZ9zdn46XYK6');
+			$sql = "insert into member(username,password,email,role,status,joindate,lastlogin) values('$username','$hashedPass','$email','$role','0','$tstamp','$tstamp')";
 			mysqli_query($con,$sql);
 			$sql="select memberid from member where email='$email'";
 			$result=mysqli_query($con,$sql);
@@ -80,7 +84,8 @@
 			$_SESSION['loggedin'] = TRUE;
 			$_SESSION['username'] = $username;
 			$_SESSION['memberid'] = $memberid;
-			$_SESSION['role'] = $role; 
+			$_SESSION['role'] = $role;
+                        $_SESSION['lastlogin'] = $tstamp;
 		} else { // end if $validform == TRUE
       		
 			$errorMessage = '<div class="alert alert-danger alert-dismissable" align="center">

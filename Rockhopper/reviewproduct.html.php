@@ -1,5 +1,4 @@
 <!-- DONE: 4/6/14 -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +11,18 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/favicon.ico">
 
-    <title>Circle | Add Community</title>
+    <title>Circle <?php 
+						$productid = $_GET["id"];
+  						$productname = '';
+  						$sql = 'select name from product where productid=' . $productid;
+  						$result = mysqli_query($con,$sql);
+  						foreach ($result as $row) { $productname = $row["name"]; }  
+						echo ' | ' . $productname . ' Review';
+						
+						//Might need to add back
+ 						//mysqli_close($con);
+					?>
+    </title>
     
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -44,9 +54,9 @@
 			
             <!--Navbar that goes inside collapssed navbar-->
         	<div class="navbar-collapse collapse" align="center">  
-          		<form class="navbar-form navbar-form-length"  role="search" >
+          		<form class="navbar-form navbar-form-length"  role="search" action="search.php" method="post">
             		<div class="form-group">
-              			<input type="text" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70">
+              			<input type="text" name="search" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70" required>
             		</div>
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
             		<?php echo $navbar; ?>
@@ -61,7 +71,7 @@
    		<p>&nbsp;</p>
         <p>&nbsp;</p>
     	<?php echo $errorMessage; ?>
-
+		
         <div class="row">
         	<div class="col-md-12">
             	<table align="center">
@@ -79,44 +89,72 @@
            		</table>
 			</div> 
         </div>
-      	<div class="row">
-      		<div class="col-md-12">
-         		<h1>Add Community</h1>
-        	</div>
-      	</div>
-      	<div class="row">
-        	<div class="col-md-6">
-        		<p>&nbsp;</p>
+        <div class="row">
+			<div class="col-md-3">
+				<table align="center">
+					<tr>
+						<td align="center"><img class="img-circle"  img src="<?php echo $imagepath; ?>'" width="150"  height="150" alt="<?php echo $productname; ?>"></td>
+ 					</tr>
+					<tr>
+ 						<td align="center">
+                        	<?php
+									$stars = 0;
+  									$rating = round($rating,1);
+  									while ($stars < round($rating,0,PHP_ROUND_HALF_EVEN)) {        
+    									echo '<span class="glyphicon glyphicon-star"></span>';
+    									$stars += 1;
+  									}
+  									echo '(' . $rating . ')';
+							?>
+						</td>
+                    </tr>
+ 					<tr>
+						<td align="center">
+							<h6>$<?php echo $listedprice; ?></h6>
+ 						</td>
+ 					</tr>
+				</table>
+  			</div>
+			<div class="col-md-9">
+ 				<table>
+					<tr>
+						<td>
+							<h1><?php echo $productname; ?></h1>
+ 						</td>
+					</tr>
+					<tr>
+						<td>
+							<h4><em>Owner: <?php echo $ownername; ?></em></h4>
+						</td>
+ 					</tr>
+					<tr>
+						<td>
+ 							<h6>Category: <?php echo $categoryname; ?></h6>
+						</td>
+					</tr>
+ 					<tr>
+						<td>
+							<p>Description: <?php echo $description; ?></p>
+						</td>
+					</tr>
+				</table>
+ 			</div>
+		</div>
+      	<hr class="featurette-divider">
+     	<div class="row">
+     		<div class="col-md-12">
+            	<h4>Write Review</h4>
+			</div>
+		</div>
+				<?php echo $reviewed; ?>
+				
                 
-				<form action="addcommunity.php" method="post" enctype="multipart/form-data" role="form">
-					<div class="form-group">
-						<label for="communityname">Name</label>
-						<input type="text" class="form-control" name="communityname" id="communityname" placeholder="Enter name" value="<?php echo $communityname ?>" required>
-					</div>
-					<div class="form-group">
-						<label for="file">Picture</label>
-						<input type="file" name="file" id="file" required>
-						<span class="help-block">Submit only .gif, .jgp,  .jpeg, or .png <br/>Maximum 200 KB.</span>
-					</div>
-                    <?php echo $button; ?>
-					<!--<button type="submit" class="btn btn-primary">Create Community</button>-->
-          		</form>
-        	</div>
-        	<div class="col-md-6">
-          		<table align="center">
-            		<tr>
-                		<td>
-           			  	<img class="img-circle" src="images/communityLogo-03.png" width="300" height="300" alt="Community Logo">
-            			</td>
-              		</tr>    
-          		</table>
-        	</div>
-      	</div>
-        <br/>
+                <br/>
         <br/>
         <br/>
         <br/>
       </div><!-- /end of container -->
+      </div>
 
 	<!-- Footer
     ================================================== -->
@@ -144,4 +182,3 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/docs.min.js"></script>
   </body>
-</html>

@@ -1,5 +1,4 @@
-<!-- DONE: 4/6/14 -->
-
+<!-- DONE: 4/8/14 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +11,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/favicon.ico">
 
-    <title>Circle | Add Community</title>
+    <title>Circle | Community</title>
     
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -44,9 +43,9 @@
 			
             <!--Navbar that goes inside collapssed navbar-->
         	<div class="navbar-collapse collapse" align="center">  
-          		<form class="navbar-form navbar-form-length"  role="search" >
+          		<form class="navbar-form navbar-form-length"  role="search" action="search.php" method="post">
             		<div class="form-group">
-              			<input type="text" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70">
+              			<input type="text" name="search" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70" required>
             		</div>
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
             		<?php echo $navbar; ?>
@@ -61,7 +60,7 @@
    		<p>&nbsp;</p>
         <p>&nbsp;</p>
     	<?php echo $errorMessage; ?>
-
+		
         <div class="row">
         	<div class="col-md-12">
             	<table align="center">
@@ -79,69 +78,20 @@
            		</table>
 			</div> 
         </div>
-      	<div class="row">
-      		<div class="col-md-12">
-         		<h1>Add Community</h1>
+        <div class="row">
+        	<div class="col-md-12">
+          		<h1 class="pull-left">Community</h1>
+                <?php echo $addcommunity; ?>
         	</div>
-      	</div>
-      	<div class="row">
-        	<div class="col-md-6">
-        		<p>&nbsp;</p>
-                
-				<form action="addcommunity.php" method="post" enctype="multipart/form-data" role="form">
-					<div class="form-group">
-						<label for="communityname">Name</label>
-						<input type="text" class="form-control" name="communityname" id="communityname" placeholder="Enter name" value="<?php echo $communityname ?>" required>
-					</div>
-					<div class="form-group">
-						<label for="file">Picture</label>
-						<input type="file" name="file" id="file" required>
-						<span class="help-block">Submit only .gif, .jgp,  .jpeg, or .png <br/>Maximum 200 KB.</span>
-					</div>
-                    <?php echo $button; ?>
-					<!--<button type="submit" class="btn btn-primary">Create Community</button>-->
-          		</form>
-        	</div>
-        	<div class="col-md-6">
-          		<table align="center">
-            		<tr>
-                		<td>
-           			  	<img class="img-circle" src="images/communityLogo-03.png" width="300" height="300" alt="Community Logo">
-            			</td>
-              		</tr>    
-          		</table>
-        	</div>
-      	</div>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-      </div><!-- /end of container -->
-
-	<!-- Footer
-    ================================================== -->
-      <div class="container">
-          <footer>
-              <br/>
-              <br/>
-              <br/>
-              <div align="center">
-                <img src="images/logoWhite.png" width="75" height="75" align="Circle">
-              </div>
-              <br/>
-              <br/>
-              <br/>
-              <hr/>
-              <p class="pull-right footer-color"><a href="#top" class="footer-color">Back to top</a></p>
-              <p class="footer-color">&copy; 2014 Circle, Inc. &middot; <a href="privacy.php" class="footer-color">Privacy</a> &middot; <a href="terms.php" class="footer-color">Terms</a> &middot; <a href="about.php" class="footer-color">About</a></p>
-      	</footer>
-    </div><!-- /.container -->
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+	  	</div>
+        <div class="row">
+    		<div class="col-md-12"><h3>Explore</h3></div>
+        </div>
+        
+        <!--Rest of HTML Code resides in community.php -->
+      
+      
+      
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/docs.min.js"></script>
-  </body>
-</html>

@@ -1,5 +1,6 @@
+<!-- DONE: 4/6/14 -->
 <?php session_start(); ?>
- <!-- Bootstrap core CSS -->
+ 	<!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
@@ -56,6 +57,7 @@
 	include 'product.html.php';
 		
 	$totalprodducts = 0;
+	$maxdisplay = 0;
 
   	$sql = "select count(productid) from product";
   	$result = mysqli_query($con,$sql);
@@ -66,7 +68,52 @@
     	echo '<div class="col-md-12"><h3>Explore</h3></div>';
     	echo '</div>';
     	echo '<div class="row">';
-    	
+		
+		$productarray = array();
+    	$sql = 'select productid from product';
+    	$result = mysqli_query($con,$sql);
+    	foreach ($result as $row) { array_push($productarray,$row["productid"]); }
+
+    	$maxproducts = count($productarray);  
+
+   	 	$randomorder = array();
+    	$index = 0;
+    	while ($index < $maxproducts) {
+      		$rand = rand(0,($maxproducts-1));
+      		if (in_array($productarray[$rand],$randomorder) == FALSE) {
+        		$index += 1;
+        		array_push($randomorder,$productarray[$rand]);
+      		}
+    	} // end while loop to generate random order
+
+		
+		if ($totalproducts > 15) {
+      		$maxdisplay = 15;
+    	} else { 
+     		$maxdisplay = $maxproducts;
+    	}
+		
+		$index = 0;
+    	while ($index < $maxdisplay) {
+      		$sql = 'select * from product where productid=' . $randomorder[$index];
+      		$result = mysqli_query($con,$sql);
+      		$index += 1;
+      		foreach ($result as $row) {
+        		$rating = 0;
+        		if ($row["numreviews"] != 0) {
+          			$rating = $row["rating"] / $row["numreviews"];
+        		}
+        	
+				$numrecords = 0;
+        		$imagepath = "";
+        		$sql2 = 'select path from productdetail where productid=' . $row["productid"];
+        		$result2 = mysqli_query($con,$sql2);
+        		while(($row2 = mysqli_fetch_array($result2)) && ($numrecords == 0)) {
+          			$numrecords += 1;
+          			$imagepath = $imagepath . $row2["path"];
+        		}
+		
+    	/*
 		if ($totalproducts > 15) {
 
     	} else { // end if $totalproducts > 4
@@ -86,6 +133,7 @@
 				  $numrecords += 1;
 				  $imagepath = $imagepath . $row2["path"];
         		}
+		*/		
 				echo '<div class="col-md-3">';
 				echo '<table align="center">';
 				echo '<tr>';
@@ -110,8 +158,8 @@
 				echo '</table>';
 				echo '</div>';
 			} // end for-loop to display the products	
-			echo '</div>';
-    	} // end if-else $totalproducts > 4
+    	} // end to print out random order
+		echo '</div>';
   	} else { // end if $totalproducts > 0
     	
 		echo '<div class="alert alert-info alert-dismissable" align="center">

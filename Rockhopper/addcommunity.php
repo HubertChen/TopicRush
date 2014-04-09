@@ -1,3 +1,5 @@
+<!-- DONE: 4/6/14 -->
+
 <?php session_start(); ?>
 
 <?php
@@ -7,8 +9,9 @@
 	$dbuser = "root";
 	$dbpass = "";
 	$dbname = "Circle";
-	$date = new DateTime();
-	$tstamp = $date->format('Y-m-d H:i:s');
+	date_default_timezone_set('EST');
+  	$date = new DateTime();
+  	$tstamp = $date->format('Y-m-d H:i:s');
 	
 	
 	//navbar: user is logged in           
@@ -48,7 +51,7 @@
     	$communityname = '';
     	$communityid = 0;
     	$communitypath = 'C:\\wamp\\www\\bzk\\community\\';
-    	$button = '<button type="submit" class="btn btn-primary">Add Community</button>';
+    	$button = '<button type="submit" class="btn btn-primary pull-right">Add Community</button>';
 		//If post message is received
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
       		$postcommunityname = $_POST["communityname"];
@@ -106,7 +109,7 @@
      							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 								Community added Successfully!
 							</div>';
-							$button = '<button type="submit" class="btn btn-primary pull-right">Add Community</button>';
+			$button = '<button type="submit" class="btn btn-primary pull-right">Add Community</button>';
 			include 'addcommunity.html.php';
 			
 			

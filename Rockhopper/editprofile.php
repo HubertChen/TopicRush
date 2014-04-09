@@ -1,3 +1,4 @@
+<!-- DONE: 4/6/14 -->
 <?php session_start() ?>
 
 <?php
@@ -82,7 +83,7 @@
       		if (strlen($postusername) > 0) {
         		if ((strlen($postusername) > 30) || (ctype_alnum($postusername) == FALSE)) {
           			$validform = FALSE;
-          			$formerrors = $formerrors . "Invalid user name, please try again!<br/>";
+          			$formerrors = $formerrors . "Invalid username, please try again!<br/>";
         		} else {
           			$username = $postusername;
         		}
@@ -131,7 +132,7 @@
           			$changeavatar = TRUE;
         		} else { // end if file is a supported type
           			$validform = FALSE;
-          			$formerrors = $formerrors . "Submit only .gif, .jgp,  .jpeg, or png and Maximum 200 KB.<br/>";
+          			$formerrors = $formerrors . "Submit only .gif, .jgp,  .jpeg, or .png and Maximum 200 KB.<br/>";
         		} // end if-else is a supported type
       		} // end if-else no file attached
 

@@ -1,10 +1,13 @@
-﻿<?php session_start(); ?>
+﻿<!-- DONE: 4/6/14 -->
+<?php session_start(); ?>
 
 
 <?php
-   session_destroy();
+	
+	session_destroy();
    
-$errorMessage = '
+    //Optional error message
+	$errorMessage = '
 					<p>&nbsp;</p>
       				<p>&nbsp;</p>
 					<div class="alert alert-success alert-dismissable" align="center">
@@ -13,6 +16,8 @@ $errorMessage = '
 					</div>'
 				;			
 		
+		
+		//header("Location: http://localhost/rockhopper/index.php");
 		include 'index.php';
 		exit();
 		

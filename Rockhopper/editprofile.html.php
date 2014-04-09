@@ -1,3 +1,4 @@
+<!-- DONE: 4/6/14 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -45,13 +46,14 @@
             		<div class="form-group">
               			<input type="text" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70">
             		</div>
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
             		<?php echo $navbar; ?>
   				</form>
   			</div>
   		</div>
   	</div>
     
-        <!-- Look at grid layouts on Bootstrap: http://getbootstrap.com/css/#grid -->
+     <!-- Edit Profile -->
     <div class="container" style="background-color:rgb(255, 255, 255)">
     	<p>&nbsp;</p>
       	<p>&nbsp;</p>

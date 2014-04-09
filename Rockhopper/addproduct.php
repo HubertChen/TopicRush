@@ -1,3 +1,4 @@
+<!-- DONE: 4/6/14 -->
 <?php session_start(); ?>
 
 <?php    

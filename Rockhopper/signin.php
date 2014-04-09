@@ -1,3 +1,4 @@
+<!-- DONE: 4/6/14 -->
 <?php session_start(); ?>
 
 
@@ -10,8 +11,11 @@
 	$username = "";
 	$memberid = "";
 	$role = "";
-	$date = new DateTime();
-	$tstamp = $date->format('Y-m-d H:i:s');
+	$avatarpath = "";
+  	$lastlogin = "";
+  	date_default_timezone_set('EST');
+  	$date = new DateTime();
+ 	$tstamp = $date->format('Y-m-d H:i:s');
 	
 	/*WILL NEED TO CHANGE*/
 	$dbhost = "localhost";
@@ -41,12 +45,14 @@
     	while(($row = mysqli_fetch_array($result)) and ($found == FALSE)){
       		if (strtolower($postemail) == strtolower($row["email"])) {
         		$found =  TRUE;
-				if ($postpassword == $row["password"]) {
-					$valid = TRUE;
-					$memberid = $row["memberid"];
-					$username = $row["username"];
-					$role = $row["role"];
-				} // end if password matches
+				if (crypt($postpassword, 'Sfgh9m66MZ9zdn46XYK6')==$row["password"]){
+          $valid = TRUE;
+          $memberid = $row["memberid"];
+          $username = $row["username"];
+          $role = $row["role"];
+          $avatarpath = $row["avatarpath"];
+          $lastlogin = $row["lastlogin"];
+        }// end if password matches
       		} // end if email found
 		} // end while checking password
   		//header("Location: http://www.google.com");
