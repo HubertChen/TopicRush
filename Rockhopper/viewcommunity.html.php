@@ -119,5 +119,7 @@
 				</table>
 			</div>
 		</div>
+        <hr/>
 		<div class="row">
-			<div class="col-md-8"><h4>Topics &nbsp;<?php echo $createtopic; ?>&nbsp;<?php echo $adminpage; ?></h4></div>
+			<div class="col-md-8"><h4>Topics &nbsp;<?php echo $createtopic ; ?>&nbsp;<?php echo $adminpage; ?></h4></div>
+            <?php echo $notopic; ?>

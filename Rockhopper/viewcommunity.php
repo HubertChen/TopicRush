@@ -1,46 +1,5 @@
 <?php session_start(); ?>
 
-<!--<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="images/favicon.ico">
-
-
-
-    
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-
-    <link href="css/styles.css" rel="stylesheet">
-  </head>
-
-  <body>
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">   
-      <div class="container">
-        <div class="navbar-header">
-        
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.php">
-          	<img src="images/logo03.png" alt="Circle" width="47" height="47" vspace="2">&nbsp;
-         	 <img src="images/logotext.png" alt="Circle" width="94" height="28">
-          </a>
-        </div>
-        <div class="navbar-collapse collapse" align="center">  
-          <form class="navbar-form navbar-form-length"  role="search" action="search.php" method="post">
-            <div class="form-group">
-              <input type="text" name="search" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70" required>
-            </div>
-            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>-->
 
 <?php               
   //navbar: user is logged in           
@@ -58,31 +17,11 @@
           <a href="signup.php"><button type="button" class="btn btn-primary navbar-btn-right" >Sign Up</button></a>';
     } // end if-else user is logged in
 
-   /*         	
-          </form>  
-        </div>
-      </div>
-    </div>
-
-    
-    
-    
-    <div class="container">
-    	 <p>&nbsp;</p>
-      	<p>&nbsp;</p>
-      
-		<div class="row">
-          <div class="col-md-12">
-          	&nbsp;
-          </div>
-        </div>
-
-*/
 	/*WILL NEED TO CHANGE*/
 	$dbhost = "localhost";
 	$dbuser = "root";
 	$dbpass = "";
-	$dbname = "Cirle";
+	$dbname = "Circle";
   
   	//connected to database
     $con=mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
@@ -145,28 +84,7 @@
   	$sql = 'select username from member where memberid=' . $ownerid;
   	$result = mysqli_query($con,$sql);
   	foreach ($result as $row) { $ownername = $row["username"]; }
-/*
-  echo '<div class="row">';
-  echo '<div class="col-md-3">';
-  echo '<table align="center">';
-  echo '<tr>';
-  echo '<td align="center"><img class="img-circle"  img src="' . $communityimage . '" width="150" height="150" alt="Generic placeholder image"></td>';
-  echo '</tr>';
-  echo '<tr>';
-  echo '<td align="center">';
-  echo '(' . $rating . ') M=' . $nummembers . ',T=' . $numtopics . ',C=' . $numcontent . '.';
-  echo '</td>';
-  echo '</tr>';
-  echo '</table>';
-  echo '</div>';
-  echo '<div class="col-md-9">';
-  echo '<table>';
-  echo '<tr>';
-  echo '<td>';
-  echo '&nbsp;';
-  echo '<h1>';
-  echo $communityname;
-  */
+
   //if user is logged in
   if (isset($_SESSION["loggedin"])) {
     if ($alreadyjoined == FALSE) {
@@ -195,6 +113,7 @@
   */
 	if ($blocked == TRUE) {
   		$blockmessage = 'You have been blocked from this community for the following reason:<br>' . $blockreason . '<br>';
+		include 'viewcommynity.html.php';
   	} else { // end if $blocked == TRUE
     	
     	if (isset($_SESSION["loggedin"])) {
@@ -213,7 +132,7 @@
     	} // end if user logged in
 
     //echo '</h4>';
-
+		
 //STOPPPED HERE*******************************************
     	if ($numtopics > 0) {
       		$sql = 'select * from topic where communityid=' . $communityid;
@@ -221,7 +140,8 @@
       		$topicowner = 0;
       		$topicownername = '';
       		$topicavatarpath = '';
-      		foreach ($result as $row) {    
+      		include 'viewcommunity.html.php';
+			foreach ($result as $row) {    
         		$productid = $row["productid"];
         		$productname = '';
 
@@ -232,16 +152,15 @@
           			$topicownername = $row2["username"]; 
           			$topicavatarpath = $row2["avatarpath"];
         		}
-        		echo '&nbsp;';
-        		echo '<div class="row">';
-        		echo '<div class="col-md-12">';
-       	 		echo '<div class="media">';
-        		echo '<a class="pull-left" href="#">';
-        		echo '<img class="img-circle" img src="' . $topicavatarpath . '" width="64" height="64" alt="Generic placeholder image">';
-        		echo '</a>';
-        		echo '<div class="media-body">';
-        		echo '<h4 class="media-heading"><a href="viewtopic.php?id=' . $row["topicid"] . '">' . $row["name"] . '</a>' . '</h4>';
-        		echo 'Created: ' . $row["created"] . ' by ' . $topicownername . '.';
+        		echo '<div class="row show-grid">
+						<div class="col-md-12">
+							<div class="media">
+							<a class="pull-left" href="#">
+								<img class="img-circle" img src="' . $topicavatarpath . '" width="64" height="64" alt="' . $topicownername . '">
+							</a>
+							<div class="media-body">
+								<h4 class="media-heading"><a href="viewtopic.php?id=' . $row["topicid"] . '">' . $row["name"] . '</a>' . '</h4>
+								Created: ' . $row["created"] . ' by ' . $topicownername . '.';
         		
 				if ($alreadyjoined == TRUE) {
           			echo '<a href="addcontent.php?id=' . $row["topicid"] . '"> <button type="button" class="btn btn-primary btn-xs">Add Content</button></a>';
@@ -273,7 +192,7 @@
               				$contentowneravatarpath = $row3["avatarpath"];
             			}
             		
-						echo '<img class="img-circle" img src="' . $contentowneravatarpath . '" width="64" height="64" alt="Generic placeholder image">';
+						echo '<img class="img-circle" img src="' . $contentowneravatarpath . '" width="64" height="64" alt="' . $contentownername . '">';
             			echo '     ' . $row2["message"] . ' ';
             			
 						if (is_numeric($row2["productid"])) { 
@@ -307,37 +226,41 @@
         	echo '</div>';
       	} // end for loop to print topics
  	} else { // end if $numtopics > 0
-		echo "There are currenty no topics!Why not create one!<br>";
+		$notopic = '<div class="row">
+						<div class="col-md-12" style="padding-left:5em">There are currenty no topics, please check back soon!</div>
+					</div>	';
+		include 'viewcommunity.html.php';
     }
 	} // end if-else $blocked == TRUE
-  echo '</div>';
   echo '</div>';
 
 
   mysqli_close($con);
 
 ?>      
- 
- 
- 
- 
- 
-      <hr class="featurette-divider">
-      <!-- /END THE FEATURETTES -->
+ <br/>
+        <br/>
+	</div><!-- /end of container-->
+    
+      
 
-
-      <!-- Footer
-          Need to do:
-    		-Add color to the bottom
-            -May want to add bread crumb for navigation purposes
+    <!-- Footer
     ================================================== -->
-      <!--<ol class="breadcrumb">
-      	<li><a href="index.php">Home</a></li>
-      </ol>-->
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Circle, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">About</a></p>
-      </footer>
+      <div class="container">
+          <footer>
+              <br/>
+              <br/>
+              <br/>
+              <div align="center">
+                <img src="images/logoWhite.png" width="75" height="75" align="Circle">
+              </div>
+              <br/>
+              <br/>
+              <br/>
+              <hr/>
+              <p class="pull-right footer-color"><a href="#top" class="footer-color">Back to top</a></p>
+              <p class="footer-color">&copy; 2014 Circle, Inc. &middot; <a href="privacy.php" class="footer-color">Privacy</a> &middot; <a href="terms.php" class="footer-color">Terms</a> &middot; <a href="about.php" class="footer-color">About</a></p>
+      	</footer>
     </div><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
