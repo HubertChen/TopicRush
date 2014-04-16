@@ -119,37 +119,69 @@
   	$communitylist = array();
   	$topiclist = array();
   	$productlist = array();
-  
-  	$sql = 'select name,communityid from community';
-  	$result = mysqli_query($con,$sql);
-  	while($row=mysqli_fetch_array($result)) {
-    	$found = FALSE;
-    	$index = 0;
-    	while (($found == FALSE) && ($index < $totalwords)) {
-      		$pattern = "/" . $words[$index] . "/";
-      		if (preg_match($pattern,strtolower($row['name'])))  { $found = TRUE; }
-      		$index += 1;
-    	}
-    	if ($found == TRUE) {
-      		if (in_array($row["communityid"],$communitylist) == FALSE) { array_push($communitylist,$row["communityid"]); }
-    	}
-  	}
+        $formerrors = '';
 
-  	$sql = 'select name,topicid from topic';
-  	$result = mysqli_query($con,$sql);
-  	while($row=mysqli_fetch_array($result)) {
-    	$found = FALSE;
-    	$index = 0;
+        $filterlist = array();
+        $filterfile = 'C:\\wamp\\www\bzk\\filter.txt';
+        $file = fopen($filterfile,"r");
+        while (!feof($file)) {
+          $input = trim(fgets($file));
+          if (strlen($input) > 0) { array_push($filterlist,$input); }
+        }
+        $filtersize = count($filterlist);
+
+        $valid = TRUE;
+        if (preg_match("/<(\/*)[a-zA-Z0-9]*(>|.)/i",$search) == TRUE) {
+          $valid = FALSE;
+          $validform = FALSE;
+          $formerrors = $formerrors . 'Invalid input, please try again!<br>';
+        }
+        if ($valid == TRUE) {
+          $index = 0;
+          $found = FALSE;
+          while (($index < $filtersize) && ($valid == TRUE)) {
+            $pattern = '/' . $filterlist[$index] . '/i';
+            if (preg_match($pattern,$search) == TRUE) {
+              $valid = FALSE;
+              $validform = FALSE;
+              $formerrors = $formerrors . 'Input contains innapropriate material, please be nice and try again!<br>';
+            } // end if input matches filter word
+            $index += 1;
+          } // end while loop to loop through each filter word
+        } // end if $valid == TRUE
+
+
+        if ($valid == TRUE) {  
+    	  $sql = 'select name,communityid from community';
+    	  $result = mysqli_query($con,$sql);
+    	  while($row=mysqli_fetch_array($result)) {
+    	    $found = FALSE;
+    	    $index = 0;
+    	    while (($found == FALSE) && ($index < $totalwords)) {
+      	      $pattern = "/" . $words[$index] . "/";
+      	      if (preg_match($pattern,strtolower($row['name'])))  { $found = TRUE; }
+      	      $index += 1;
+    	    }
+    	    if ($found == TRUE) {
+      	      if (in_array($row["communityid"],$communitylist) == FALSE) { array_push($communitylist,$row["communityid"]); }
+    	    }
+  	  }
+
+    	  $sql = 'select name,topicid from topic';
+  	  $result = mysqli_query($con,$sql);
+  	  while($row=mysqli_fetch_array($result)) {
+    	  $found = FALSE;
+    	  $index = 0;
     	
 		while (($found == FALSE) && ($index < $totalwords)) {
       		$pattern = "/" . $words[$index] . "/";
       		if (preg_match($pattern,strtolower($row['name'])))  { $found = TRUE; }
       		$index += 1;
-    	}
+    	  }
     	
 		$sql2 = 'select message,description from content where topicid=' . $row["topicid"];
-    	$result2 = mysqli_query($con,$sql2);
-    	while($row2=mysqli_fetch_array($result2)) {
+    	  $result2 = mysqli_query($con,$sql2);
+    	  while($row2=mysqli_fetch_array($result2)) {
       		$index = 0;
       		while (($found == FALSE) && ($index < $totalwords)) {
         		$pattern = "/" . $words[$index] . "/";
@@ -157,38 +189,38 @@
         		if (preg_match($pattern,strtolower($row2['description'])))  { $found = TRUE; } 
         		$index += 1;
       		}
-    	}
-    	if ($found == TRUE) {
+    	  }
+    	  if ($found == TRUE) {
       		if (in_array($row["topicid"],$topiclist) == FALSE) { array_push($topiclist,$row["topicid"]); }
-    	}
-  	}
+    	  }
+  	  }
 
-  	$sql = 'select productid,name,description from product';
-  	$result = mysqli_query($con,$sql);
-  	while($row=mysqli_fetch_array($result)) {
-    	$found = FALSE;
-    	$index = 0;
-    	while (($found == FALSE) && ($index < $totalwords)) {
+  	  $sql = 'select productid,name,description from product';
+  	  $result = mysqli_query($con,$sql);
+  	  while($row=mysqli_fetch_array($result)) {
+    	  $found = FALSE;
+    	  $index = 0;
+    	  while (($found == FALSE) && ($index < $totalwords)) {
       		$pattern = "/" . $words[$index] . "/";
       		if (preg_match($pattern,strtolower($row['name'])))  { $found = TRUE; }
       		if (preg_match($pattern,strtolower($row['description'])))  { $found = TRUE; }
       		$index += 1;
-    	}
+    	  }
     	
 		$sql2 = 'select description from productdetail where productid=' . $row["productid"];
-    	$result2 = mysqli_query($con,$sql2);
-    	while($row2=mysqli_fetch_array($result2)) {
+    	  $result2 = mysqli_query($con,$sql2);
+    	  while($row2=mysqli_fetch_array($result2)) {
       		$index = 0;
       		while (($found == FALSE) && ($index < $totalwords)) {
         		$pattern = "/" . $words[$index] . "/";
         		if (preg_match($pattern,strtolower($row2['description'])))  { $found = TRUE; } 
         		$index += 1;
       		}
-    	}
+    	  }
     	
 		$sql2 = 'select reviewdetails from review where productid=' . $row["productid"];
-    	$result2 = mysqli_query($con,$sql2);
-    	while($row2=mysqli_fetch_array($result2)) {
+    	  $result2 = mysqli_query($con,$sql2);
+    	  while($row2=mysqli_fetch_array($result2)) {
       		$index = 0;
       		
 			while (($found == FALSE) && ($index < $totalwords)) {
@@ -196,31 +228,31 @@
         		if (preg_match($pattern,strtolower($row2['reviewdetails'])))  { $found = TRUE; } 
         		$index += 1;
       		}
-    	}
+    	  }
     	
 		if ($found == TRUE) {
       		if (in_array($row["productid"],$productlist) == FALSE) { array_push($productlist,$row["productid"]); }
    	 	}
-  	}
+  	  }
 
 
-  	$totalcommunity = count($communitylist);
-  	$totaltopic = count($topiclist);
-  	$totalproduct = count($productlist);
+  	  $totalcommunity = count($communitylist);
+  	  $totaltopic = count($topiclist);
+  	  $totalproduct = count($productlist);
 
-  	echo '<div class="row ">';
+  	  echo '<div class="row ">';
   		echo '<div class="col-md-12">';
   			echo '<h1>Search results for: "' . $search . '"</h1>';
   		echo '</div>';
-  	echo '</div>';
-  	echo '<div class="row ">';
-	if ($totalcommunity > 0) {
-    	echo '<div class="row ">';
+  	  echo '</div>';
+  	  echo '<div class="row ">';
+	  if ($totalcommunity > 0) {
+    	  echo '<div class="row ">';
     		echo '<div class="col-md-12">';
     			echo '<h3>Community</h3>';
     		echo '</div>';
-    	echo '</div>';
-    	foreach ($communitylist as $communityid) {
+    	  echo '</div>';
+    	  foreach ($communitylist as $communityid) {
       		$communityname = '';
       		$communitypath = '';
       		$sql = 'select name,path from community where communityid=' . $communityid;
@@ -239,14 +271,14 @@
 					echo '</tr>';
 				echo '</table>';
 		  	echo '</div>';
-    	} // end for loop to go through each community
-  	} // end if $totalcommunity > 0
-	echo '</div>';
-  	echo '<hr/>';
-  	echo '<div class="row">';
+    	  } // end for loop to go through each community
+  	  } // end if $totalcommunity > 0
+	  echo '</div>';
+  	  echo '<hr/>';
+  	  echo '<div class="row">';
   		echo '<div class="col-md-12"><h3>Topic</h3></div>';
-  	echo '</div>';
-  	echo '<div class="row ">';
+  	  echo '</div>';
+  	  echo '<div class="row ">';
 
 	  if ($totaltopic > 0) {
 		  foreach ($topiclist as $topicid) {
@@ -274,15 +306,15 @@
 	  } // end if $totaltopic > 0
 
 
-  	echo '</div>';
-  	echo '<hr/>';
-  	echo '<div class="row">';
+  	  echo '</div>';
+  	  echo '<hr/>';
+  	  echo '<div class="row">';
   		echo '<div class="col-md-12"><h3>Product</h3></div>';
- 	echo '</div>';
-  echo '<div class="row ">';
+ 	  echo '</div>';
+          echo '<div class="row ">';
   	
-  	if ($totalproduct > 0) {
-    	foreach ($productlist as $productid) {
+  	  if ($totalproduct > 0) {
+    	  foreach ($productlist as $productid) {
       		$ratingpoints = 0;
       		$numreviews = 0;
       		$productname = '';
@@ -325,13 +357,17 @@
       			echo '(' . $rating . ')';
       			echo '</td>';
       		echo '</tr>';
-      	echo '</table>';
+      	  echo '</table>';
 	  echo '</div>';
-    } // end for loop to display each product
-  } // end if $totalproduct > 0
+      } // end for loop to display each product
+    } // end if $totalproduct > 0
   
-  echo '</div>';
-  echo '</div>';
+    echo '</div>';
+    echo '</div>';
+
+  } else {
+    echo 'The search contains innapropriate material!<br>';
+  }
 
   mysqli_close($con);
 
