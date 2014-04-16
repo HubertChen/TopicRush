@@ -45,7 +45,7 @@
         	<div class="navbar-collapse collapse" align="center">  
           		<form class="navbar-form navbar-form-length"  role="search" action="search.php" method="post">
             		<div class="form-group">
-              			<input type="text" class="form-control" placeholder="Search for communities, topics, and products" size="70" maxlength="70">
+              			<input type="text" class="form-control" placeholder="Search for communities, topics, and products" name="search" size="70" maxlength="70" required>
             		</div>
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
             		<?php echo $navbar; ?>

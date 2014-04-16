@@ -137,7 +137,8 @@
   	$listedprice = '';
   	$categoryid = 0;
   	$categoryname = '';
-  	$imagepath = '';
+  	$imagepath = ''; 
+        $imagedescription = '';
 
   	$sql = 'select * from product where productid=' . $productid;
   	$result = mysqli_query($con,$sql);
@@ -163,11 +164,12 @@
   	while($row = mysqli_fetch_array($result)) { $ownername = $row["username"]; }
 
   	$numrecords = 0;
-  	$sql2 = 'select path from productdetail where productid=' . $productid;
+  	$sql2 = 'select path,description from productdetail where productid=' . $productid;
   	$result2 = mysqli_query($con,$sql2);
   	while(($row2 = mysqli_fetch_array($result2)) && ($numrecords == 0)) {
-    	$numrecords += 1;
-    	$imagepath = $imagepath . $row2["path"];
+      	  $numrecords += 1;
+    	  $imagepath = $imagepath . $row2["path"];
+          $imagedescription = $row2["description"];
   	}
 
   	echo '<div class="row ">';
@@ -176,6 +178,7 @@
   				echo '<tr>';
 					// GOING TO NEED TO WORK OUT HOW TO DISPLAY MULTIPLE PICTURES
   					echo '<td align="center"><img class="img-circle" img src="' . $imagepath . '" width="150" height="150" alt="' . $productname . '"></td>';
+                                echo '</tr><tr><td align="center">' . $imagedescription . '</td>';
   				echo '</tr>';
   				echo '<tr>';
  					echo '<td align="center">';
