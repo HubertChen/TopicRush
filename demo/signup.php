@@ -104,7 +104,7 @@
     	if ($validform == TRUE) {
       		$username = substr($email,0,strpos($email,"@"));
                 $randomavatar = rand(1,8);
-                $avatarpath = 'C:\\wamp\\www\\bzk\\images\\avatars\\' . $randomavatar . '.png';
+                $avatarpath = '/bzk/images/avatars/' . $randomavatar . '.png';
 			$hashedPass = crypt($password1, 'Sfgh9m66MZ9zdn46XYK6');
 			$sql = "insert into member(username,password,email,role,status,joindate,lastlogin,avatarpath) values('$username','$hashedPass','$email','$role','0','$tstamp','$tstamp','$avatarpath')";
 			mysqli_query($con,$sql);

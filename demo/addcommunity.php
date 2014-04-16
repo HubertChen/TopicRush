@@ -62,12 +62,13 @@
 		//If post message is received
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $postcommunityname = $_POST["communityname"];
+      $postcommunitysearch = mysqli_real_escape_string($con,$postcommunityname);
       if ((strlen($postcommunityname) < 3) || (strlen($postcommunityname) > 30)) {
         $validform = FALSE;
         $formerrors = $formerrors . "Community name must be between three and thirty characters!<br>";
       } 
       $found = FALSE;
-      $sql = "select communityid from community where name='" . $postcommunityname . "'";
+      $sql = "select communityid from community where name='" . $postcommunitysearch . "'";
       $result = mysqli_query($con,$sql);
       while($row = mysqli_fetch_array($result)) { $found = TRUE; }
       if ($found == TRUE) {
@@ -115,7 +116,7 @@
       		} // end if-else no file attached
 
 		//form is valid
-      	if ($validform == TRUE) {
+      	if ($validform == TRUE) {                
                 $communityname = mysqli_real_escape_string($con,$postcommunityname);	
         	$sql="insert into community(ownerid,name,created,nummembers,numtopics,numcontents,rating) values ('$memberid','$communityname','$tstamp','0','0','0','0')";
         	mysqli_query($con,$sql);
