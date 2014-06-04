@@ -1,6 +1,0 @@
-JOIN community page
-follow topic page
-file work for content
-	add memberid to content
-user home page
-new category add
