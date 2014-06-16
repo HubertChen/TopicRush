@@ -31,13 +31,28 @@ while($file_line = fgets($database_tables)){
 		if(mysqli_query($connection, $query))
 			echo "Table created successfully\n";
 		else{
-			echo "\n\n\n" . $query . "\n\n\n";
 			echo "Table created unsucessfully, now exiting\n" . mysqli_error($connection);
 			exit();	
 		}
 		$query = "";
 	}else
 		$query .= $file_line;
+}
+
+// Populates database with entries from database_populate.txt
+$database_populate = fopen("database_populate.txt", "r");
+while($file_line = fgets($database_populate)){
+	if($file_line === "\n")
+		continue;
+	else{
+		if(mysqli_query($connection, $file_line))
+			echo "Entry successful.\n";
+		else{
+			echo $file_line . "\n";
+			echo "Entry unsuccessful, now exiting.\n" . mysqli_error($connection);
+			exit();
+		}
+	}
 }
 
 mysqli_close($connection)
