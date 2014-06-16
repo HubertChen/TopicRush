@@ -1,7 +1,10 @@
 Summer Research Project
 
 Live site: http://rockhopper.monmouth.edu/~srpsu14/
+
 Test Environment: http://127.0.0.1:4567
+
+MySQL credentials (Test Enviornment): root/123
 
 Contributors: 
 * Dr. Cui Yu
@@ -16,5 +19,3 @@ To setup development environment:
 	git clone https://github.com/yuproj/MiniSocialNetworkFramework.git
 	vagrant up
 	php config/database_init.php
-	
-MySQL credentials (Test Enviornment): root/123
