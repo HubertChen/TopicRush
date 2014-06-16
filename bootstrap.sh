@@ -10,4 +10,4 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again p
 sudo apt-get install -y mysql-server
 sudo apt-get install -y php5-mysql
 sudo rm -rf /var/www
-sudo ln -fs /vagrant /var/www
+sudo ln -fs /vagrant/src /var/www
