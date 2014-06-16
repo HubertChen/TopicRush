@@ -1,14 +1,18 @@
-Social Network
+Summer Research Project
 
-Makefile:
-	make install
-		Updates the Ubuntu repositories and installs LAMP (Apache, MySQL, PHP)
+Live site: http://rockhopper.monmouth.edu/~srpsu14/
 
-	make start
-		Runs the Apache server
+Contributors: 
+	* Dr. Cui Yu
+	* Greg Kilmartin
+	* Connor Persteezy
+	* Hubert Chen
 
-	make stop
-		Stops the Apache server
-
-	make restart
-		Restarts the Apache server
+To setup development environment:
+	Install VirtualBox at https://www.virtualbox.org/wiki/Downloads	
+	Install Vagrant at http://www.vagrantup.com/downloads.html
+	git clone https://github.com/yuproj/MiniSocialNetworkFramework.git
+	vagrant init
+	vagrant up
+	php config/database_init.php
+	
