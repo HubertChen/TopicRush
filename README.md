@@ -18,4 +18,6 @@ To setup development environment:
 	Install Vagrant at http://www.vagrantup.com/downloads.html
 	git clone https://github.com/yuproj/MiniSocialNetworkFramework.git
 	vagrant up
-	php config/database_init.php
+	vagrant ssh
+	cd /vagrant/config && php database_init.php
+	exit
