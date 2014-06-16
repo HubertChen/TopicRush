@@ -1,0 +1,101 @@
+create table if not exists member(
+memberid int not null AUTO_INCREMENT,
+username varchar(30) not null,
+password varchar(256) not null,
+city varchar(30) not null,
+state varchar(2) not null,
+zip varchar(5) not null,
+role char not null,
+status int not null,
+email varchar(50) not null,
+joindate timestamp null,
+lastlogin timestamp null,
+avatarpath varchar(100),
+primary key(memberid));
+
+create table if not exists community(
+communityid int not null AUTO_INCREMENT,
+ownerid int not null,
+name varchar(30) not null,
+created timestamp null,
+nummembers int,
+numtopics int,
+numcontents int,
+rating int,
+path varchar(100),
+description varchar(100),
+keywords varchar(100),
+primary key(communityid),
+foreign key (ownerid) references member(memberid));
+
+create table if not exists topic(
+topicid int not null AUTO_INCREMENT,
+communityid int not null,
+ownerid int not null,
+name varchar(100),
+created timestamp null,
+type int not null,
+path varchar(100),
+description varchar(300) not null,
+primary key(topicid),
+foreign key (communityid) references community(communityid),
+foreign key (ownerid) references member(memberid));
+
+create table if not exists content(
+contentid int not null AUTO_INCREMENT,
+topicid int not null,
+ownerid int not null,
+message varchar(200),
+type int not null,
+path varchar(100),
+description varchar(300) not null,
+created timestamp null,
+primary key(contentid),
+foreign key (topicid) references topic(topicid),
+foreign key (ownerid) references member(memberid));
+
+create table if not exists joins(
+memberid int not null,
+communityid int not null,
+primary key(memberid,communityid),
+foreign key (memberid) references member(memberid),
+foreign key (communityid) references community(communityid));
+
+create table if not exists followtopic(
+memberid int not null,
+topicid int not null,
+primary key(memberid,topicid),
+foreign key (memberid) references member(memberid),
+foreign key (topicid) references topic(topicid));
+
+create table if not exists followcommunity(
+memberid int not null,
+communityid int not null,
+primary key(memberid,communityid),
+foreign key (memberid) references member(memberid),
+foreign key (communityid) references topic(communityid));
+
+create table if not exists block(
+memberid int not null,
+communityid int not null,
+reason varchar(100) not null,
+primary key(memberid, communityid),
+foreign key (memberid) references member(memberid),
+foreign key (communityid) references community(communityid));
+
+create table if not exists communityadmin(
+memberid int not null,
+communityid int not null,
+primary key(memberid,communityid),
+foreign key (communityid) references community(communityid),
+foreign key (memberid) references member(memberid));
+
+create table if not exists adminlog(
+memberid int not null,
+function varchar(50),
+area varchar(50),
+item varchar(50),
+reason varchar(50),
+performed timestamp not null,
+notes varchar(600),
+foreign key (memberid) references member(memberid));
