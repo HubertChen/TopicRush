@@ -13,37 +13,37 @@ lastlogin timestamp null,
 avatarpath varchar(100),
 primary key(memberid));
 
-create table if not exists community(
-communityid int not null AUTO_INCREMENT,
+create table if not exists category(
+categoryid int not null AUTO_INCREMENT,
 ownerid int not null,
 name varchar(30) not null,
 created timestamp null,
 nummembers int,
-numtopics int,
+numarticles int,
 numcontents int,
 rating int,
 path varchar(100),
 description varchar(100),
 keywords varchar(100),
-primary key(communityid),
+primary key(categoryid),
 foreign key (ownerid) references member(memberid));
 
-create table if not exists topic(
-topicid int not null AUTO_INCREMENT,
-communityid int not null,
+create table if not exists article(
+articleid int not null AUTO_INCREMENT,
+categoryid int not null,
 ownerid int not null,
 name varchar(100),
 created timestamp null,
 type int not null,
 path varchar(100),
 description varchar(300) not null,
-primary key(topicid),
-foreign key (communityid) references community(communityid),
+primary key(articleid),
+foreign key (categoryid) references category(categoryid),
 foreign key (ownerid) references member(memberid));
 
 create table if not exists content(
 contentid int not null AUTO_INCREMENT,
-topicid int not null,
+articleid int not null,
 ownerid int not null,
 message varchar(200),
 type int not null,
@@ -51,46 +51,47 @@ path varchar(100),
 description varchar(300) not null,
 created timestamp null,
 primary key(contentid),
-foreign key (topicid) references topic(topicid),
+foreign key (articleid) references article(articleid),
 foreign key (ownerid) references member(memberid));
 
 create table if not exists joins(
 memberid int not null,
-communityid int not null,
-primary key(memberid,communityid),
+categoryid int not null,
+primary key(memberid,categoryid),
 foreign key (memberid) references member(memberid),
-foreign key (communityid) references community(communityid));
+foreign key (categoryid) references category(categoryid));
 
-create table if not exists followtopic(
+create table if not exists followarticle(
 memberid int not null,
-topicid int not null,
-primary key(memberid,topicid),
+articleid int not null,
+primary key(memberid,articleid),
 foreign key (memberid) references member(memberid),
-foreign key (topicid) references topic(topicid));
+foreign key (articleid) references article(articleid));
 
-create table if not exists followcommunity(
+create table if not exists followcategory(
 memberid int not null,
-communityid int not null,
-primary key(memberid,communityid),
+categoryid int not null,
+primary key(memberid,categoryid),
 foreign key (memberid) references member(memberid),
-foreign key (communityid) references topic(communityid));
+foreign key (categoryid) references article(categoryid));
 
 create table if not exists block(
 memberid int not null,
-communityid int not null,
+categoryid int not null,
 reason varchar(100) not null,
-primary key(memberid, communityid),
+primary key(memberid, categoryid),
 foreign key (memberid) references member(memberid),
-foreign key (communityid) references community(communityid));
+foreign key (categoryid) references category(categoryid));
 
-create table if not exists communityadmin(
+create table if not exists categoryadmin(
 memberid int not null,
-communityid int not null,
-primary key(memberid,communityid),
-foreign key (communityid) references community(communityid),
+categoryid int not null,
+primary key(memberid,categoryid),
+foreign key (categoryid) references category(categoryid),
 foreign key (memberid) references member(memberid));
 
 create table if not exists adminlog(
+logid int AUTO_INCREMENT,
 memberid int not null,
 function varchar(50),
 area varchar(50),
@@ -98,4 +99,5 @@ item varchar(50),
 reason varchar(50),
 performed timestamp not null,
 notes varchar(600),
+primary key(logid),
 foreign key (memberid) references member(memberid));
