@@ -3,7 +3,7 @@
  *
  * Purpose: Sets up a test database for use in development enviornments
  */ 
-include('../config.php');
+include('../defined_constants.php');
 
 // Establishes a MySQL server connection or dies
 $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS);
@@ -39,7 +39,7 @@ while($file_line = fgets($database_tables)){
 	}else
 		$query .= $file_line;
 }
-fclose(DB_TABLES);
+fclose($database_tables);
 
 // Populates database with entries from database_populate.txt
 $database_populate = fopen(DB_POPULATE, "r");
@@ -56,7 +56,7 @@ while($file_line = fgets($database_populate)){
 		}
 	}
 }
-fclose(DB_POPULATE);
+fclose($database_populate);
 
 mysqli_close($connection)
 ?>
