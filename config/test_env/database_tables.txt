@@ -11,6 +11,7 @@ email varchar(50) not null,
 joindate timestamp null,
 lastlogin timestamp null,
 avatarpath varchar(100),
+adult varchar(1),
 primary key(memberid));
 
 create table if not exists category(
