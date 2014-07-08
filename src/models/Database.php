@@ -59,7 +59,7 @@ class Database{
 	 * Returns false if incorrect
 	 */
 	public function verify_user($username, $password){
-		include('lib/password_compat/lib/password.php');
+		include('lib/password.php');
 		
 		$user_information = $this->find_user($username, "username");
 

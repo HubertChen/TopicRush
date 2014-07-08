@@ -36,7 +36,7 @@ class User{
  	 * Returns a String indicating whether user has been successfully created
 	 */
 	public static function create($username, $password1, $password2, $email){
-		include('lib/password_compat/lib/password.php');
+		include('lib/password.php');
 		include('Database.php');
 
 		$database = new Database();
