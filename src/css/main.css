@@ -30,4 +30,27 @@ TODO: alignment */
 TODO: alignment, container */
 
 /* FOOTER
-TODO: alignment */
+TODO:
+	1. Responsive?
+	2. Text font
+ */
+#footer{
+	background-color: #606060;
+	text-align: center;
+	color: #FFFFFF;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+#footer #link{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#copyright{
+	background-color: #505050;
+	color: #FFFFFF;
+	text-align: center;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
