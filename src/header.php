@@ -13,140 +13,96 @@
 	</ul>
 	
 	<div id="topics">
-		<a class="last"><</a>
-		
-		<div class="page1">
-			<ul class="col1">
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-			</ul>
+		<div class="header">
+			<h3>TOPICS<span class="fa-chevron-down"></span></h3>
 			
-			<ul class="col2">
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-			</ul>
-			
-			<ul class="col3">
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-			</ul>
-			
-			<ul class="col4">
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-			</ul>
+			<a>SHOW MORE</a>
 		</div>
-		
-		<div class="page2">
-			<ul class="col1">
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-			</ul>
-			
-			<ul class="col2">
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-			</ul>
-			
-			<ul class="col3">
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-			</ul>
-			
-			<ul class="col4">
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-				<li>topic</li>
-			</ul>
-		</div>
-		
-		<a class="next">></a>
-	</div>
 	
-	<div id="communitites">
-		<a class="last"><</a>
+		<div class="last">&#xf053;</div>
+		<div class="next">&#xf054;</div>
 		
-		<div class="page1">
-			<ul class="col1">
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
+		<div class="page1 slider-page topic">
+			<ul class="col1 col">
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
 			</ul>
 			
-			<ul class="col2">
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
+			<ul class="col2 col">
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
 			</ul>
 			
-			<ul class="col3">
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
+			<ul class="col3 col">
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
 			</ul>
 			
-			<ul class="col4">
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
+			<ul class="col4 col">
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
 			</ul>
+		</div> <!-- .page1 -->
+		
+		<div class="page2 slider-page topic">
+			<ul class="col1 col">
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+			</ul>
+			
+			<ul class="col2 col">
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+			</ul>
+			
+			<ul class="col3 col">
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+			</ul>
+			
+			<ul class="col4 col">
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+				<li>topic</li>
+			</ul>
+		</div> <!-- .page2 -->
+	</div> <!-- #topics -->
+	
+	<div id="communities">
+		<div class="header">
+			<h3>COMMUNITIES<span class="fa-chevron-down"></span></h3>
+			
+			<a>SHOW MORE</a>
 		</div>
+	
+		<div class="last">&#xf053;</div>
+		<div class="next">&#xf054;</div>
 		
-		<div class="page2">
-			<ul class="col1">
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-				<li>community</li>
-			</ul>
-			
-			<ul class="col2">
-				<li>community</li>
+		<div class="page1 slider-page community">
+			<ul class="col1 col">
 				<li>community</li>
 				<li>community</li>
 				<li>community</li>
@@ -154,8 +110,7 @@
 				<li>community</li>
 			</ul>
 			
-			<ul class="col3">
-				<li>community</li>
+			<ul class="col2 col">
 				<li>community</li>
 				<li>community</li>
 				<li>community</li>
@@ -163,16 +118,55 @@
 				<li>community</li>
 			</ul>
 			
-			<ul class="col4">
-				<li>community</li>
+			<ul class="col3 col">
 				<li>community</li>
 				<li>community</li>
 				<li>community</li>
 				<li>community</li>
 				<li>community</li>
 			</ul>
-		</div>
+			
+			<ul class="col4 col">
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+			</ul>
+		</div> <!-- .page2 -->
 		
-		<a class="next">></a>
-	</div>
+		<div class="page2 slider-page community">
+			<ul class="col1 col">
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+			</ul>
+			
+			<ul class="col2 col">
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+			</ul>
+			
+			<ul class="col3 col">
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+			</ul>
+			
+			<ul class="col4 col">
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+				<li>community</li>
+			</ul>
+		</div> <!-- .page2 -->
+	</div> <!-- #communities -->
 </header>

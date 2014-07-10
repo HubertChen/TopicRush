@@ -9,7 +9,40 @@ lighter grey:	#e6e6e6
 */
 
 /* FONTS
-TODO: import roboto and font awesome, style fonts for entire doc */
+TODO: [x]import roboto and font awesome, style fonts for entire doc */
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
+
+body{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+	font-size: 100%;
+}
+
+header .header h3{ /*includes span*/
+	color: #cccccc;
+	font-size: 24px;
+}
+
+header .header h3 span{
+	color: #ffffff;
+	font-family: FontAwesome;
+}
+
+header .header a{
+	color: #ffffff;
+	font-size: 14px;
+}
+
+.last, .next{
+	color: #ffffff;
+	font-family: FontAwesome;
+	font-size: 24px;
+}
+
+.col li{
+	color: #606060;
+	font-size: 16px;
+}
 
 /* LINKS/BUTTONS
 TODO: option links, buttons and all color variations: #79ca77->#81e37e; #79ca77->#505050; #505050->#81e37e; */
@@ -19,6 +52,64 @@ TODO: styles for all input types: search; text; password; etc., submit button */
 
 /* HEADER
 TODO: alignment, community/topic slider */
+/* community/topic slider */
+#topics, #communities{
+	width: 100%;
+	overflow: auto;
+}
+
+header .header{
+	width: 100%;
+	text-align: center;
+	background: #505050;
+}
+
+header #communities .header{
+	background: #606060;
+}
+
+header .header h3{ /*includes span*/
+	padding: 10px 0;
+}
+
+header .header a{
+	position: absolute;
+	margin: -12px;
+	right: 10%;
+}
+
+.last, .next{ /*height and line-height are set in animate.js fixHeight() TODO: find css alternative*/
+	width: 3%;
+	position: absolute;
+	text-align: center;
+	background: rgba(0,0,0,0.5);
+	cursor: pointer;
+}
+
+.next{
+	right: 0;
+}
+
+.slider-page{
+	padding: 25px 0;
+	display: none;
+	overflow: hidden; /*'p' and 'y' cause overflow: if you set overflow: auto; you'll see*/
+	background: #e6e6e6;
+}
+
+.page1{ /* show only first page on load */
+	display: block;
+}
+
+.col{
+	width: 25%;
+	float: left;
+	text-align: center;
+}
+
+.col li{
+	padding: 5px 0;
+}
 
 /* CONTENT
 TODO: alignment based off of body class, container with darker grey bg */
