@@ -16,6 +16,7 @@ class User{
 	private $join_date;
 	private $last_login;
 	private $avatar_path; 
+        private $adult;
 
 	private $database;
 
@@ -32,10 +33,11 @@ class User{
 	 * @password1
 	 * @password2 : Confirmation passowrd
 	 * @email
+         * @adult
 	 *
  	 * Returns a String indicating whether user has been successfully created
 	 */
-	public static function create($username, $password1, $password2, $email){
+	public static function create($username, $password1, $password2, $email, $adult){
 		include('lib/password.php');
 		include('Database.php');
 
@@ -46,6 +48,7 @@ class User{
 		$password1 	= self::format_input($password1);
 		$password2 	= self::format_input($password2);
 		$email 		= self::format_input($email);
+                $adult          = self::format_input($adult);
 
 		// Validates the user values inputted in form
 		$error = "";
@@ -58,12 +61,13 @@ class User{
 
                 date_default_timezone_set("America/New_York");
                 $current_time = date('Y-m-d h:i:s', time());
-                $password = password_hash($password, PASSWORD_BCRYPT);
+                $password = password_hash($password1, PASSWORD_BCRYPT);
 		
-		if($database->create_user($username, $password1, $email, $current_time)){
+		if($database->create_user($username, $password, $email, $adult, $current_time)){
 			$_SESSION['loggedin'] = TRUE;
                         $_SESSION['username'] = $username;
 			$_SESSION['email']    = $email;
+                        $_SESSION['adult'] = $adult;
 			return "User created successfully!";
 		}else
 			return "User not created successfully!";
@@ -128,6 +132,7 @@ class User{
 		$this->join_date 	= $user_info['joindate'];
 		$this->last_login 	= $user_info['lastlogin'];
 		$this->avatar_path 	= $user_info['avatarpath'];
+                $this->adult            = $user_info['adult'];
 		
 		return true;
 	}
