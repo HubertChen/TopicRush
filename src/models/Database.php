@@ -40,10 +40,10 @@ class Database{
 	 * Returns true if user was created successfully
 	 * Returns false if user was created unsuccessfully
 	 */
-	public function create_user($username, $password, $email, $current_time, $role = 'u', $status = 1, $avatarpath = ''){
-		$db_query = "INSERT into member(username, password, role, status, email, joindate, lastlogin, avatarpath)
+	public function create_user($username, $password, $email, $adult, $current_time, $role = 'u', $status = 1, $avatarpath = ''){
+		$db_query = "INSERT into member(username, password, role, status, email, joindate, lastlogin, avatarpath, adult)
 				values('$username', '$password', '$role', $status, '$email', '$current_time',
-				'$current_time', '$avatarpath');"; 
+				'$current_time', '$avatarpath', '$adult');"; 
 
 		if(!mysqli_query($this->db_connection, $db_query)){
 			$this->error->write(mysqli_error($this->db_connection), "database");
