@@ -18,6 +18,11 @@ body{
 	font-size: 100%;
 }
 
+.btn1, .btn2, .btn3{
+	color: #ffffff;
+	font-size: 24px;
+}
+
 header .header h3{ /*includes span*/
 	color: #cccccc;
 	font-size: 24px;
@@ -46,12 +51,132 @@ header .header a{
 
 /* LINKS/BUTTONS
 TODO: option links, buttons and all color variations: #79ca77->#81e37e; #79ca77->#505050; #505050->#81e37e; */
+.btn1{
+	padding: 8px 15px;
+	display: inline-block; /*for future reference: THIS IS WILL KEEP PADDING FROM EXTENDING PAST PARENT PADDING*/
+	background: #79ca77;
+	text-decoration: none;
+}
+
+.btn1:hover{
+	-o-transition: background ease-in-out .3s;
+	-webkit-transition: background ease-in-out .3s;
+	-moz-transition: background ease-in-out .3s;
+	-ms-transition: background ease-in-out .3s;
+	transition: background ease-in-out .3s;
+	background: #81e37e;
+}
+
+.btn2{
+	padding: 8px 15px;
+	display: inline-block; /*for future reference: THIS IS WILL KEEP PADDING FROM EXTENDING PAST PARENT PADDING*/
+	background: #79ca77;
+	text-decoration: none;
+}
+
+.btn2:hover{
+	-o-transition: background ease-in-out .3s;
+	-webkit-transition: background ease-in-out .3s;
+	-moz-transition: background ease-in-out .3s;
+	-ms-transition: background ease-in-out .3s;
+	transition: background ease-in-out .3s;
+	background: #505050;
+}
+
+.btn3{
+	padding: 8px 15px;
+	display: inline-block; /*for future reference: THIS IS WILL KEEP PADDING FROM EXTENDING PAST PARENT PADDING*/
+	background: #505050;
+	text-decoration: none;
+}
+
+.btn3:hover{
+	-o-transition: background ease-in-out .3s;
+	-webkit-transition: background ease-in-out .3s;
+	-moz-transition: background ease-in-out .3s;
+	-ms-transition: background ease-in-out .3s;
+	transition: background ease-in-out .3s;
+	background: #81e37e;
+}
+
+.unchecked{
+	-o-transition: all ease-in-out .3s;
+	-webkit-transition: all ease-in-out .3s;
+	-moz-transition: all ease-in-out .3s;
+	-ms-transition: all ease-in-out .3s;
+	transition: all ease-in-out .3s;
+	text-decoration: line-through;
+	color: #505050;
+}
+
+.checked{
+	-o-transition: all ease-in-out .3s;
+	-webkit-transition: all ease-in-out .3s;
+	-moz-transition: all ease-in-out .3s;
+	-ms-transition: all ease-in-out .3s;
+	transition: all ease-in-out .3s;
+	text-decoration: none;
+	color: #81e37e;
+}
 
 /* FORMS
 TODO: styles for all input types: search; text; password; etc., submit button */
+input{
+	margin: 0;
+	color: #505050;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+}
+
+input[type=search]{ /*TODO: figure out how to remove clear element that pops up on form (chrome)*/
+	padding: 10px 4px;
+	background: #cccccc;
+}
 
 /* HEADER
 TODO: alignment, community/topic slider */
+header{
+	width: 100%; /*do I still need #main, #topic, #community width?*/
+}
+
+#main{
+	width: 100%;
+	padding: 30px 15px 0 15px;
+	min-height: 100px;
+	overflow: auto;
+}
+
+.logo{ /*TODO: dynamically align certically instead of padding*/
+	width: 25%;
+	padding: 15px 0 30px 0;
+	float: left;
+}
+
+.items{
+	width: 40%;
+	float: right;
+}
+
+#main input{
+	float: left;
+	margin: 0 20px 0 0;
+}
+
+#main .btn1{
+	float: right;
+}
+
+ul.options{
+	overflow: auto;
+	clear: both;
+}
+
+.options li{
+	float: left;
+	margin: 20px 15px 20px 0;
+	cursor: pointer;
+}
+
 /* community/topic slider */
 #topics, #communities{
 	width: 100%;
@@ -68,8 +193,27 @@ header #communities .header{
 	background: #606060;
 }
 
+header .header:hover,
+header #communities .header:hover{
+	-o-transition: background ease-in-out .3s;
+	-webkit-transition: background ease-in-out .3s;
+	-moz-transition: background ease-in-out .3s;
+	-ms-transition: background ease-in-out .3s;
+	transition: background ease-in-out .3s;
+	background: #81e37e;
+}
+
 header .header h3{ /*includes span*/
 	padding: 10px 0;
+}
+
+header .header h3:hover{
+	-o-transition: color ease-in-out .3s;
+	-webkit-transition: color ease-in-out .3s;
+	-moz-transition: color ease-in-out .3s;
+	-ms-transition: color ease-in-out .3s;
+	transition: color ease-in-out .3s;
+	color: #ffffff;
 }
 
 header .header a{
@@ -81,13 +225,27 @@ header .header a{
 .last, .next{ /*height and line-height are set in animate.js fixHeight() TODO: find css alternative*/
 	width: 3%;
 	position: absolute;
+	opacity: 0;
 	text-align: center;
 	background: rgba(0,0,0,0.5);
 	cursor: pointer;
 }
 
+.last:hover, .next:hover{
+	-o-transition: opacity ease-in-out .3s;
+	-webkit-transition: opacity ease-in-out .3s;
+	-moz-transition: opacity ease-in-out .3s;
+	-ms-transition: opacity ease-in-out .3s;
+	transition: opacity ease-in-out .3s;
+	opacity: 1;
+}
+
 .next{
 	right: 0;
+}
+
+.dropdown{
+	display: none;
 }
 
 .slider-page{
@@ -111,6 +269,10 @@ header .header a{
 	padding: 5px 0;
 }
 
+.col li:hover{ /*TODO: add in <a> so it'd be .col li a:hover instead*/
+	text-decoration: underline;
+}
+
 /* CONTENT
 TODO: alignment based off of body class, container with darker grey bg */
 
@@ -126,6 +288,7 @@ TODO:
 	2. Text font
  */
 #footer{
+	width: 100%;
 	background-color: #606060;
 	text-align: center;
 	color: #FFFFFF;

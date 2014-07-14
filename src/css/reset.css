@@ -68,6 +68,12 @@ input:focus, button:focus, select:focus, textarea:focus{
 	border: 0;
 }
 
+::-webkit-clear-button{
+	display: none!important;
+	appearance: none;
+	-webkit-appearance: none!important;
+}
+
 textarea {
     border: none;
     overflow: auto;
@@ -80,4 +86,10 @@ textarea {
 label{
 	cursor: pointer;
 	font-weight: normal;
+}
+
+header, div, footer{
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
 }
