@@ -114,5 +114,25 @@ class Database{
 
                 return true;
         }
+
+	/*
+	 * Performs a query
+	 * 
+	 * @query : Query to be performed
+	 *
+	 * Returns an array
+	 */
+	function query($query){
+		$db_result = mysqli_query($this->db_connection, $query);
+
+		$count = 0;
+		while($row = mysqli_fetch_assoc($db_result)){
+			foreach($row as $key => $value)
+				$assoc_array[$count][$key] = $value;
+			$count++;
+		}
+
+		return $assoc_array;
+	}
 }
 ?>
