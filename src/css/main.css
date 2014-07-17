@@ -298,7 +298,7 @@ section h3{
 	padding-bottom: 5px;
 }
 
-#article{
+.articles{
 	margin: 0 auto;
 }
 
@@ -342,7 +342,7 @@ h4 span {
 	padding: 2px 5px 2px 5px; 
 }
 
-#loadMore{
+#load{
 	padding-bottom: 10px;
 }
 
