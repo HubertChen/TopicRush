@@ -19,5 +19,5 @@ To setup development environment:
 	git clone https://github.com/HubertChen/SRP.git
 	vagrant up
 	vagrant ssh
-	cd /vagrant/config && php database_init.php
+	cd /vagrant/config/test_env && php database_init.php
 	exit
