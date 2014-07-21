@@ -13,7 +13,7 @@
 				$title 		= $articles[$count]['message'];
 				$owner_id 	= $articles[$count]['ownerid'];
 				$article_id 	= $articles[$count]['articleid'];
-
+				$content_id	= $articles[$count]['contentid'];
 
 				$author 	= $database->query("SELECT username from member where memberid = '$owner_id';");
 				$community 	= $database->query("SELECT name from article where articleid = $article_id;"); 
@@ -21,14 +21,12 @@
 				if($count % 3 == 0)
 					echo "<br>";
 				echo "<article> 
-				<a href='#article.php?id=$article_id'><img src='img/photo.png' alt='temp' class='articleImages'></a>
+				<a href='#article.php?id=$content_id'><img src='img/photo.png' alt='temp' class='articleImages'></a>
 				<h4 id='titleOverlay' class='overlay'> <span>". $title ."</span> </h4>
 				<h4 id='authorOverlay' class='overlay'> <span>". $author[0]['username'] ."</span> </h4>
 				<h4 id='communityOverlay' class='overlay'> <span>". $community[0]['name'] ."</span> </h4>
 				</article>";
 			}
-
-			echo "<br>";
 		?>
 </div>
 
@@ -41,16 +39,18 @@
 	$(document).ready(function(){
 		var count = 6;
 		$("#loadmore").click(function(){
-			$.ajax({
-				type: "GET",
-				url: "index_ajax.php?count=" + count,
-				async: false,
-				success: function(text){
-					response = text;	
-				}
-			});
-			$("#articles").append(response);
-			count += 3;
+			if($("#articles").text().indexOf("Reached the end!") == -1){
+				$.ajax({
+					type: "GET",
+					url: "index_ajax.php?count=" + count,
+					async: false,
+					success: function(text){
+						response = text;	
+					}
+				});
+				$("#articles").append(response);
+				count += 6;
+			}
 		});
 	});
 </script>
