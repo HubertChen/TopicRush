@@ -2,6 +2,7 @@
 include('models/Database.php');
 $database = new Database();
 $count = $_GET['count'];
+echo $count;
 
 $articles = $database->query("SELECT * FROM content LIMIT " . $count . ", 6;");
 
@@ -17,7 +18,7 @@ for($count = 0; $count < 6; $count++){
         if($count % 3 == 0)
                 echo "<br>";
         echo "<article> 
-        <img src='img/photo.png' alt='temp' class='articleImages'>
+        <a href='#article.php?id=$article_id'><img src='img/photo.png' alt='temp' class='articleImages'></a>
         <h4 id='titleOverlay' class='overlay'> <span>". $title ."</span> </h4>
         <h4 id='authorOverlay' class='overlay'> <span>". $author[0]['username'] ."</span> </h4>
         <h4 id='communityOverlay' class='overlay'> <span>". $community[0]['name'] ."</span> </h4>
