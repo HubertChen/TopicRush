@@ -389,6 +389,16 @@ article p{
         font-size: 100%;
 }
 
+.replydiv{
+	margin: 0 auto;
+	width: 60%;
+}
+
+.replydiv textarea{
+	margin: 10px 0px 10px 0px;
+	background-color: #505050;
+	color: white;
+}
 
 /* FOOTER
 TODO:
