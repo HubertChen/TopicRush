@@ -9,7 +9,7 @@
 	</head>
 
 	<!-- body classes are important to css -->
-	<body class="home page">
+	<body id="homepage">
 		
 		<?php
 			include 'header.php';

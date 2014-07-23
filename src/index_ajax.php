@@ -23,7 +23,7 @@ for($count = 0; $count < 6; $count++){
                 echo "<br>";
 
         echo "<article> 
-        <a href='#article.php?id=$content_id'><img src='img/photo.png' alt='temp' class='articleImages'></a>
+        <a href='article.php?id=$content_id'><img src='img/photo.png' alt='temp' class='articleImages'></a>
         <h4 id='titleOverlay' class='overlay'> <span>". $title ."</span> </h4>
         <h4 id='authorOverlay' class='overlay'> <span>". $author[0]['username'] ."</span> </h4>
         <h4 id='communityOverlay' class='overlay'> <span>". $community[0]['name'] ."</span> </h4>

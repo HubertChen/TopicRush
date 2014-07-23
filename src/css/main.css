@@ -12,7 +12,7 @@ lighter grey:	#e6e6e6
 TODO: [x]import roboto and font awesome, style fonts for entire doc */
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
 
-body{
+#homepage{
 	font-family: 'Roboto', sans-serif;
 	font-weight: 700;
 	font-size: 100%;
@@ -280,16 +280,14 @@ TODO: alignment based off of body class, container with darker grey bg */
 TODO: alignment */
 
 /* COMMENTS
-TODO: alignment, container */
+
+#articlepage{
+}
 
 /* MAIN
  * 
  * Articles and such for index.php
  */
-
-body{
-	text-align: center;
-}
 
 section h3{
 	color: #505050;
@@ -298,16 +296,17 @@ section h3{
 	padding-bottom: 5px;
 }
 
-.articles{
-	margin: 0 auto;
+#articles{
+	text-align: center;
 }
 
-article{
+#articles article{
 	position: relative;
 	display: inline-block;
 }
 
 .articleImages{
+	align: left;
 	width: 100%;
 	max-width: 200px;
 }
@@ -343,7 +342,51 @@ h4 span {
 }
 
 #load{
+	text-align: center;
 	padding-bottom: 10px;
+}
+
+.content{
+	margin: 0 auto;
+	width: 60%;
+}
+
+article h1{
+	font-size: 18px;
+	margin: 10px 10px 0px 10px;
+	color: #505050;
+}
+
+article h2{
+	float: left;
+	font-size: 14px;
+	color: #606060;
+}
+
+article p{
+	color: #606060;
+	font-size: 14px;
+	margin: 10px 10px 10px 10px;
+}
+
+.comments{
+	font-size: 22px;
+	color: #505050;
+	text-align: center;
+	clear: both;	
+}
+
+.replyText{
+	clear: both;
+	width: 60%;
+	margin: 0 auto;
+}
+
+.bodypage{
+	height: 100%;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 100%;
 }
 
 
@@ -353,6 +396,7 @@ TODO:
 	2. Text font
  */
 #footer{
+	clear:both;
 	width: 100%;
 	background-color: #606060;
 	text-align: center;
@@ -372,4 +416,8 @@ TODO:
 	text-align: center;
 	padding-top: 8px;
 	padding-bottom: 8px;
+}
+
+.content{
+	text-align: left;
 }

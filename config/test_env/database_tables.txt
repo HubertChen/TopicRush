@@ -102,3 +102,17 @@ performed timestamp not null,
 notes varchar(600),
 primary key(logid),
 foreign key (memberid) references member(memberid));
+
+create table if not exists comment(
+commentid int not null,
+memberid int not null,
+contentid int not null,
+responseid int null,
+score int not null,
+message int not null,
+date timestamp not null,
+primary key(commentid),
+foreign key(memberid) references member(memberid),
+foreign key(contentid) references content(contentid),
+foreign key(responseid) references comment(commentid));
+
