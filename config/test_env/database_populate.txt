@@ -10,10 +10,12 @@ insert ignore into member(memberid, username,password,city,state,zip,role,status
 insert ignore into member(memberid, username,password,city,state,zip,role,status,email,joindate,lastlogin,avatarpath,adult) values('10','kidnick','$2y$10$DkqmtL2XPyM5m3jCA62de.KA8R6CwfNuWD.wcCvPppG..sSDK1py.','Nickville','NE','87321','u','1','kidnick@nowhere.com','2014-07-12 11:00:13','2014-07-12 11:00:13','','n');
 insert ignore into member(memberid, username,password,city,state,zip,role,status,email,joindate,lastlogin,avatarpath,adult) values('11','hubert','$2y$10$uOkqYtYtemb4w9flcCUWG.3YKXmbgN8j8qpmVIKWWwVtsM/7VSUTW','','','','u','1','kidnick@nowhere.com','2014-07-12 11:00:13','2014-07-12 11:00:13','','n');
 
-
-insert ignore into category(categoryid, ownerid, name, description, keywords) values(1, 11, "Technology", "For all your tech needs.", "tech, electronics, computers");
-insert ignore into category(categoryid, ownerid, name, description, keywords) values(2, 2, "Health", "Everything health and wellfare", "meds, doctors, help");
-insert ignore into category(categoryid, ownerid, name, description, keywords) values(3, 7, "School", "Everything school", "school, education");
+insert ignore into category(categoryid, ownerid, name, description, keywords, adult) values(1, 11, "Technology", "For all your tech needs.", "tech, electronics, computers","n");
+insert ignore into category(categoryid, ownerid, name, description, keywords, adult) values(2, 2, "Health", "Everything health and wellfare", "meds, doctors, help","n");
+insert ignore into category(categoryid, ownerid, name, description, keywords, adult) values(3, 7, "School", "Everything school", "school, education","n");
+insert ignore into category(categoryid, ownerid, name, description, keywords, adult) values(4, 1, "Alchohol", "Glug Glug!", "drinks, beer, liquor","y");
+insert ignore into category(categoryid, ownerid, name, description, keywords, adult) values(5, 2, "Tobacco", "Everything about tobacco", "cigarette, tobacco, ecig","y");
+insert ignore into category(categoryid, ownerid, name, description, keywords, adult) values(6, 3, "Firearms", "Rifles and Handguns", "gun, rifles, powder","y");
 
 insert ignore into article(articleid, categoryid, ownerid, name, description) values(1, 1, 11, "Computers", "Everything computers");
 insert ignore into article(articleid, categoryid, ownerid, name, description) values(2, 1, 11, "Embedded Systems", "Everything embedded systems");
@@ -21,9 +23,18 @@ insert ignore into article(articleid, categoryid, ownerid, name, description) va
 insert ignore into article(articleid, categoryid, ownerid, name, description) values(4, 2, 2, "Medicine", "Everything Medicine");
 insert ignore into article(articleid, categoryid, ownerid, name, description) values(5, 2, 2, "New Treatments", "New treatments");
 insert ignore into article(articleid, categoryid, ownerid, name, description) values(6, 2, 2, "Exercise", "Everything exercise");
-insert ignore into article(articleid, categoryid, ownerid, name, description) values(7, 1, 11, "Monmouth University", "Everything MU");
-insert ignore into article(articleid, categoryid, ownerid, name, description) values(8, 1, 11, "Monmouth Middle School", "Everything MUMS");
-insert ignore into article(articleid, categoryid, ownerid, name, description) values(9, 1, 11, "Monmouth Elementary School", "Everything MUES");
+insert ignore into article(articleid, categoryid, ownerid, name, description) values(7, 3, 7, "Monmouth University", "Everything MU");
+insert ignore into article(articleid, categoryid, ownerid, name, description) values(8, 3, 7, "Monmouth Middle School", "Everything MUMS");
+insert ignore into article(articleid, categoryid, ownerid, name, description) values(9, 3, 7, "Monmouth Elementary School", "Everything MUES");
+insert ignore into article(articleid, categoryid, ownerid, name, description) values(10, 4, 1, "Beers", "Dark, Light, Ales or What?");
+insert ignore into article(articleid, categoryid, ownerid, name, description) values(11, 4, 1, "Mixed Drinks", "What is your favorite?");
+insert ignore into article(articleid, categoryid, ownerid, name, description) values(12, 4, 1, "Drinkin Games", "Not just beer pong!");
+insert ignore into article(articleid, categoryid, ownerid, name, description) values(13, 5, 2, "E-Cigs", "Better or ...");
+insert ignore into article(articleid, categoryid, ownerid, name, description) values(14, 5, 2, "Butt Out!", "Need help quitting?");
+insert ignore into article(articleid, categoryid, ownerid, name, description) values(15, 5, 2, "Ash Trays?", "Anyone use them anymore...");
+insert ignore into article(articleid, categoryid, ownerid, name, description) values(16, 6, 3, "Short Guns", "Hand guns, two hands required?");
+insert ignore into article(articleid, categoryid, ownerid, name, description) values(17, 6, 3, "Long Guns", "What is the best shot?");
+insert ignore into article(articleid, categoryid, ownerid, name, description) values(18, 6, 3, "Rifles", "What is in scope?");
 
 insert ignore into content(contentid, articleid, ownerid, message, description) values(1, 1, 11, "Check out my PC", "I just built this baby");
 insert ignore into content(contentid, articleid, ownerid, message, description) values(2, 2, 1, "New Rasp PI Announced", "$25 on sale August.");
@@ -43,3 +54,21 @@ insert ignore into content(contentid, articleid, ownerid, message, description) 
 insert ignore into content(contentid, articleid, ownerid, message, description) values(16, 7, 10, "MU Gains best high school football player", "wooo...");
 insert ignore into content(contentid, articleid, ownerid, message, description) values(17, 8, 11, "Flag football", "yeah lets do it");
 insert ignore into content(contentid, articleid, ownerid, message, description) values(18, 9, 11, "I won the turkey trot", "Doesn't matter");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(19, 10, 1, "Heineken Rules!!!", "Green feeds the machine!");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(20, 10, 5, "Magic Hat", "I only drink the finest!");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(21, 11, 2, "Lebowski!", "White Russians Rule!");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(22, 11, 4, "Mind Erasers", "What was the question?");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(23, 12, 3, "Count to five!", "Take a shot, or two!");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(24, 12, 2, "Flip a coin", "Heads drink, tails.... drink!");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(25, 13, 1, "Vapors", "I like strawberry!");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(26, 13, 3, "Modifications", "How do I boost my output!");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(27, 14, 4, "Chew Gum", "Have a craving, pop some bubble gum!");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(28, 14, 1, "Go jogging!", "Run run they are chasing you!");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(29, 15, 2, "Empty Bottles", "I just use my empty beer bottles...");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(30, 15, 1, "Flick em", "Flick em at your buddies, thats what I do");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(31, 16, 3, "Revolvers", "Old school guns are the best");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(32, 16, 4, "Black Powder", "Try my old school buccaneer special!");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(33, 17, 5, "Double Barrel", "Goes boom twice twice");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(34, 17, 2, "The Judge", "The shotgun that fits into one hand");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(35, 18, 3, "Scopes", "Check out this scope");
+insert ignore into content(contentid, articleid, ownerid, message, description) values(36, 18, 1, "Sites", "Laser sites are awesome");
