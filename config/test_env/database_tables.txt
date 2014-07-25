@@ -26,6 +26,7 @@ rating int,
 path varchar(100),
 description varchar(100),
 keywords varchar(100),
+adult varchar(1),
 primary key(categoryid),
 foreign key (ownerid) references member(memberid));
 
@@ -38,6 +39,7 @@ created timestamp null,
 type int not null,
 path varchar(100),
 description varchar(300) not null,
+rating int not null,
 primary key(articleid),
 foreign key (categoryid) references category(categoryid),
 foreign key (ownerid) references member(memberid));
@@ -54,13 +56,6 @@ created timestamp null,
 primary key(contentid),
 foreign key (articleid) references article(articleid),
 foreign key (ownerid) references member(memberid));
-
-create table if not exists joins(
-memberid int not null,
-categoryid int not null,
-primary key(memberid,categoryid),
-foreign key (memberid) references member(memberid),
-foreign key (categoryid) references category(categoryid));
 
 create table if not exists followarticle(
 memberid int not null,
@@ -116,3 +111,18 @@ foreign key(memberid) references member(memberid),
 foreign key(contentid) references content(contentid),
 foreign key(responseid) references comment(commentid));
 
+create table if not exists commentlikes(
+likesid int AUTO_INCREMENT,
+commentid int not null,
+numlikes int not null,
+primary key(likesid),
+foreign key(commentid) references comment(commentid));
+
+create table if not exists suggestion(
+suggestionid int AUTO_INCREMENT,
+memberid int not null,
+categoryid int not null,
+suggestion varchar(300) not null,
+primary key(suggestionid),
+foreign key(memberid) references member(memberid),
+foreign key(categoryid) references category(categoryid));
