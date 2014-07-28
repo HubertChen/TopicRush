@@ -1,0 +1,35 @@
+delimiter //
+
+drop trigger if exists article_add //
+create trigger article_add 
+after insert on article
+for each row
+begin
+  declare oldarticles int;
+  declare category int;
+  declare oldrating int;
+  set category = new.categoryid;
+  select numarticles,rating into oldarticles,oldrating from category where categoryid=category;
+  update category set numarticles=(oldarticles + 1),rating=(oldrating + 1) where categoryid=category;
+end//
+
+delimiter //
+
+drop trigger if exists article_delete //
+create trigger article_delete 
+before delete on article
+for each row
+begin
+  declare oldarticles int;
+  declare category int;
+  declare oldrating int;
+  set category = old.categoryid;
+  select numarticles,rating into oldarticles,oldrating from category where categoryid=category;
+  update category set numarticles=(oldarticles - 1),rating=(oldrating - 1) where categoryid=category;
+end//
+
+delimter ;
+
+
+
+
