@@ -41,6 +41,7 @@ define('MODEL_USER', 	MODEL_DIR . "User.php");
 define('DB_TABLES', 		CON_TEST_DIR . "database_tables.txt");
 define('DB_POPULATE', 		CON_TEST_DIR . "database_populate.txt");
 define('USER_PASSWORDS',	CON_TEST_DIR . "user_passwords.txt");
+define('DB_TRIGGERS', 		CON_TEST_DIR . "database_triggers.txt");
 
 /*
  * Logs Directory
