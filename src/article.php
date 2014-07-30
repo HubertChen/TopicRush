@@ -12,6 +12,9 @@
 	$description 	= $content[0]['description'];
 	$created 	= $content[0]['created'];
 
+	if(!isset($article_id))
+		header('Location: index.php');
+
 	$article_query 	= $database->query("SELECT name from article where articleid = $article_id;");
 	$article	= $article_query[0]['name'];
 	$owner_query 	= $database->query("SELECT username from member where memberid = '$owner_id';");
