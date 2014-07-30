@@ -374,12 +374,16 @@ article p{
 	color: #505050;
 	text-align: center;
 	clear: both;	
+	position: relative;
 }
 
 .replyText{
+	font-size: 12px;
 	clear: both;
-	width: 60%;
-	margin: 0 auto;
+	text-align: left;
+	padding: 4px 8px;
+	background-color: #76CBF5;
+	color: #FFFFFF;
 }
 
 .bodypage{
@@ -387,17 +391,67 @@ article p{
         font-family: 'Roboto', sans-serif;
         font-weight: 700;
         font-size: 100%;
+	color: #505050;
 }
 
 .replydiv{
-	margin: 0 auto;
+	font-size: 14px;
 	width: 60%;
+	margin: 10px 0px 0px 10px;
+	padding: 3px 0px 0px 3px;
 }
 
 .replydiv textarea{
 	margin: 10px 0px 10px 0px;
 	background-color: #505050;
 	color: white;
+}
+
+.reply{
+	text-align: left;
+	border-left: thick solid #79ca77;
+	border-bottom: thin solid #79ca77;
+	padding: 10px;
+}
+
+.bigreply{
+	width: 60%;
+	margin: 0 auto;
+}
+
+.replymessage{
+	font-size: 14px;
+	text-indent: 40px;
+	margin: 5px 5px 5px 5px;
+}
+
+.reply span{
+	font-size: 16px;
+	margin: 10px 10px 0px 10px;
+}
+
+.reply2{
+	text-align: left;
+}
+
+.submit{
+	padding: 4px 8px;
+	color: #FFFFFF;
+        display: inline-block; /*for future reference: THIS IS WILL KEEP PADDING FROM EXTENDING PAST PARENT PADDING*/
+        background: #79ca77;
+        text-decoration: none;
+}
+
+.cancel{
+	padding: 4px 8px;
+        color: #FFFFFF;
+        display: inline-block; /*for future reference: THIS IS WILL KEEP PADDING FROM EXTENDING PAST PARENT PADDING*/
+        background: #B94B5C;
+        text-decoration: none;
+}
+
+.commentstatus{
+	color: #79ca77;
 }
 
 /* FOOTER

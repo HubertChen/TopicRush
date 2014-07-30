@@ -44,11 +44,13 @@
 			
 		</article>
 			
-		<p class="replyText">Reply</p>
+		<div class='bigreply'><a class="replyText">Reply</a></div>
 
 
 		<div class="comments">
 			<?php
+				$comments = $database->query("SELECT * FROM comment where contentid='$article_id'");
+
 				if(empty($comments))
 					$comment_count = 0;
 				else
@@ -57,33 +59,86 @@
 			<h1><?php echo $comment_count ?> Comments</h1>
 
 			<?php
+				$total_reply ="";
+
 				for($x = 0; $x < $comment_count; $x++){
-					$score 		= $comments[$x]['score'];
-					$username 	= $comments[$x]['username'];
-					$date 		= $comments[$x]['date'];
-					echo "<p><i class='fa fa-child'></i>($score)$username$date</p>";
-						
+					$id		= $comments[$x]['commentid'];
+					$response_id	= $comments[$x]['responseid'];
+					$score          = $comments[$x]['score'];
+                                        $user_id        = $comments[$x]['memberid'];
+                                        $date           = $comments[$x]['date'];
+                                        $message        = $comments[$x]['message'];
+        
+                                        $username_query = $database->query("SELECT username from member where memberid='$user_id'");
+                                        $username       = $username_query[0]['username'];
+			
+					if($response_id == -1){
+						$total_reply .= "<div class='bigreply'>";
+                                       		$total_reply .=
+                                                	"<div class='reply' id='$id'>
+                                                        	<span><i class='fa fa-child'> </i> $username ($score) $date</span>
+	                                                        <p class='replymessage'>$message</p>
+								<a class='replyText'>Reply</a>
+        	                                        </div>
+							";
+
+						$total_reply .= recursive_reply($id, $comments, "", $database, 1);
+						$total_reply .= "</div>";	
+					}
+				}
+				
+				echo $total_reply;
+
+				function recursive_reply($z, $comments, $total_reply, $database, $count){
+					$total_reply = "";
+
+					for($x = 0; $x < count($comments); $x++){
+						$score 		= $comments[$x]['score'];
+						$user_id 	= $comments[$x]['memberid'];
+						$date 		= $comments[$x]['date'];
+						$id		= $comments[$x]['commentid'];
+						$message	= $comments[$x]['message'];
+						$response_id	= $comments[$x]['responseid'];
+	
+						$username_query = $database->query("SELECT username from member where memberid='$user_id'");
+						$username 	= $username_query[0]['username'];
+
+						if($z == $response_id){
+							$index = $count * 40 . "px";
+							$total_reply .=
+						       		"<div id='$id' class='reply' style='margin-left: $index;'>
+						       			<span><i class='fa fa-child'></i> $username ($score) $date</span>
+						       			<p class='replymessage'>$message</p>
+									<a class='replyText'>Reply</a>
+						       		</div>";
+			
+							$total_reply .= recursive_reply($id, $comments, $total_reply, $database, $count + 1);
+						}
+					}
+
+					return $total_reply;
 				}
 			?>
 		</div>
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script>
-		$(document).ready(function(){
-			$(".replyText").click(function(){
-				if($(this).next().attr("class") != "replydiv"){
-				$.ajax({
-					type: "GET",
-					url: "reply_ajax.php",
-					async: false,
-					success: function(text){
-						response = text;        
+			$(document).ready(function(){
+				$(".replyText").click(function(){
+					if($(this).next().attr("class") != "replydiv"){
+					$.ajax({
+						type: "GET",
+						url: "reply_ajax.php?content_id=" + <?php echo $article_id; ?> + "&response_id=" + $(this).closest("div").attr("id"),
+						async: false,
+						success: function(text){
+							response = text;        
+						}
+					});
+				
+					$(this).after(response);
 					}
-				});
-				$(this).after(response);
-				}
+        			});
 			});
-        	});
 		</script>
 
 		<?php include 'footer.php'?>
