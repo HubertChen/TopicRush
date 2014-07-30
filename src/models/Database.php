@@ -30,8 +30,7 @@ class Database{
 	}
 
 	public function __destruct(){
-		if($status)
-			mysqli_close($db_connection);
+		mysqli_close($db_connection);
 	}
 	
 	/*
@@ -133,6 +132,20 @@ class Database{
 		}
 
 		return $assoc_array;
+	}
+
+	/*
+	 * Performs an insert
+	 * 
+	 * @query : Insert query
+	 * 
+	 * Returns true if success, false if failure
+	 */
+	function insert($query){
+		if(mysqli_query($this->db_connection, $query))
+			return true;
+		else
+			return false;
 	}
 }
 ?>
