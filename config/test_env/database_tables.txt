@@ -99,17 +99,16 @@ primary key(logid),
 foreign key (memberid) references member(memberid));
 
 create table if not exists comment(
-commentid int not null,
+commentid int not null AUTO_INCREMENT,
 memberid int not null,
 contentid int not null,
 responseid int null,
 score int not null,
-message int not null,
+message varchar(255) not null,
 date timestamp not null,
 primary key(commentid),
 foreign key(memberid) references member(memberid),
-foreign key(contentid) references content(contentid),
-foreign key(responseid) references comment(commentid));
+foreign key(contentid) references content(contentid));
 
 create table if not exists commentlikes(
 likesid int AUTO_INCREMENT,
