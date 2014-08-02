@@ -38,7 +38,7 @@ class User{
  	 * Returns a String indicating whether user has been successfully created
 	 */
 	public static function create($username, $password1, $password2, $email, $adult){
-		include('lib/password.php');
+		include('../lib/password.php');
 		include('Database.php');
 
 		$database = new Database();
@@ -70,7 +70,7 @@ class User{
                         $_SESSION['adult'] = $adult;
 			return "User created successfully!";
 		}else
-			return "User not created successfully!";
+			return "User not created successfully.";
 	}
 
 	/*

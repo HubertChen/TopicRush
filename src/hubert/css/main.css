@@ -6,8 +6,6 @@ html{
 #homepage{
 	width: 100%;
 	margin: 0;
-	padding-top: 120px;
-	padding-bottom: 40px;
 	text-align: center;
 	background: -webkit-radial-gradient(#333333, black); /* Safari 5.1 to 6.0 */
 	background: -o-radial-gradient(#333333, black); /* For Opera 11.6 to 12.0 */
@@ -16,7 +14,17 @@ html{
 	background-repeat: no-repeat;
 }
 
+.container{
+	padding-top: 120px;
+	padding-bottom: 40px;
+}
+
 #signin{
+	max-width: 350px;
+	margin: 0 auto;
+}
+
+#signup{
 	max-width: 350px;
 	margin: 0 auto;
 }
@@ -25,13 +33,48 @@ html{
 	margin-bottom: 5px;
 }
 
+#signup #username{
+	margin-bottom: 15px;
+}
+
 #signin #password{
 	margin-bottom: 20px;
 }
 
-#signin #submit{
+#signup #password{
+	margin-bottom: 5px;
+}
+
+#signup #email{
 	margin-bottom: 20px;
+}
+
+form #password2{
+	margin-bottom: 15px;
+}
+
+form #submit{
+	margin-bottom: 5px;
 	background-color: #87CEFF;
+}
+
+#signup #submit{
+	margin-bottom: 5px;
+	background-color: #98FB98;
+}
+
+form #signup{
+	font-size: 12px;
+	color: white;
+	float: right;
+	margin: 0;
+}
+
+form #signin{
+        font-size: 12px;
+        color: white;
+        float: right;
+        margin: 0;
 }
 
 .panel{
@@ -45,9 +88,4 @@ html{
 .panel h1{
 	font-size: 32px;
 	margin-bottom: 20px;
-}
-
-#status{
-	color: #FFA0A0;
-	font-size: 20px;
 }
