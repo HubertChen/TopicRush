@@ -1,0 +1,53 @@
+html{
+	height: 100%;	
+	color: white;
+}
+
+#homepage{
+	width: 100%;
+	margin: 0;
+	padding-top: 120px;
+	padding-bottom: 40px;
+	text-align: center;
+	background: -webkit-radial-gradient(#333333, black); /* Safari 5.1 to 6.0 */
+	background: -o-radial-gradient(#333333, black); /* For Opera 11.6 to 12.0 */
+	background: -moz-radial-gradient(#333333, black); /* For Firefox 3.6 to 15 */
+	background: radial-gradient(#333333, black);
+	background-repeat: no-repeat;
+}
+
+#signin{
+	max-width: 350px;
+	margin: 0 auto;
+}
+
+#signin #username{
+	margin-bottom: 5px;
+}
+
+#signin #password{
+	margin-bottom: 20px;
+}
+
+#signin #submit{
+	margin-bottom: 20px;
+	background-color: #87CEFF;
+}
+
+.panel{
+	margin: 0 auto;
+	max-width: 400px;
+	color: white;
+	border-color: #87CEFF;
+	background-color: #333333;
+}
+
+.panel h1{
+	font-size: 32px;
+	margin-bottom: 20px;
+}
+
+#status{
+	color: #FFA0A0;
+	font-size: 20px;
+}
