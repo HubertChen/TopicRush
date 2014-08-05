@@ -73,7 +73,7 @@
 							<h1 id="subscription">SUBSCRIPTIONS</h1>
 							<span> 
 								<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#all">
-									<span class="glyphicon glyphicon-minus"></span>
+									<span class="glyphicon glyphicon-plus"></span>
 								</button>
 								<a href="#">
   									All
@@ -165,46 +165,23 @@
 			});			
 			$("#all").append(response);
 
-			$(".side a").click(function(){
-				var id = $(this).attr("href");
-				var catID;
-				var articleID;
-				var lastHash = id.lastIndexOf("#");
+			$.ajax({
 				
-				if(id.length == 1){
-					catID = 0;
-					articleID = 0;
-				}else if(lastHash == 0){
-					catID = id.substring(lastHash + 1);
-					articleID =  0;
-				}else{
-					catID = id.substring(1, lastHash);
-					articleID = id.substring(lastHash + 1);
-				}
-
-				$.ajax({
-					type:"GET",
-					url: "ajax/load_main_content.php?catid=" + catID + "&articleid=" + articleID,
-					async: false,
-					success: function(text){
-						response = text;
-					}		
-				});
-				$("#content").empty();
-				$("#content").append(response);
 			});
+
 	
-			$(".glyphicon").click(function(){
-				if($(this).parent().parent().next().attr("class") == "collapse"){
+			$(".glyphicon-plus").click(function(){
+				if($(this).attr("class") == "glyphicon glyphicon-plus"){
+					console.log($(this));	
 					$(this).removeClass("glyphicon-plus");
-                                        $(this).addClass("glyphicon-minus");
-				}else if($(this).parent().parent().next().attr("class") == "collapse in"){
-					$(this).removeClass("glyphicon-minus");
-                                        $(this).addClass("glyphicon-plus");
+					$(this).addClass("glyphicon-minus");
+				} else{
+					if($(this).attr("class") == "glyphicon glyphicon-minus"){
+						$(this).removeClass("glyphicon-minus");
+                               	        	$(this).addClass("glyphicon-plus");
+					}
 				}
 			});
-
-			
 		});
 	</script>
 	</body>

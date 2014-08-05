@@ -1,487 +1,306 @@
-/*
-	-COLOR SCHEME-
-darker grey:	#505050
-dark grey:		#606060
-green:			#79ca77
-light green:	#81e37e
-light grey:		#cccccc
-lighter grey:	#e6e6e6
-*/
-
-/* FONTS
-TODO: [x]import roboto and font awesome, style fonts for entire doc */
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
-
-#homepage{
-	font-family: 'Roboto', sans-serif;
-	font-weight: 700;
-	font-size: 100%;
+html{
+	height: 100%;	
+	color: white;
+	font-family: 'Open Sans', sans-serif;
 }
 
-.btn1, .btn2, .btn3{
-	color: #ffffff;
-	font-size: 24px;
-}
-
-header .header h3{ /*includes span*/
-	color: #cccccc;
-	font-size: 24px;
-}
-
-header .header h3 span{
-	color: #ffffff;
-	font-family: FontAwesome;
-}
-
-header .header a{
-	color: #ffffff;
-	font-size: 14px;
-}
-
-.last, .next{
-	color: #ffffff;
-	font-family: FontAwesome;
-	font-size: 24px;
-}
-
-.col li{
-	color: #606060;
-	font-size: 16px;
-}
-
-/* LINKS/BUTTONS
-TODO: option links, buttons and all color variations: #79ca77->#81e37e; #79ca77->#505050; #505050->#81e37e; */
-.btn1{
-	padding: 8px 15px;
-	display: inline-block; /*for future reference: THIS IS WILL KEEP PADDING FROM EXTENDING PAST PARENT PADDING*/
-	background: #79ca77;
-	text-decoration: none;
-}
-
-.btn1:hover{
-	-o-transition: background ease-in-out .3s;
-	-webkit-transition: background ease-in-out .3s;
-	-moz-transition: background ease-in-out .3s;
-	-ms-transition: background ease-in-out .3s;
-	transition: background ease-in-out .3s;
-	background: #81e37e;
-}
-
-.btn2{
-	padding: 8px 15px;
-	display: inline-block; /*for future reference: THIS IS WILL KEEP PADDING FROM EXTENDING PAST PARENT PADDING*/
-	background: #79ca77;
-	text-decoration: none;
-}
-
-.btn2:hover{
-	-o-transition: background ease-in-out .3s;
-	-webkit-transition: background ease-in-out .3s;
-	-moz-transition: background ease-in-out .3s;
-	-ms-transition: background ease-in-out .3s;
-	transition: background ease-in-out .3s;
-	background: #505050;
-}
-
-.btn3{
-	padding: 8px 15px;
-	display: inline-block; /*for future reference: THIS IS WILL KEEP PADDING FROM EXTENDING PAST PARENT PADDING*/
-	background: #505050;
-	text-decoration: none;
-}
-
-.btn3:hover{
-	-o-transition: background ease-in-out .3s;
-	-webkit-transition: background ease-in-out .3s;
-	-moz-transition: background ease-in-out .3s;
-	-ms-transition: background ease-in-out .3s;
-	transition: background ease-in-out .3s;
-	background: #81e37e;
-}
-
-.unchecked{
-	-o-transition: all ease-in-out .3s;
-	-webkit-transition: all ease-in-out .3s;
-	-moz-transition: all ease-in-out .3s;
-	-ms-transition: all ease-in-out .3s;
-	transition: all ease-in-out .3s;
-	text-decoration: line-through;
-	color: #505050;
-}
-
-.checked{
-	-o-transition: all ease-in-out .3s;
-	-webkit-transition: all ease-in-out .3s;
-	-moz-transition: all ease-in-out .3s;
-	-ms-transition: all ease-in-out .3s;
-	transition: all ease-in-out .3s;
-	text-decoration: none;
-	color: #81e37e;
-}
-
-/* FORMS
-TODO: styles for all input types: search; text; password; etc., submit button */
-input{
+#loginBody{
+	width: 100%;
 	margin: 0;
-	color: #505050;
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
+	text-align: center;
+	/*
+	background: -webkit-radial-gradient(#333333, black);
+	background: -o-radial-gradient(#333333, black); 
+	background: -moz-radial-gradient(#333333, black);
+	background: radial-gradient(#333333, black);
+	*/
+	background-image: url("../img/wallpaper.jpg");
+	background-repeat: no-repeat;
+	font-family: 'Open Sans', sans-serif;	
 }
 
-input[type=search]{ /*TODO: figure out how to remove clear element that pops up on form (chrome)*/
-	padding: 10px 4px;
-	background: #cccccc;
-}
-
-/* HEADER
-TODO: alignment, community/topic slider */
-header{
-	width: 100%; /*do I still need #main, #topic, #community width?*/
-}
-
-#main{
+#signupBody{
 	width: 100%;
-	padding: 30px 15px 0 15px;
-	min-height: 100px;
-	overflow: auto;
+	margin: 0;
+        text-align: center;
+	background-image: url("../img/wallpaper.jpg");
+        background-repeat: no-repeat;
+	font-family: 'Open Sans', sans-serif;
 }
 
-.logo{ /*TODO: dynamically align certically instead of padding*/
-	width: 25%;
-	padding: 15px 0 30px 0;
-	float: left;
+#loginBody .container{
+	padding-top: 120px;
+	padding-bottom: 40px;
 }
 
-.items{
-	width: 40%;
+#signupBody .container{
+	padding-top: 120px;
+        padding-bottom: 40px;	
+}
+
+#signin{
+	max-width: 350px;
+	margin: 0 auto;
+}
+
+#signup{
+	max-width: 350px;
+	margin: 0 auto;
+}
+
+#signin #username{
+	margin-bottom: 5px;
+}
+
+#signup #username{
+	margin-bottom: 15px;
+}
+
+#signin #password{
+	margin-bottom: 20px;
+}
+
+#signup #password{
+	margin-bottom: 5px;
+}
+
+#signup #email{
+	margin-bottom: 20px;
+}
+
+form #password2{
+	margin-bottom: 15px;
+}
+
+form #submit{
+	margin-bottom: 5px;
+	background-color: #87CEFF;
+}
+
+#signup #submit{
+	margin-bottom: 5px;
+	background-color: #98FB98;
+	border-color: #98FB98;
+}
+
+form #signup{
+	font-size: 12px;
+	color: white;
 	float: right;
+	margin: 0;
 }
 
-#main input{
-	float: left;
-	margin: 0 20px 0 0;
+form #signin{
+        font-size: 12px;
+        color: white;
+        float: right;
+        margin: 0;
 }
 
-#main .btn1{
-	float: right;
+.panel{
+	margin: 0 auto;
+	max-width: 400px;
+	color: white;
+	border-color: #87CEFF;
+	background-color: #333333;
 }
 
-ul.options{
-	overflow: auto;
-	clear: both;
+.panel h1{
+	font-size: 32px;
+	margin-bottom: 20px;
 }
 
-.options li{
-	float: left;
-	margin: 20px 15px 20px 0;
-	cursor: pointer;
+#signupBody .panel{
+	border-color: #98FB98;
 }
 
-/* community/topic slider */
-#topics, #communities{
-	width: 100%;
-	overflow: auto;
-}
 
-header .header{
-	width: 100%;
-	text-align: center;
-	background: #505050;
-}
-
-header #communities .header{
-	background: #606060;
-}
-
-header .header:hover,
-header #communities .header:hover{
-	-o-transition: background ease-in-out .3s;
-	-webkit-transition: background ease-in-out .3s;
-	-moz-transition: background ease-in-out .3s;
-	-ms-transition: background ease-in-out .3s;
-	transition: background ease-in-out .3s;
-	background: #81e37e;
-}
-
-header .header h3{ /*includes span*/
-	padding: 10px 0;
-}
-
-header .header h3:hover{
-	-o-transition: color ease-in-out .3s;
-	-webkit-transition: color ease-in-out .3s;
-	-moz-transition: color ease-in-out .3s;
-	-ms-transition: color ease-in-out .3s;
-	transition: color ease-in-out .3s;
-	color: #ffffff;
-}
-
-header .header a{
-	position: absolute;
-	margin: -12px;
-	right: 10%;
-}
-
-.last, .next{ /*height and line-height are set in animate.js fixHeight() TODO: find css alternative*/
-	width: 3%;
-	position: absolute;
-	opacity: 0;
-	text-align: center;
-	background: rgba(0,0,0,0.5);
-	cursor: pointer;
-}
-
-.last:hover, .next:hover{
-	-o-transition: opacity ease-in-out .3s;
-	-webkit-transition: opacity ease-in-out .3s;
-	-moz-transition: opacity ease-in-out .3s;
-	-ms-transition: opacity ease-in-out .3s;
-	transition: opacity ease-in-out .3s;
-	opacity: 1;
-}
-
-.next{
-	right: 0;
-}
-
-.dropdown{
-	display: none;
-}
-
-.slider-page{
-	padding: 25px 0;
-	display: none;
-	overflow: hidden; /*'p' and 'y' cause overflow: if you set overflow: auto; you'll see*/
-	background: #e6e6e6;
-}
-
-.page1{ /* show only first page on load */
-	display: block;
-}
-
-.col{
-	width: 25%;
-	float: left;
-	text-align: center;
-}
-
-.col li{
-	padding: 5px 0;
-}
-
-.col li:hover{ /*TODO: add in <a> so it'd be .col li a:hover instead*/
-	text-decoration: underline;
-}
-
-/* CONTENT
-TODO: alignment based off of body class, container with darker grey bg */
-
-/* SIDE BAR
-TODO: alignment */
-
-/* COMMENTS
-
-#articlepage{
-}
-
-/* MAIN
- * 
- * Articles and such for index.php
+/* 
+ * Main page (index.php)
  */
-
-section h3{
-	color: #505050;
-	text-align:center;
-	padding-top: 5px;
-	padding-bottom: 5px;
+#indexBody{
+	font-family: 'Open Sans', sans-serif;
+	height: 100%;
+	background-color: #B0D9EC;
 }
 
-#articles{
-	text-align: center;
+#indexBody .container-fluid{
+	height: 100%;
+	padding: 0;
 }
 
-#articles article{
-	position: relative;
-	display: inline-block;
+#indexBody .row{
+	padding: 0;
+	margin: 0;
 }
 
-.articleImages{
-	align: left;
-	width: 100%;
-	max-width: 200px;
+#base{
+	color: white;
+	height: 100%;
 }
 
-.overlay{
-	color: #505050;
-        text-align: left;
-        position: absolute;
-        width: 100%;
+.navbar-inverse{
+	background-color: #313131;
+	border-color: #333333;
+	border-radius: 0px;
+	margin: 0;
+	padding: 0;
 }
 
-#titleOverlay{
-	top: 0px;
-	left: 0px;
+.navbar-nav{
+	color: white;
+	font-weight: bold;
 }
 
-#authorOverlay{
-        top: 30px;
-        left: 0px;
+#brand{
+	font-weight: bold;
+	color: white;
+	font-size: 30px;
+	padding-left: 30px;
+	padding-right: 20px;
 }
 
-#communityOverlay{
-        top: 150px;
-        left: 0px;
+#user{
+	color: #adddcf;
 }
 
-h4 span { 
-	color: white; 
-	letter-spacing: -1px;  
-	background: rgb(0, 0, 0); /* fallback color */
-	background: rgba(0, 0, 0, 0.7);
-	padding: 2px 5px 2px 5px; 
-}
-
-#load{
-	text-align: center;
-	padding-bottom: 10px;
+#content{
+	color: black;
+	border-color: #f1f1f1;
+	border-style: solid;
+	border-width: thick;
+	padding: 10;
+	margin-top: 30px;
+	margin-left: 30px;
+	background-color: white;
+	height: 80%;
+	overflow-y: auto;
 }
 
 .content{
-	margin: 0 auto;
-	width: 60%;
-}
-
-article h1{
-	font-size: 18px;
-	margin: 10px 10px 0px 10px;
-	color: #505050;
-}
-
-article h2{
-	float: left;
-	font-size: 14px;
-	color: #606060;
-}
-
-article p{
-	color: #606060;
-	font-size: 14px;
-	margin: 10px 10px 10px 10px;
-}
-
-.comments{
-	font-size: 22px;
-	color: #505050;
-	text-align: center;
-	clear: both;	
-	position: relative;
-}
-
-.replyText{
-	font-size: 12px;
-	clear: both;
-	text-align: left;
-	padding: 4px 8px;
-	background-color: #76CBF5;
-	color: #FFFFFF;
-}
-
-.bodypage{
-	height: 100%;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 700;
-        font-size: 100%;
-	color: #505050;
-}
-
-.replydiv{
-	font-size: 14px;
-	width: 60%;
-	margin: 10px 0px 0px 10px;
-	padding: 3px 0px 0px 3px;
-}
-
-.replydiv textarea{
-	margin: 10px 0px 10px 0px;
-	background-color: #505050;
-	color: white;
-}
-
-.reply{
-	text-align: left;
-	border-left: thick solid #79ca77;
-	border-bottom: thin solid #79ca77;
 	padding: 10px;
 }
 
-.bigreply{
-	width: 60%;
-	margin: 0 auto;
+.even{
+	position: relative;
+	background-color: #ffffff;
+	border-bottom: thick solid #e8e7e5;
+	border-left: thick solid #e8e7e5;
+	border-right: thick solid transparent;
 }
 
-.replymessage{
-	font-size: 14px;
-	text-indent: 40px;
-	margin: 5px 5px 5px 5px;
+.odd{
+	position: relative;
+	background-color: #ffffff;
+	border-bottom: thick solid #e8e7e5;
+	border-right: thick solid #e8e7e5;
+	border-left: thick solid transparent;
 }
 
-.reply span{
+::-webkit-scrollbar{
+	width:10px;
+	background-color: #333333;
+}
+
+::-webkit-scrollbar-thumb{
+	color: #87CEFF;
+}
+
+.side{
+	background-color: #ffffff;
+	border-color: #f1f1f1;
+        border-style: solid;
+        border-width: thick;
+	min-width: 200px;
+}
+
+
+.nav-stacked>li+li{
+	margin: 0;
+}
+
+.article{
+	margin-left: 10px;
+}
+
+#subscription{
+	font-size:14px;	
+	font-weight: bold;
+	color: #de6868;
+}
+
+#title{
+	font-weight: bold;
+	color: #de6868;
+	border-bottom: thick solid #de6868;
+}
+
+.active{
+	background-color:white;
+}
+
+.content .title{
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 10px;
+	margin-top: 5px;
+	display: inline;
+}
+
+#articleInformation{
+}
+
+.title{
+	position: absolute;
+	top: 3px;
+	left: 30px;
+}
+
+.author{
+	position: absolute;
+	top: 33px;
+	left: 50px;
+}
+
+#commentButton{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+#sidebar{
 	font-size: 16px;
-	margin: 10px 10px 0px 10px;
 }
 
-.reply2{
-	text-align: left;
+#sidebar .collapse{
 }
 
-.submit{
-	padding: 4px 8px;
-	color: #FFFFFF;
-        display: inline-block; /*for future reference: THIS IS WILL KEEP PADDING FROM EXTENDING PAST PARENT PADDING*/
-        background: #79ca77;
-        text-decoration: none;
+#sidebar .btn{
+	padding: 0;
+	margin-bottom: 8px;
+	background-color: white;
+	color: #428bca;
+	border-color: white;
+	border-radius: 0;
 }
 
-.cancel{
-	padding: 4px 8px;
-        color: #FFFFFF;
-        display: inline-block; /*for future reference: THIS IS WILL KEEP PADDING FROM EXTENDING PAST PARENT PADDING*/
-        background: #B94B5C;
-        text-decoration: none;
+#sidebar span{
+	display: inline-block;
 }
 
-.commentstatus{
-	color: #79ca77;
+#sidebar .glyphicon{
+	font-size: 10px;
 }
 
-/* FOOTER
-TODO:
-	1. Responsive?
-	2. Text font
- */
-#footer{
-	clear:both;
-	width: 100%;
-	background-color: #606060;
-	text-align: center;
-	color: #FFFFFF;
-	padding-top: 8px;
-	padding-bottom: 8px;
+#sidebar .insideCat{
+	margin-left: 12px;
 }
 
-#footer #link{
-	color: #FFFFFF;
-	text-decoration: none;
+#sidebar .article{
+	margin-left: 28px;
+	font-size: 12px
 }
 
-#copyright{
-	background-color: #505050;
-	color: #FFFFFF;
-	text-align: center;
-	padding-top: 8px;
-	padding-bottom: 8px;
-}
-
-.content{
-	text-align: left;
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus{
+	background-color: #de6868;
 }

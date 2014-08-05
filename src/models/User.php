@@ -11,12 +11,8 @@ class User{
 	private $username;
 	private $password;
 	private $role;
-	private $status;
 	private $email;
 	private $join_date;
-	private $last_login;
-	private $avatar_path; 
-        private $adult;
 
 	private $database;
 
@@ -29,16 +25,17 @@ class User{
 	/*
 	 * Creates a new user 
 	 *
-	 * @username
-	 * @password1
-	 * @password2 : Confirmation passowrd
-	 * @email
-         * @adult
+	 * @username 	: Username chosen by user
+	 * @password1 	: Login password
+	 * @password2 	: Confirmation passowrd
+	 * @email 	: User's e-mail address
 	 *
- 	 * Returns a String indicating whether user has been successfully created
+ 	 * Return	: String indicating whether user has been successfully created
+	 * 	+ Returns a String of possible errors to make it easy to display to login screen
+	 * 	+ Login.php searches for a '!' to indicate success. Do NOT use '!' on any error messages
 	 */
-	public static function create($username, $password1, $password2, $email, $adult){
-		include('../lib/password.php');
+	public static function create($username, $password1, $password2, $email){
+		include('/vagrant/src/lib/password.php');
 		include('Database.php');
 
 		$database = new Database();
@@ -61,15 +58,17 @@ class User{
 
                 date_default_timezone_set("America/New_York");
                 $current_time = date('Y-m-d h:i:s', time());
+		echo "!";
                 $password = password_hash($password1, PASSWORD_BCRYPT);
+		echo "@";
 		
-		if($database->create_user($username, $password, $email, $adult, $current_time)){
-			$_SESSION['loggedin'] = TRUE;
-                        $_SESSION['username'] = $username;
-			$_SESSION['email']    = $email;
-                        $_SESSION['adult'] = $adult;
+		$create_user_query = 
+			"INSERT into member(username, password, email, role, joindate) values
+			('$username', '$password', '$email', 'u', '$current_time');";
+
+		if($database->insert($create_user_query))
 			return "User created successfully!";
-		}else
+		else
 			return "User not created successfully.";
 	}
 
@@ -105,6 +104,15 @@ class User{
 		return $instance;
 	}
 
+	public static function find_id($username){
+		include("Database.php");
+		$database = new Database();	
+			
+		$result_array = $database->query("Select memberid from member where username='$username';");
+		var_dump($result_array);
+		return $result_array[0]['memberid'];
+	}
+
 	/* 
 	 * Loads instance variables for given user
 	 *
@@ -116,9 +124,9 @@ class User{
 	 */
 	private function load($identifier, $type = "username"){
 		if($type == "username")
-			$user_info = $database->find_user($identifier, "username");
+			$user_info = $this->database->find_user($identifier, "username");
 		else
-			$user_info = $database->find_user($identifier, "email");
+			$user_info = $this->database->find_user($identifier, "email");
 
 		if($user_info == false)
 			return false;
@@ -127,14 +135,48 @@ class User{
 		$this->username 	= $user_info['identifier'];
 		$this->password 	= $user_info['password'];
 		$this->role 		= $user_info['role'];
-		$this->status 		= $user_info['status'];
 		$this->email 		= $user_info['email'];
 		$this->join_date 	= $user_info['joindate'];
-		$this->last_login 	= $user_info['lastlogin'];
-		$this->avatar_path 	= $user_info['avatarpath'];
-                $this->adult            = $user_info['adult'];
 		
 		return true;
+	}
+
+	/*
+	 * Gets the articles that the user is subscribed to
+	 * 
+	 * Returns an associative array
+	 */
+	public function get_subscriptions(){
+		return($this->database->query(
+				"select article.name as articlename, category.name as categoryname,
+				article.articleid as articleid
+				from article 
+				inner join followarticle on followarticle.articleid = article.articleid and followarticle.memberid =" . $this->id ."
+				inner join category on category.categoryid = article.categoryid;"));
+	}
+
+	/*
+	 * Gets the categories of the article the user is subscribed to
+	 *
+	 * Returns an associative array
+	 */
+	public function get_categories(){
+		return($this->database->query(
+				"select category.name as categoryname, category.categoryid as categoryid from article 
+                                inner join followarticle on followarticle.articleid = article.articleid and followarticle.memberid =" . $this->id ."
+                                inner join category on category.categoryid = article.categoryid group by categoryname order by categoryname;"));
+	}
+
+	/* 
+	 * Gets the articles that the user is subscribed to
+	 * 
+	 * Returns an associate array
+	 */
+	public function get_articles(){
+		return($this->database->query(
+				"select article.name as articlename, category.name as categoryname, article.articleid as articleid from article 
+                                inner join followarticle on followarticle.articleid = article.articleid and followarticle.memberid =" . $this->id ."
+                                inner join category on category.categoryid = article.categoryid group by articlename order by articlename;"));
 	}
 
 	/*

@@ -1,33 +1,62 @@
-<?php session_start(); ?>
+<?php 
+	session_start(); 
+
+	if($_SESSION['loggedin'] == true)
+		header("Location: index.php");	
+?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title> Login, SignIn, Signout functions </title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<title>TopicRush - Signup</title>
+		
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/main.css" rel="stylesheet" media="screen">
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	</head>
+	
+	<body id="signupBody">
+		<div class="container">
+			<div class="panel panel-default">
+				<h1>Sign Up</h1>
+				<div class="panel-body">
+					<form id="signup" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+						<div class="input-group" id="username">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+							<input class="form-control" name="username" type="text" placeholder="Username" required="" autofocus="">
+						</div>
 
-	<body>
-		<?php
-			if($_SESSION['loggedin'])
-				header('location:index.php');
-		?>
+						<div class="input-group" id="password">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+							<input type="password" name="password1" class="form-control" placeholder="Password" required="">
+						</div>
 
-		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-			Username: <input type="text" name="username" maxlength="30"
-				value="<?php if(isset($_POST['username'])) echo $_POST['username'];?>"
-				><br>
-			Password: <input type="password" name="password1"><br>
-			Confirm Password: <input type="password" name="password2"><br>
-			Email: <input type="email" name="email"
-				value="<?php if(isset($_POST['email'])) echo $_POST['email'];?>"
-				><br>
-                        Over Eighteen Years Old:
-                        <input type="radio" name="adult" value="n" checked>No
-                        <input type="radio" name="adult" value="y">Yes<br>
-			<input type="submit">
-		</form>
-		<a href="signout.php">Logout</a>
+						<div class="input-group" id="password2">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+							<input type="password" name="password2" class="form-control" placeholder="Confirm Password" required="">
+						</div>
+			
+						<div class="input-group" id="email">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+							<input type="email" name="email" class="form-control" placeholder="E-mail" required="">
+						</div>
+
+						<button class="btn btn-lg btn-primary btn-block" type="submit" id="submit" name="submit">Sign Up</button>
+						<a href="login.php" id="signin">Sign In</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
 	</body>
 </html>
 
@@ -37,14 +66,25 @@
  */
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-	require('/vagrant/src/models/User.php');
+        require(__DIR__ . '/models/User.php');
 
-	$username  = $_POST["username"];
-	$password1 = $_POST["password1"];
-	$password2 = $_POST["password2"];
-	$email 	   = $_POST["email"];
-        $adult     = $_POST["adult"];
+        $username  = $_POST["username"];
+        $password1 = $_POST["password1"];
+        $password2 = $_POST["password2"];
+        $email     = $_POST["email"];
 
-	echo User::create($username, $password1, $password2, $email, $adult); 
+        $status = User::create($username, $password1, $password2, $email);
+
+	if(strpos($status, "!") == false){
+	?>
+		<script>
+			$("#signupBody").prepend("<div class='alert alert-danger' role='alert'><?php echo $status ?></div>");
+		</script>
+	<?php
+	} else{
+		$_SESSION['username'] = $username;
+		$_SESSION['loggedin'] = TRUE;
+		header("Location: index.php");
+	}
 }
 ?>

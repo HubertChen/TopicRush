@@ -17,13 +17,9 @@ class Database{
 	private $error;
 
 	public function __construct(){
-		include('Error.php');
-		$this->error = new Error();
-
 		// Establishes database connection
 		$this->db_connection = mysqli_connect(self::DB_HOST, self::DB_USER, self::DB_PASS, self::DB_NAME);
 		if(mysqli_connect_error()){
-			$this->error->write(mysqli_connect_error(), "database");
 			$status = false;
 		}else
 			$status = true;
@@ -34,31 +30,13 @@ class Database{
 	}
 	
 	/*
-	 * Creates a new user within member table
-	 *
-	 * Returns true if user was created successfully
-	 * Returns false if user was created unsuccessfully
-	 */
-	public function create_user($username, $password, $email, $adult, $current_time, $role = 'u', $status = 1, $avatarpath = ''){
-		$db_query = "INSERT into member(username, password, role, status, email, joindate, lastlogin, avatarpath, adult)
-				values('$username', '$password', '$role', $status, '$email', '$current_time',
-				'$current_time', '$avatarpath', '$adult');"; 
-
-		if(!mysqli_query($this->db_connection, $db_query)){
-			$this->error->write(mysqli_error($this->db_connection), "database");
-			return false;
-		}
-		return true;
-	}
-
-	/*
 	 * Verify user has correct login credentials
 	 * 
 	 * Returns true if correct
 	 * Returns false if incorrect
 	 */
 	public function verify_user($username, $password){
-		include('../lib/password.php');
+		include('lib/password.php');
 
 		$user_information = $this->find_user($username, "username");
 
@@ -80,11 +58,11 @@ class Database{
 		else
 			$identifier = "email = '$identifier';";
 
-		$db_query = 	"SELECT memberid, username, password, role, status, email, 
-				joindate, lastlogin, avatarpath from member where $identifier";
+		$db_query = 	"SELECT memberid, username, password, role, email, 
+				joindate from member where $identifier";
 		
 		$result = mysqli_query($this->db_connection, $db_query);
-
+		
 		// No user found with given information
 		if(mysqli_num_rows($result) == 0)
 			return null;
@@ -121,7 +99,7 @@ class Database{
 	 *
 	 * Returns an array
 	 */
-	function query($query){
+	public function query($query){
 		$db_result = mysqli_query($this->db_connection, $query);
 
 		$count = 0;
