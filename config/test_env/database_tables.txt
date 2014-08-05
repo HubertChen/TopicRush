@@ -53,6 +53,7 @@ type int not null,
 path varchar(100),
 description varchar(300) not null,
 created timestamp null,
+rating int not null,
 primary key(contentid),
 foreign key (articleid) references article(articleid),
 foreign key (ownerid) references member(memberid));
