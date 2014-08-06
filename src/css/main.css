@@ -165,7 +165,7 @@ form #signin{
 }
 
 #content{
-	color: black;
+	color: #313131;
 	border-color: #f1f1f1;
 	border-style: solid;
 	border-width: thick;
@@ -175,6 +175,19 @@ form #signin{
 	background-color: white;
 	height: 80%;
 	overflow-y: auto;
+}
+
+#content2{
+        color: #313131;
+        border-color: #f1f1f1;
+        border-style: solid;
+        border-width: thick;
+        padding: 10;
+        margin-top: 30px;
+        margin-left: 30px;
+        background-color: white;
+        height: 80%;
+        overflow-y: auto;
 }
 
 .content{
@@ -235,6 +248,20 @@ form #signin{
 	border-bottom: thick solid #de6868;
 }
 
+#title2{
+	font-weight: bold;
+	color: #99d2f0;
+	border-bottom: thick solid #99d2f0;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+#content2 #title{
+        font-weight: bold;
+        color: #3f9ccc;
+        border-bottom: thick solid #3f9ccc;
+}
+
 .active{
 	background-color:white;
 }
@@ -262,10 +289,11 @@ form #signin{
 	left: 50px;
 }
 
-#commentButton{
+.commentButton{
 	position: absolute;
 	top: 20px;
 	right: 20px;
+	color: #777777;
 }
 
 #sidebar{
@@ -301,6 +329,160 @@ form #signin{
 	font-size: 12px
 }
 
+.subcat{
+	position: relative;
+	min-height: 50px;
+	padding-bottom: 0px;
+}
+
+.subcat .name{
+	position: absolute;
+	top: 0px;
+	left: 5px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.subcat .description{
+	position: absolute;
+	top: 30px;
+	left: 20px;
+}
+
+.subcat .date{
+	position: absolute;
+	top: 60px;
+	left: 20px;
+}
+
+.subcat .members{
+	position: absolute;
+	top: 60px;
+	left: 50px;
+}
+
+.subcat .content{
+	position: absolute;
+	top: 60px;
+	left: 110px;
+}
+
+.subcat .articles{
+	position: absolute;
+	top: 60px;
+	left: 80px;
+}
+
+.subcat .subButton{
+	color: #313131;
+	background-color: #adddcf;
+	position: absolute;
+	top: 10px;
+	right: 0px;
+}
+
+.subcat .unsubButton{
+	color: #313131;
+        background-color: #de6868;
+        position: absolute;
+        top: 10px;
+        right: 0px;
+}
+
+.subart{
+	margin-left: 50px;
+	margin-top: 15px;
+	border-left-style: solid;
+	border-left-width: medium;
+	border-left-color: #adddcf;
+	min-height: 50px;
+}
+
+.subart .description{
+	margin: 0;
+}
+
+.glyphicon-ok{
+	color: #313131;
+}
+
+#content2 .contentheader{
+	position: relative;
+}
+
+#content2 .author{
+	text-align: right;
+	position: absolute;
+	top: 20px;
+	right: 0px;
+}
+
+#content2 .description{
+	padding: 10px 10px 10px 10px;
+	min-height: 200px;
+	margin: 10px 50px 10px 50px;
+	border: solid medium #e8e7e5;
+}
+
+.contentheader .replyText{
+	margin-left: 50px;
+	color: #de6868;
+}
+
+.bigreply{
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+.bigreply .replymessage{
+	margin-bottom: 3px;
+}
+
+.bigreply .reply{
+	height: 45px;
+	position: relative;
+	border-left: solid medium #99d2f0;
+	border-bottom: solid thin #99d2f0;
+}
+
+.bigreply .replymessage{
+	position: absolute;
+	top: 0px; 
+	left: 5px;
+}
+
+.bigreply .date{
+	position: absolute;
+	top: 20px;
+	right: 0px;
+}
+
+.bigreply .username{
+	position: absolute;
+	top: 20px;
+	right: 0px;
+}
+
+.bigreply .replyText{
+	color: #de6868;
+	position: absolute;
+	top: 20px;
+	left: 5px;
+}
+
+.bigreply .glyphicon-user{
+	padding-left: 2px;
+}
+
+#replyResponse{
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus{
 	background-color: #de6868;
+}
+
+.navbar-inverse .navbar-nav>li>a{
+	color: white;
 }

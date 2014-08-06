@@ -37,17 +37,19 @@
     						</div>
 
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav">
-								<li class="active"><a href="#">News Feed</a></li>
-								<li><a href="#">Subscriptions</a></li>
-							</ul>
-
 							<form class="navbar-form navbar-left" role="search">
 								<div class="input-group" id="search">
 									<input class="form-control" type="text" name="search" placeholder="Search"></input>
-									<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+									<span class="input-group-addon"><a href="#"><i class="glyphicon glyphicon-search"></i></a></span>
 								</div>
 							</form>
+
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="#" id="newsfeedlink">News Feed</a></li>
+								<li><a href="#" id="subscriptionslink">Subscriptions</a></li>
+							</ul>
+
+
 
 							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown">
@@ -58,9 +60,9 @@
 									</a>
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="#">Profile</a></li>
-										<li><a href="login.php">Sign out</a></li>
-										<li class="divider"></li>
 										<li><a href="#">Settings</a></li>
+										<li class="divider"></li>
+										<li><a href="login.php">Sign out</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -85,62 +87,10 @@
 				</div>
 			
 				<div class="col-xs-5" id="content">
-					<?php
-						echo "<h1 id='title'>All</h1>";
-			                        include('models/Database.php');
-                			        $database = new Database();
-						
-						$user_id_query = $database->query("select memberid from member where username ='" . $_SESSION['username'] . "';");
-						$user_id = $user_id_query[0]['memberid'];
+				</div>
 
-                       				$articles = $database->query(
-								"select content.* from followarticle inner join content on 
-								followarticle.articleid = content.articleid and 
-								followarticle.memberid = " . $user_id . " limit 30;								
-						");
-						
-						
-
-                        			for($count = 0; $count < sizeOf($articles); $count++){
-		                                	$title          = $articles[$count]['message'];
-        			                        $owner_id       = $articles[$count]['ownerid'];
-               	     			      		$article_id     = $articles[$count]['articleid'];
-			                                $content_id     = $articles[$count]['contentid'];
-							$rating		= $articles[$count]['rating'];
-
-                                			$author         = $database->query("SELECT username from member where memberid = '$owner_id';");
-                                			$community      = $database->query("SELECT name from article where articleid = $article_id;");
-
-							if($count % 2 == 0)
-								$class  = "even";
-							else
-								$class  = "odd";
-
-                                			echo 	"<div class='content $class'> 
-									<div id='articleRating' class='btn-group-vertical'>
-										<button class='btn btn-success btn-xs' id='articleUpvote'>
-                                                                                        <span class='glyphicon glyphicon-chevron-up'></span>
-                                                                                </button>
-										
-										<button class='btn btn-danger btn-xs' id='articleDownvote'>
-                                                                                        <span class='glyphicon glyphicon-chevron-down'></span>
-                                                                                </button>
-									</div>
-									
-									<div id='articleInformation'>										
-										<p class='title'>$title</p>
-										<p class='author'>By: " . $author[0]['username'] . "</p>
-										<p class='points'>$rating points</p>
-										<button class='btn btn-default btn-lg' id='commentButton'>
-											<span class='glyphicon glyphicon-comment'></span>
-										</button>
-									</div>
- 			                                	</div>";
-                        			}
-
-					?>
-			
-					<a href="#">LOAD MORE</a>		
+				<div class="col-xs-5" id="content2">
+	
 				</div>
 			</div>
 		</div>
@@ -152,6 +102,8 @@
 			
 	<script>
 		$(document).ready(function(){
+			$("#content").load("ajax/load_main_content.php?catid=0&articleid=0");
+			$("#content2").hide();
 			/*
 			 * Loads the user sidebar content
 			 */
@@ -193,8 +145,40 @@
 				$("#content").empty();
 				$("#content").append(response);
 			});
-	
-			$(".glyphicon").click(function(){
+
+			$("#newsfeedlink").click(function(){
+				$("#subscriptionslink").parent().removeClass("active");
+				$(this).parent().addClass("active");
+				
+				$.ajax({
+					type: "GET",
+					url: "ajax/load_main_content.php?catid=0&articleid=0",
+					async: false,
+					success: function(text){
+						response = text;
+					}
+				});
+				$("#content").empty();
+				$("#content").append(response);
+			});
+
+			$("#subscriptionslink").click(function(){
+				$("#newsfeedlink").parent().removeClass("active");
+				$(this).parent().addClass("active");
+
+				$.ajax({
+					type: "GET",
+					url: "ajax/load_subscriptions.php",
+					async: false,
+					success: function(text){
+						response = text;
+					}
+				});
+				$("#content").empty();
+				$("#content").append(response);
+			});
+
+			$(".side .glyphicon").click(function(){
 				if($(this).parent().parent().next().attr("class") == "collapse"){
 					$(this).removeClass("glyphicon-plus");
                                         $(this).addClass("glyphicon-minus");

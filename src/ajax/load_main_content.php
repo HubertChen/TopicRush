@@ -33,9 +33,11 @@
 		$title = $title[0]['name'];
 
 		$articles = $database->query("
-		        select content.* from content inner join article on 
-                        article.articleid = content.articleid
-			where article.categoryid = $category_id limit 30;
+			select content.* from content inner join article on article.articleid = content.articleid
+			inner join followarticle on followarticle.memberid = content.ownerid 
+			where content.ownerid = $user_id and
+			article.categoryid = $category_id
+			limit 30;
 		");
 	}
 
@@ -57,11 +59,11 @@
 
 		echo    "<div class='content $class'> 
 				<div id='articleRating' class='btn-group-vertical'>
-					<button class='btn btn-success btn-xs' id='articleUpvote'>
+					<button class='btn btn-success btn-xs' class='articleUpvote' data-id='$article_id'>
 						<span class='glyphicon glyphicon-chevron-up'></span>
 					</button>
 					
-					<button class='btn btn-danger btn-xs' id='articleDownvote'>
+					<button class='btn btn-danger btn-xs' class='articleDownvote' data-id='$article_id'>
 						<span class='glyphicon glyphicon-chevron-down'></span>
 					</button>
 				</div>
@@ -70,10 +72,27 @@
 					<p class='title'>$title</p>
 					<p class='author'>By: " . $author[0]['username'] . "</p>
 					<p class='points'>$rating points</p>
-					<button class='btn btn-default btn-lg' id='commentButton'>
+					<button class='btn btn-default btn-lg commentButton' data-id='$content_id'>
 						<span class='glyphicon glyphicon-comment'></span>
 					</button>
 				</div>
 			</div>";
 	}
 ?>
+
+<script>
+	$(document).ready(function(){
+		$(".commentButton").click(function(){
+			$.ajax({
+				type: "GET",
+				url: "ajax/load_article.php?id=" + $(this).attr("data-id"),
+				async: false,
+				success: function(text){	
+					response = text;
+				}
+			});
+			$("#content2").empty();
+			$("#content2").append(response);	
+		});
+	});
+</script>
