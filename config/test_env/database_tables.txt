@@ -126,3 +126,18 @@ suggestion varchar(300) not null,
 primary key(suggestionid),
 foreign key(memberid) references member(memberid),
 foreign key(categoryid) references category(categoryid));
+
+create table if not exists contentvote(
+memberid int not null,
+contentid int not null,
+vote tinyint(1) not null,
+foreign key(memberid) references member(memberid),
+foreign key(contentid) references content(contentid));
+
+create table if not exists commentvote(
+memberid int not null,
+commentid int not null,
+vote tinyint(1) not null,
+foreign key(memberid) references member(memberid),
+foreign key(commentid) references comment(commentid));
+

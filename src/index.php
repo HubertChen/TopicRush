@@ -37,7 +37,7 @@
     						</div>
 
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<form class="navbar-form navbar-left" role="search">
+							<form class="navbar-form navbar-left" role="search" id="searchForm">
 								<div class="input-group" id="search">
 									<input class="form-control" type="text" name="search" placeholder="Search"></input>
 									<span class="input-group-addon"><a href="#"><i class="glyphicon glyphicon-search"></i></a></span>
@@ -173,6 +173,7 @@
 				});
 				$("#content").empty();
 				$("#content").append(response);
+				$("#content2").hide();
 			});
 
 			$(".side .glyphicon").click(function(){
@@ -185,7 +186,24 @@
 				}
 			});
 
-			
+			$("#searchForm").submit(function(event){
+				$.ajax({
+					type: "GET",
+					url: "ajax/load_main_content.php?search=" + $("input").val(),
+					async: false,
+					success: function(text){
+						response = text;
+					}
+				});
+				$("#content").empty();
+				$("#content").append(response);
+
+				event.preventDefault();
+			});
+
+			$(".glyphicon-search").click(function(){
+				$("#searchForm").submit();
+			});
 		});
 	</script>
 	</body>

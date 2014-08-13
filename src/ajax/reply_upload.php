@@ -2,7 +2,7 @@
 	session_start();
 	include('../models/Database.php');
 
-	$text = $_GET['text'];
+	$text = htmlspecialchars($_GET['text']);
 	$content = $_GET['id'];
 	$reply_id = $_GET['replyid'];
 	$username = $_SESSION['username'];

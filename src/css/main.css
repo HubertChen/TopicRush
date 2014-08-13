@@ -175,6 +175,7 @@ form #signin{
 	background-color: white;
 	height: 80%;
 	overflow-y: auto;
+	min-width: 500px;
 }
 
 #content2{
@@ -188,6 +189,7 @@ form #signin{
         background-color: white;
         height: 80%;
         overflow-y: auto;
+	min-width: 500px;
 }
 
 .content{
