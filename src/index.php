@@ -59,9 +59,6 @@
 										<span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">Profile</a></li>
-										<li><a href="#">Settings</a></li>
-										<li class="divider"></li>
 										<li><a href="login.php">Sign out</a></li>
 									</ul>
 								</li>
