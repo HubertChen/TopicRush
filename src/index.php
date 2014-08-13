@@ -179,10 +179,10 @@
 			});
 
 			$(".side .glyphicon").click(function(){
-				if($(this).parent().parent().next().attr("class") == "collapse"){
+				if($(this).attr("class") == "glyphicon glyphicon-plus"){
 					$(this).removeClass("glyphicon-plus");
                                         $(this).addClass("glyphicon-minus");
-				}else if($(this).parent().parent().next().attr("class") == "collapse in"){
+				}else {
 					$(this).removeClass("glyphicon-minus");
                                         $(this).addClass("glyphicon-plus");
 				}
