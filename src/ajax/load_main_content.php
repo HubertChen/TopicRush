@@ -33,11 +33,9 @@
 		$title = $title[0]['name'];
 
 		$articles = $database->query("
-			select content.* from content inner join article on article.articleid = content.articleid
-			inner join followarticle on followarticle.memberid = content.ownerid 
-			where content.ownerid = $user_id and
-			article.categoryid = $category_id
-			limit 30;
+			select distinct content.* from content inner join article on article.articleid = content.articleid
+                        inner join followarticle on content.articleid = followarticle.articleid and followarticle.memberid = '$user_id'
+                        where article.categoryid = '$category_id' limit 30;
 		");
 	}
 
