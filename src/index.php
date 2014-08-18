@@ -83,10 +83,10 @@
 					</div>
 				</div>
 			
-				<div class="col-xs-5" id="content">
+				<div class="col-xs-4" id="content">
 				</div>
 
-				<div class="col-xs-5" id="content2">
+				<div class="col-xs-4" id="content2">
 	
 				</div>
 			</div>

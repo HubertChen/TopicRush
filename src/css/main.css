@@ -175,7 +175,6 @@ form #signin{
 	background-color: white;
 	height: 80%;
 	overflow-y: auto;
-	min-width: 500px;
 }
 
 #content2{
@@ -189,7 +188,6 @@ form #signin{
         background-color: white;
         height: 80%;
         overflow-y: auto;
-	min-width: 500px;
 }
 
 .content{
@@ -271,7 +269,7 @@ form #signin{
 }
 
 .content .title{
-	font-size: 20px;
+	font-size: 14px;
 	font-weight: bold;
 	margin-left: 10px;
 	margin-top: 5px;
@@ -289,8 +287,8 @@ form #signin{
 
 .author{
 	position: absolute;
-	top: 33px;
-	left: 50px;
+	top: 30px;
+	left: 40px;
 }
 
 .commentButton{
@@ -343,14 +341,14 @@ form #signin{
 	position: absolute;
 	top: 0px;
 	left: 5px;
-	font-size: 20px;
+	font-size: 14px;
 	font-weight: bold;
 }
 
 .subcat .description{
 	position: absolute;
 	top: 30px;
-	left: 20px;
+	left: 5px;
 }
 
 .subcat .date{
@@ -381,7 +379,7 @@ form #signin{
 	color: #313131;
 	background-color: #adddcf;
 	position: absolute;
-	top: 10px;
+	top: 00px;
 	right: 0px;
 }
 
@@ -389,7 +387,7 @@ form #signin{
 	color: #313131;
         background-color: #de6868;
         position: absolute;
-        top: 10px;
+        top: 00px;
         right: 0px;
 }
 
@@ -414,14 +412,14 @@ form #signin{
 	position: relative;
 }
 
-#content2 .author{
-	text-align: right;
-	position: absolute;
-	top: 20px;
-	right: 0px;
+#content2 .author3{
+	font-weight: bold;
+	margin-bottom: 5px;
+	margin-left: 50px;
 }
 
 #content2 .description{
+	word-wrap: break-word;
 	padding: 10px 10px 10px 10px;
 	min-height: 200px;
 	margin: 10px 50px 10px 50px;
@@ -443,16 +441,15 @@ form #signin{
 }
 
 .bigreply .reply{
-	height: 45px;
+	padding-bottom: 5px;
 	position: relative;
 	border-left: solid medium #99d2f0;
 	border-bottom: solid thin #99d2f0;
 }
 
 .bigreply .replymessage{
-	position: absolute;
-	top: 0px; 
-	left: 5px;
+	margin-left: 5px;
+	word-wrap: break-word;
 }
 
 .bigreply .date{
@@ -461,20 +458,24 @@ form #signin{
 	right: 0px;
 }
 
+.bigreply .replySpan{
+	display: inline-block;
+}
+
 .bigreply .username{
-	position: absolute;
-	top: 20px;
-	right: 0px;
+	display: inline-block;
+	margin: 0;
 }
 
 .bigreply .replyText{
+	margin-bottom: 5px;
 	color: #de6868;
-	position: absolute;
-	top: 20px;
-	left: 5px;
 }
 
 .bigreply .glyphicon-user{
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
 	padding-left: 2px;
 }
 

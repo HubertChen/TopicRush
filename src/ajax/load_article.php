@@ -17,6 +17,9 @@
 	$created 	= $content[0]['created'];
 	$rating		= $content[0]['rating'];
 
+	$owner =	$database->query("SELECT username from member where memberid=$ownerid");
+	$owner =	$owner[0]['username'];
+
 	$author         = $database->query("SELECT username from member where memberid = '$user_id';");
 	$author		= $author[0]['username'];
 
@@ -25,7 +28,7 @@
 			<div class='contentheader'>
 				<h1 id='title'>$message</h1>
 				<p class='description'>$description</p>
-				<p class='author'>By: $author</p>
+				<div class ='author3'>By: $owner</div>
 				<button class='replyText btn btn-default btn-xs' data-toggle='modal' data-target='#myModal'>Reply</button>
 			</div>
 			
