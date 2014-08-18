@@ -1,4 +1,9 @@
 <?php
+/*
+ * vote_article
+ * 
+ * Upvotes or downvotes content script
+ */
 	session_start();
         include('../models/Database.php');
 

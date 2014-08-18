@@ -1,4 +1,9 @@
 <?php
+/*
+ * reply_upload 
+ * 
+ * Saves a comment to the database for the given article
+ */
 	session_start();
 	include('../models/Database.php');
 

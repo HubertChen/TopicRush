@@ -1,4 +1,9 @@
 <?php
+/*
+ * reply_ajax
+ *
+ * Shows the reply modal
+ */
 	session_start();
         $username = $_SESSION['username'];
         $content_id = $_GET['content_id'];

@@ -1,4 +1,9 @@
 <?php
+/*
+ * load_article
+ *
+ * Loads the content on the second main panel
+ */
         session_start();
         include('../models/Database.php');
 

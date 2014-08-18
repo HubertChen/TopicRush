@@ -1,4 +1,9 @@
 <?php
+/*
+ * add_sub : Saves Subscription
+ * 
+ * Script is caled when a user clicks the "Subscribe" button to follow an article
+ */
 	session_start();
 
 	include("../models/Database.php");

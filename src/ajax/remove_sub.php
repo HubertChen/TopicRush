@@ -1,4 +1,9 @@
 <?php
+/*
+ * remove_sub : Saves Subscription
+ * 
+ * Script is caled when a user clicks the "Unsubscribe" button to unfollow an article
+ */
         session_start();
 
         include("../models/Database.php");

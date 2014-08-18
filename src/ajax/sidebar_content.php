@@ -1,4 +1,9 @@
 <?php
+/* 
+ * load_sidebar_content
+ * 
+ * Loads the navigation window of different Categories and Articles
+ */
 	session_start();
 
 	include("/vagrant/src/models/User.php");

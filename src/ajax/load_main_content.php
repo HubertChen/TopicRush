@@ -1,4 +1,9 @@
 <?php
+/*
+ * load_main_content : AJAX call to update main panel
+ * 
+ * Lists different articles that the user is subscribed to
+ */
 	session_start();
 	include('../models/Database.php');
 	
