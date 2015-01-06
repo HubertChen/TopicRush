@@ -1,10 +1,8 @@
-Summer Research Project
+#Topic Rush
 
-Live site: http://rockhopper.monmouth.edu/~srpsu14/
+A user generated news site (similar to Reddit). This project was a result of Monmouth University's 2014 Summer Research program.
 
-Test Environment: http://127.0.0.1:4567
-
-MySQL credentials (Test Enviornment): root/123
+Current site: http://imgur.com/a/nNWG8
 
 Contributors: 
 * Dr. Cui Yu
@@ -12,12 +10,15 @@ Contributors:
 * Connor Persteezy
 * Hubert Chen
 
-To setup development environment:
+## Development Environment Setup:
+>1. Install VirtualBox at https://www.virtualbox.org/wiki/Downloads	
+>2. Install Vagrant at http://www.vagrantup.com/downloads.html
+>3. git clone https://github.com/HubertChen/SRP.git
+>4. vagrant up
+>5. vagrant ssh
+>6. cd /vagrant/config/test_env && php database_init.php
+>7. exit
 
-	Install VirtualBox at https://www.virtualbox.org/wiki/Downloads	
-	Install Vagrant at http://www.vagrantup.com/downloads.html
-	git clone https://github.com/HubertChen/SRP.git
-	vagrant up
-	vagrant ssh
-	cd /vagrant/config/test_env && php database_init.php
-	exit
+Test Environment: http://127.0.0.1:4567
+
+MySQL credentials (Test Enviornment): root/123
