@@ -1,6 +1,6 @@
 #Topic Rush
 
-A user generated news site (similar to Reddit). This project was a result of Monmouth University's 2014 Summer Research program.
+A user generated news site (similar to Reddit). This project was a result of Monmouth University's 2014 Summer Research program. Full stack: Vagrant, Apache, MySQL, PHP, JQuery, JS, Bootstrap, CSS, HTML
 
 Current site: http://imgur.com/a/nNWG8
 
